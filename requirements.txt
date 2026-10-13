@@ -1,0 +1,6 @@
+# What the topic folders of this repository need; topics that use PyTorch have their own requirements.txt.
+# Python 3.13 or newer. Install with uv or conda: see pia/setup/setup.md.
+numpy>=2.3
+pandas>=3.0
+matplotlib>=3.10
+ipykernel
