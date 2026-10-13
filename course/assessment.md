@@ -21,18 +21,23 @@ The exams run in person, without network and without any AI tool: not even a loc
 
 ## Your grade
 
-- **Each exam** is the mean of its two parts.
-- **Your grade** is your May exam, or its mean with February if that is higher, as long as both parts of May reach 4. June works the same way, as a second chance, and the better of May and June counts.
-- **You pass** with a 5 and at least 4 in each part of that exam. With a part below 4, that exam is not passed and counts at most 4, and February can't raise it.
-- **Contributions** add up to 2 points to a module you have passed, never above 10 (below).
-- **The final grade** is rounded to the nearest whole number, halves up; a grade below 5 is never rounded up to a pass.
+Each exam, February, May and June, is the mean of its two parts:
 
-| February | May (quiz, project) | Grade |
-| --- | --- | --- |
-| 6 | 7, 8 | 8: May alone (7.5) is better than its mean with February |
-| 8 | 4, 4 | 6: the mean of February and May (4) |
-| 7 | 8, 7 | 9: May alone (7.5), plus 1.5 for substantial contributions |
-| 9 | 6, 3 | 4: a part below 4, so May is not passed; June is your second chance |
+$$E = \frac{\text{quiz} + \text{projects}}{2}$$
+
+Each part must reach 4: with a part below 4, the exam counts at most 4. An exam you don't sit counts 0.
+
+May gives your grade, and February can raise it, never lower it: May counts on its own or averaged with February, whichever is higher. June works the same way, as a second chance:
+
+$$G_\text{May} = \max\left(E_\text{May},\ \frac{E_\text{Feb} + E_\text{May}}{2}\right) \qquad G_\text{June} = \max\left(E_\text{June},\ \frac{E_\text{Feb} + E_\text{June}}{2}\right)$$
+
+The average with February counts only when both parts of that exam reach 4; otherwise its $G$ is its $E$, at most 4.
+
+The better of May and June counts, and you pass with a 5. Once you have passed, accepted contributions add $C$, from 0 to 2 points ([below](#contributions)), never above 10:
+
+$$\text{grade} = \min\left(10,\ \max(G_\text{May},\ G_\text{June}) + C\right)$$
+
+The grade is rounded to the nearest whole number, halves up; a grade below 5 is never rounded up to a pass.
 
 ## The projects
 

@@ -49,4 +49,4 @@ A pull request is how you submit your work, in the projects and in practice task
 2. Open a pull request: into the original repository for a project step or a task such as numpy-mnist; into your own repository for any other practice (a merge request, on other platforms).
 3. For a pull request in your own repository, open an issue in this repository that links it and says what you would like feedback on.
 
-Feedback comes as time allows, in order of arrival, as comments on your pull request. Register your GitHub username in the aula virtual so that your work can be found and your contributions counted.
+Feedback comes as time allows, in order of arrival, as comments on your pull request. [Register your GitHub username in the aula virtual so that your work can be found and your contributions counted](https://fpadistancia.edu.xunta.gal/mod/feedback/view.php?id=2318916).
