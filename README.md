@@ -39,7 +39,7 @@ Each topic's README gives its path, with the core items marked ★. The worked e
 | 11 | Retrieval-augmented generation (RAG) | PIA | Grounding a model's answers in your own documents, with answers that cite their sources *(coming)* | |
 | 12 | Automation and business | PIA | Making AI systems run on their own, and deciding whether they are worth it *(coming)* | |
 | 13 | Unsupervised learning | SAA | Clustering, dimensionality reduction and anomaly detection *(coming)* | |
-| 14 | Vision and voice with pretrained models | PIA | [Computer vision](https://github.com/avidaldo/computer-vision) with OpenCV, YOLO object detection, CLIP embeddings and a face-authentication app; speech to text and text to speech *(coming)* | |
+| 14 | Vision and voice with pretrained models | PIA | [Computer vision](https://github.com/avidaldo/computer-vision) with OpenCV, YOLO object detection, CLIP embeddings and a face-authentication app. Voice with pretrained models: speech to text and text to speech *(coming)* | |
 | 15 | Reinforcement learning | SAA | [Learning from rewards](saa/reinforcement-learning/README.md): agents, environments and Q-learning | Worked example: [tic-tac-toe with Q-learning](https://github.com/avidaldo/tictactoe-qlearning), from the simplest version to an agent that never loses |
 
 The February exam covers term 1, and the May exam the whole year: see [how you are assessed](course/assessment.md).
