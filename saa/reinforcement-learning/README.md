@@ -26,6 +26,8 @@ The same idea, learning from a reward, is one step in turning a language model i
 2. No policy reaches the goal every time on this lake: the best possible one does it about 74% of the time within the 99-step limit. Change the learning rate, gamma and the number of episodes, first one at a time and then together, until every run gets close to 74%. Which changes matter, and why do they matter here when they didn't on the deterministic lake?
 3. Look at the action your best agent chooses at the start state. Why that one?
 
+A [solution](practice/slippery_lake_solution.ipynb), to read once you have tried.
+
 ## References
 
 - Notebook 3 is adapted from Unit 2 of the [Hugging Face Deep RL Course](https://huggingface.co/learn/deep-rl-course/unit2/introduction) (Apache 2.0 licence), which goes on to deep Q-learning and policy-gradient methods.
