@@ -18,6 +18,14 @@ The same idea, learning from a reward, is one step in turning a language model i
 
 [Tic-tac-toe with Q-learning](https://github.com/avidaldo/tictactoe-qlearning) is a repository of its own: it improves an agent step by step, from the simplest version to one that never loses against a perfect player. Its README suggests further experiments, and its notebooks have exercises: board symmetries, a curriculum, a tournament.
 
+## Practice
+
+**Make the lake slippery.** In [Q-learning on FrozenLake](frozen_lake.ipynb), create the environment with `is_slippery=True`: each move now goes in the intended direction only one time in three, and slips to one side or the other otherwise.
+
+1. Evaluate over 1,000 episodes instead of 100, and train three or four times, re-creating the Q-table before each run (otherwise training continues from the last table). How often does the agent reach the goal, and how much does that change from one run to the next?
+2. No policy reaches the goal every time on this lake: the best possible one does it about 74% of the time within the 99-step limit. Change the learning rate, gamma and the number of episodes, first one at a time and then together, until every run gets close to 74%. Which changes matter, and why do they matter here when they didn't on the deterministic lake?
+3. Look at the action your best agent chooses at the start state. Why that one?
+
 ## References
 
 - Notebook 3 is adapted from Unit 2 of the [Hugging Face Deep RL Course](https://huggingface.co/learn/deep-rl-course/unit2/introduction) (Apache 2.0 licence), which goes on to deep Q-learning and policy-gradient methods.
