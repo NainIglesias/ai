@@ -18,10 +18,6 @@ The same idea, learning from a reward, is one step in turning a language model i
 
 [Tic-tac-toe with Q-learning](https://github.com/avidaldo/tictactoe-qlearning) is a repository of its own: it improves an agent step by step, from the simplest version to one that never loses against a perfect player. Its README suggests further experiments, and its notebooks have exercises: board symmetries, a curriculum, a tournament.
 
-## Practice
-
-**Close the loop.** Add a Q-learning agent to [python-tic-tac-toe](https://github.com/avidaldo/python-tic-tac-toe), as a new kind of player, and train it against the minimax player.
-
 ## References
 
 - Notebook 3 is adapted from Unit 2 of the [Hugging Face Deep RL Course](https://huggingface.co/learn/deep-rl-course/unit2/introduction) (Apache 2.0 licence), which goes on to deep Q-learning and policy-gradient methods.
