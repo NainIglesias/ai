@@ -11,12 +11,18 @@ The recommended way is the standalone installer: it needs no Python, and it inst
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-On a minimal Ubuntu or Debian, `curl` may be missing: install it first with `sudo apt install curl`.
+If `curl` is missing (Ubuntu does not always include it), `wget` does the same and is usually already installed:
+
+```bash
+wget -qO- https://astral.sh/uv/install.sh | sh
+```
 
 **Using PowerShell (Windows):**
 ```powershell
 powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
 ```
+
+Other methods (Homebrew, WinGet, pipx and more) are in the [official installation guide](https://docs.astral.sh/uv/getting-started/installation/).
 
 Close and reopen the terminal (the installer adds `~/.local/bin` to your `PATH`), then verify the installation:
 ```bash
