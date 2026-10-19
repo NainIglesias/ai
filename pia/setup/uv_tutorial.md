@@ -4,27 +4,26 @@
 
 ## 1. Installation
 
-You can install `uv` with its standalone installer, or with `pip` if you already have Python installed.
+The recommended way is the standalone installer: it needs no Python, and it installs `uv` for your user only, without touching the system's Python.
 
 **Using curl (macOS, Linux):**
 ```bash
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
+On a minimal Ubuntu or Debian, `curl` may be missing: install it first with `sudo apt install curl`.
+
 **Using PowerShell (Windows):**
 ```powershell
 powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
 ```
 
-**Using pip:**
-```bash
-pip install uv
-```
-
-Verify the installation:
+Close and reopen the terminal (the installer adds `~/.local/bin` to your `PATH`), then verify the installation:
 ```bash
 uv --version
 ```
+
+If you tried `pip install uv` and got `externally-managed-environment`, see [Troubleshooting](#troubleshooting).
 
 ## 2. Installing a Repository's Dependencies
 
@@ -262,3 +261,24 @@ Then choose the `.venv` environment as the notebook's kernel (*Select Kernel* in
 ```bash
 uv run --with jupyter jupyter lab
 ```
+
+## Troubleshooting
+
+### `pip install uv` fails with `externally-managed-environment`
+
+Recent Debian and Ubuntu releases protect the Python that comes with the system (PEP 668): `pip install` into it is refused, because it could break the operating system's own tools.
+
+```text
+error: externally-managed-environment
+× This environment is externally managed
+```
+
+Don't use `--break-system-packages` and don't force it with `sudo`. Use the standalone installer from the first section, or:
+
+```bash
+sudo apt install pipx   # then: pipx install uv
+```
+
+`pipx` installs a Python application in an environment of its own and puts its command on your `PATH`. If `pipx ensurepath` tells you to, reopen the terminal.
+
+`pip install uv` is only appropriate inside a virtual environment you created yourself (`python3 -m venv .venv`, which on Ubuntu needs `sudo apt install python3-venv` or `python3-full`), and there it only exists while that environment is active.
