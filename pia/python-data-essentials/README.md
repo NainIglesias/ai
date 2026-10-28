@@ -1,36 +1,36 @@
-# Python Data Essentials: NumPy and pandas
+# Lo esencial de Python para datos: NumPy y pandas
 
-The two libraries that almost every AI project in Python stands on: NumPy for numerical arrays and pandas for tables. This folder covers what you need to load, inspect, select, reshape and combine the data of your projects, to find the problems a table has, and to get data from the web. Deeper data preparation for machine learning (exploring a dataset, missing values, outliers, encoding, scaling) is the deep dive *Data preparation* *(coming)*, one notebook per step: it starts where *Finding the problems in a table* stops, with the decisions that depend on the data.
+Las dos bibliotecas en las que se apoya casi cualquier proyecto de IA en Python: NumPy para arrays numéricos y pandas para tablas. Esta carpeta cubre lo que necesitas para cargar, inspeccionar, seleccionar, remodelar y combinar los datos de tus proyectos, para encontrar los problemas que tiene una tabla y para obtener datos de la web. La preparación de datos más a fondo para el aprendizaje automático (explorar un dataset, valores ausentes, valores atípicos, codificación, escalado) es la profundización *Preparación de datos* *(próximamente)*, un notebook por paso: empieza donde termina *Encontrar los problemas de una tabla*, con las decisiones que dependen de los datos.
 
-## Path
+## Itinerario
 
-★ marks the core items: the minimum, if your week is short.
+★ marca los elementos básicos: el mínimo, si tienes poco tiempo esta semana.
 
-| # | Notebook | Content |
+| # | Notebook | Contenido |
 | --- | --- | --- |
-| ★ 1 | [NumPy](numpy/numpy1.ipynb) | Arrays and their data types, creating arrays, indexing and slicing, reshaping, random numbers |
-| 2 | [NumPy for algebraic operations](numpy/numpy2_algebra.ipynb) | Identity and transpose matrices, matrix operations, `@` and `np.dot` |
-| ★ 3 | [pandas: Series and DataFrame](pandas/pandas_structures.ipynb) | The two pandas structures and how they relate to NumPy arrays |
-| ★ 4 | [DataFrame operations](pandas/pandas_dataframe_op.ipynb) | Managing columns and rows, selecting and slicing, filtering, sorting, basic aggregations |
-| ★ 5 | [DataFrame transformations and reshaping](pandas/pandas_transformations.ipynb) | `map`, `apply` and `transform`, grouping, `assign`, reshaping with `melt` and `pivot` |
-| ★ 6 | Finding the problems in a table *(coming)* | Missing values of two kinds (empty and placeholder), duplicates, impossible values, wrong types, the same thing written two ways; inspecting before deciding, and writing the decision down |
-| ★ 7 | Text and dates *(coming)* | The `.str` methods, regular expressions for the common cases, accents and broken encodings, timestamps written in two formats, time zones |
-| ★ 8 | Data from the web: APIs, JSON and XML *(coming)* | Calling a web API with parameters and pages, saving the raw answers, being polite to the server; JSON and JSON Lines into a DataFrame; reading XML with the standard library |
+| ★ 1 | [NumPy](numpy/numpy1.ipynb) | Arrays y sus tipos de datos, crear arrays, indexación y *slicing*, cambiar la forma, números aleatorios |
+| 2 | [NumPy para operaciones algebraicas](numpy/numpy2_algebra.ipynb) | Matriz identidad y traspuesta, operaciones con matrices, `@` y `np.dot` |
+| ★ 3 | [pandas: Series y DataFrame](pandas/pandas_structures.ipynb) | Las dos estructuras de pandas y su relación con los arrays de NumPy |
+| ★ 4 | [Operaciones con DataFrames](pandas/pandas_dataframe_op.ipynb) | Gestionar columnas y filas, seleccionar y hacer *slicing*, filtrar, ordenar, agregaciones básicas |
+| ★ 5 | [Transformaciones y remodelado de DataFrames](pandas/pandas_transformations.ipynb) | `map`, `apply` y `transform`, agrupar, `assign`, remodelar con `melt` y `pivot` |
+| ★ 6 | Encontrar los problemas de una tabla *(próximamente)* | Valores ausentes de dos tipos (vacíos y de relleno), duplicados, valores imposibles, tipos incorrectos, la misma cosa escrita de dos formas; inspeccionar antes de decidir, y dejar la decisión por escrito |
+| ★ 7 | Texto y fechas *(próximamente)* | Los métodos `.str`, expresiones regulares para los casos habituales, tildes y codificaciones rotas, marcas de tiempo escritas en dos formatos, zonas horarias |
+| ★ 8 | Datos de la web: APIs, JSON y XML *(próximamente)* | Llamar a una API web con parámetros y paginación, guardar las respuestas en bruto, ser educado con el servidor; JSON y JSON Lines a un DataFrame; leer XML con la biblioteca estándar |
 
-## Exercises
+## Ejercicios
 
-[Images are arrays: MNIST with NumPy](https://github.com/avidaldo/numpy-mnist) is a repository of its own: two dozen exercises on handwritten digits as a 60,000×28×28 array (reshaping, data types and overflow, one-hot encoding, normalisation without leakage, loops against vectorisation, data augmentation by hand), with tests that check your answers, continuous integration in your fork, and a solution. If a 7×7 image as a matrix is new to you, start with the notebook [Matrices and tensors in AI](https://github.com/avidaldo/compare-python-c-efficiency/blob/main/02_matrices_in_ai.ipynb) of the repository compare-python-c-efficiency.
+[Las imágenes son arrays: MNIST con NumPy](https://github.com/avidaldo/numpy-mnist) es un repositorio propio: un par de docenas de ejercicios sobre dígitos manuscritos como un array de 60.000×28×28 (cambiar la forma, tipos de datos y desbordamiento, codificación one-hot, normalización sin fuga de datos, bucles frente a vectorización, aumento de datos a mano), con tests que comprueban tus respuestas, integración continua en tu fork y una solución. Si una imagen de 7×7 como matriz te resulta nueva, empieza por el notebook [Matrices y tensores en IA](https://github.com/avidaldo/compare-python-c-efficiency/blob/main/02_matrices_in_ai.ipynb) del repositorio compare-python-c-efficiency.
 
-## Deep dives
+## Profundizaciones
 
-Optional and never assessed. The path never depends on these.
+Opcionales y nunca se evalúan. El itinerario nunca depende de ellas.
 
-| Notebook | Extends | Content |
+| Notebook | Amplía | Contenido |
 | --- | --- | --- |
-| [Lists vs NumPy arrays: exercises](numpy/deep-dives/lists_nd_arrays_examples.ipynb) | 1 | Small functions solved with plain lists and with NumPy |
-| [A DataFrame from different structures](pandas/deep-dives/df_from_structures.ipynb) | 3 | Building one DataFrame from lists, dictionaries and arrays |
+| [Listas frente a arrays de NumPy: ejercicios](numpy/deep-dives/lists_nd_arrays_examples.ipynb) | 1 | Funciones pequeñas resueltas con listas normales y con NumPy |
+| [Un DataFrame a partir de distintas estructuras](pandas/deep-dives/df_from_structures.ipynb) | 3 | Construir un mismo DataFrame a partir de listas, diccionarios y arrays |
 
-## References
+## Referencias
 
-- [NumPy: the absolute basics for beginners](https://numpy.org/doc/stable/user/absolute_beginners.html)
-- [pandas cheat sheet](https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf) (official)
+- [NumPy: lo más básico para principiantes](https://numpy.org/doc/stable/user/absolute_beginners.html) (en inglés)
+- [Chuleta de pandas](https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf) (oficial, en inglés)

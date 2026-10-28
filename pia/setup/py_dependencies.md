@@ -1,119 +1,119 @@
-# Dependency and Virtual Environment Management in Python
+# Gestión de dependencias y entornos virtuales en Python
 
-## The Evolution of Dependency Management in Python
+## La evolución de la gestión de dependencias en Python
 
-As Python's popularity grew in the 2000s, the need for effective library management became critical. Without an efficient system to install and organise libraries, projects could easily fall into **"dependency hell"**, a scenario where package version conflicts make a project difficult to maintain and deploy. This problem is exacerbated **when different versions of the same libraries are needed for different projects**.
+A medida que crecía la popularidad de Python en los años 2000, se volvió crucial gestionar bien las bibliotecas. Sin un sistema eficiente para instalarlas y organizarlas, los proyectos podían caer fácilmente en el **«infierno de dependencias»**, una situación en la que los conflictos entre versiones de paquetes hacen que un proyecto sea difícil de mantener y desplegar. El problema se agrava **cuando distintos proyectos necesitan versiones distintas de las mismas bibliotecas**.
 
 ***
 
-### 1. **Pip**: The Standard Package Manager
+### 1. **Pip**: el gestor de paquetes estándar
 
-`pip` emerged in 2008 and became the standard for installing packages from the official [**Python Package Index (PyPI)**](https://pypi.org/) with a simple command (`pip install package`).
+`pip` apareció en 2008 y se convirtió en el estándar para instalar paquetes del [**Python Package Index (PyPI)**](https://pypi.org/) oficial con un comando sencillo (`pip install paquete`).
 
-To reproduce a project's environment, `pip` uses `requirements.txt` files, which list the necessary libraries with specific versions.
+Para reproducir el entorno de un proyecto, `pip` usa archivos `requirements.txt`, que listan las bibliotecas necesarias con versiones concretas.
   
-**Advantages**:
-- **Lightweight** and simple.
-- Highly flexible and compatible with any Python project.
-- It is the default choice for nearly every Python developer.
+**Ventajas**:
+- **Ligero** y sencillo.
+- Muy flexible y compatible con cualquier proyecto de Python.
+- Es la opción por defecto de casi cualquier desarrollador de Python.
 
-**Limitations**:
-- **The System's Python**: on recent Linux distributions and on macOS's Homebrew, `pip install` outside a virtual environment stops with an `externally-managed-environment` error ([PEP 668](https://peps.python.org/pep-0668/)). That Python belongs to the operating system's package manager, and a virtual environment is the expected place for your packages.
-- **Separation of Concerns**: `pip` does not natively manage virtual environments. Its philosophy is to focus solely on package management, requiring it to be combined with tools like `venv` or `virtualenv` to isolate dependencies.
-- **Dependency Resolution**: Although the **new resolver introduced in `pip 20.3`** significantly improved conflict management, `pip` has long lacked a lock file that guarantees identical installations across machines, unlike tools such as Poetry or Pipenv. Since version 25.1 it has an experimental `pip lock` command, which writes the standard lock file of PEP 751, `pylock.toml`, valid only for the Python version and platform that produced it.
+**Limitaciones**:
+- **El Python del sistema**: en las distribuciones de Linux recientes y en el Homebrew de macOS, `pip install` fuera de un entorno virtual se detiene con un error `externally-managed-environment` ([PEP 668](https://peps.python.org/pep-0668/)). Ese Python pertenece al gestor de paquetes del sistema operativo, y un entorno virtual es el sitio previsto para tus paquetes.
+- **Separación de responsabilidades**: `pip` no gestiona entornos virtuales de forma nativa. Su filosofía es centrarse solo en la gestión de paquetes, así que hay que combinarlo con herramientas como `venv` o `virtualenv` para aislar las dependencias.
+- **Resolución de dependencias**: aunque el **nuevo resolvedor introducido en `pip 20.3`** mejoró mucho la gestión de conflictos, `pip` ha carecido durante mucho tiempo de un archivo de bloqueo (*lock file*) que garantice instalaciones idénticas en distintas máquinas, a diferencia de herramientas como Poetry o Pipenv. Desde la versión 25.1 tiene un comando experimental `pip lock`, que escribe el archivo de bloqueo estándar de la PEP 751, `pylock.toml`, válido solo para la versión de Python y la plataforma que lo generaron.
 
 ***
 
-### 2. Virtualenv and venv: Dependency Isolation
+### 2. Virtualenv y venv: aislar las dependencias
 
-Even before `pip`, **virtualenv** was created to **isolate project dependencies**. This prevents conflicts between different versions of the same libraries used in various projects by creating **virtual environments**—isolated directories where dependencies can be installed without affecting the global Python installation.
+Incluso antes de `pip`, se creó **virtualenv** para **aislar las dependencias de cada proyecto**. Así se evitan conflictos entre distintas versiones de las mismas bibliotecas usadas en varios proyectos, creando **entornos virtuales**: directorios aislados donde se pueden instalar dependencias sin afectar a la instalación global de Python.
  
-Starting with **Python 3.3**, Python introduced **`venv`**, an integrated and lighter tool for creating virtual environments, making it the standard and eliminating the need to install `virtualenv` separately for basic use.
+A partir de **Python 3.3**, Python incorporó **`venv`**, una herramienta integrada y más ligera para crear entornos virtuales, que se convirtió en el estándar y eliminó la necesidad de instalar `virtualenv` aparte para el uso básico.
 
-**Example of `venv` usage**:
+**Ejemplo de uso de `venv`**:
 ```bash
-# Create a virtual environment named .venv
+# Crea un entorno virtual llamado .venv
 python3 -m venv .venv
 
-# Activate the environment (on Linux/macOS)
+# Activa el entorno (en Linux/macOS)
 source .venv/bin/activate
 
-# Now, any package installed with pip will be contained within .venv
+# Ahora, cualquier paquete instalado con pip quedará dentro de .venv
 pip install numpy
 
-# Deactivate the environment
+# Desactiva el entorno
 deactivate
 ```
 
 ***
 
-### 3. Conda: Multi-language Package Management and Virtual Environments
+### 3. Conda: gestión de paquetes multilenguaje y entornos virtuales
 
-`Conda` was launched in 2012 as part of the **Anaconda** distribution, which is especially geared towards data science and machine learning. Unlike `pip`, it is a **multi-language** package manager (it can install packages for Python, R, and others, including non-Python system-level dependencies).
+`Conda` se lanzó en 2012 como parte de la distribución **Anaconda**, orientada especialmente a la ciencia de datos y el aprendizaje automático. A diferencia de `pip`, es un gestor de paquetes **multilenguaje** (puede instalar paquetes para Python, R y otros, incluidas dependencias del sistema que no son de Python).
 
-`Conda` offers **pre-compiled** packages, which simplified the installation of complex libraries like `numpy` or `pandas` at a time when installing them with `pip` often meant compiling them.
+`Conda` ofrece paquetes **precompilados**, lo que simplificó la instalación de bibliotecas complejas como `numpy` o `pandas` en una época en la que instalarlas con `pip` solía suponer compilarlas.
 
-**Advantages of Conda in Machine Learning**:
-- **Integrated Virtual Environments**: `Conda` manages both dependencies and virtual environments in an integrated manner.
-- **Packages for ML and Data Science**: `Conda` became popular in machine learning and data science because it shipped **pre-built, optimised libraries** (like `NumPy` and `scikit-learn`) at a time when installing them with `pip` often meant compiling them.
-- **Complex Dependency Management**: It excels at managing non-Python dependencies (like specific C libraries) that can be problematic when installing with `pip` alone.
+**Ventajas de Conda en aprendizaje automático**:
+- **Entornos virtuales integrados**: `Conda` gestiona tanto las dependencias como los entornos virtuales de forma integrada.
+- **Paquetes para ML y ciencia de datos**: `Conda` se hizo popular en el aprendizaje automático y la ciencia de datos porque distribuía **bibliotecas precompiladas y optimizadas** (como `NumPy` y `scikit-learn`) en una época en la que instalarlas con `pip` solía suponer compilarlas.
+- **Gestión de dependencias complejas**: destaca gestionando dependencias que no son de Python (como bibliotecas de C concretas), que pueden dar problemas al instalar solo con `pip`.
 
-That second advantage has faded. Today PyPI distributes pre-built wheels for almost every scientific library, GPU builds of PyTorch included, and PyTorch stopped publishing to its own Anaconda channel after version 2.5 (conda users now get it from the community-run `conda-forge` channel).
+Esa segunda ventaja se ha desvanecido. Hoy PyPI distribuye *wheels* precompilados para casi todas las bibliotecas científicas, incluidas las versiones para GPU de PyTorch, y PyTorch dejó de publicar en su propio canal de Anaconda después de la versión 2.5 (quien usa conda lo obtiene ahora del canal comunitario `conda-forge`).
 
-**Limitations**:
-- **Heavier Footprint**: `Conda` requires more disk space than `pip` and its modern alternatives. Its dependency solver was notoriously slow until conda 23.10 (2023) made the much faster libmamba solver the default.
-- **Unnecessary Complexity for Small Projects**: For small or simple projects that only require Python libraries, a `pip`/`venv` or `uv` approach is a lighter option.
+**Limitaciones**:
+- **Más pesado**: `Conda` necesita más espacio en disco que `pip` y sus alternativas modernas. Su resolvedor de dependencias fue famoso por su lentitud hasta que conda 23.10 (2023) puso por defecto el resolvedor libmamba, mucho más rápido.
+- **Complejidad innecesaria para proyectos pequeños**: para proyectos pequeños o sencillos que solo necesitan bibliotecas de Python, un enfoque con `pip`/`venv` o con `uv` es más ligero.
 
-**Pixi** (2023), a fast tool written in Rust, manages conda-forge packages (and PyPI ones) per project with a lock file: it is to conda roughly what uv is to pip.
+**Pixi** (2023), una herramienta rápida escrita en Rust, gestiona paquetes de conda-forge (y de PyPI) por proyecto con un archivo de bloqueo: viene a ser para conda lo que uv es para pip.
 
 ***
 
-### 4. Advanced Tooling: Pipenv, Poetry, and uv
+### 4. Herramientas avanzadas: Pipenv, Poetry y uv
 
-Over time, more advanced tools emerged to address the limitations of earlier tools and offer a more integrated experience in managing virtual environments and dependencies.
+Con el tiempo surgieron herramientas más avanzadas para resolver las limitaciones de las anteriores y ofrecer una experiencia más integrada en la gestión de entornos virtuales y dependencias.
 
-- **Pipenv** (2017): Was one of the first attempts to unify package and environment management. It introduces the `Pipfile` for declaring dependencies (separating production and development) and the `Pipfile.lock` to pin exact versions, ensuring reproducibility.
+- **Pipenv** (2017): fue uno de los primeros intentos de unificar la gestión de paquetes y de entornos. Introduce el `Pipfile` para declarar dependencias (separando producción y desarrollo) y el `Pipfile.lock` para fijar versiones exactas, garantizando la reproducibilidad.
   
-- **Poetry** (2018): Has established itself as one of the most comprehensive tools. It goes beyond Pipenv, offering a more robust dependency resolution system and integrated tools for building and publishing packages to PyPI. It uses the standard `pyproject.toml`, which centralises not only dependencies but all project configurations (linters, formatters, etc.).
+- **Poetry** (2018): se ha consolidado como una de las herramientas más completas. Va más allá de Pipenv, con un sistema de resolución de dependencias más robusto y herramientas integradas para construir y publicar paquetes en PyPI. Usa el estándar `pyproject.toml`, que centraliza no solo las dependencias sino toda la configuración del proyecto (linters, formateadores, etc.).
 
-#### **uv: The Next-Generation Package Manager (2024)**
+#### **uv: el gestor de paquetes de nueva generación (2024)**
 
-**`uv`** is a high-performance, **Rust-based** package and project manager. It started in 2024 as a fast replacement for `pip`, and it now covers the whole workflow of a Python project.
+**`uv`** es un gestor de paquetes y proyectos de alto rendimiento, **escrito en Rust**. Nació en 2024 como sustituto rápido de `pip`, y hoy cubre todo el flujo de trabajo de un proyecto de Python.
 
-**Key Features of uv**:
-- **Extreme Speed**: `uv` completes installation and dependency resolution **10 to 100 times faster** than `pip`, `pip-tools` and Poetry.
-- **Project Management**: `uv init`, `uv add`, `uv lock`, `uv sync` and `uv run` manage a project declared in the standard `pyproject.toml`, with exact versions pinned in `uv.lock`. `uv build` and `uv publish` package it for PyPI.
-- **Integrated Environments and Python Versions**: `uv` creates and manages virtual environments, and it can install Python itself (`uv python install 3.13`), so no separate `pyenv` is needed.
-- **Compatibility**: It works with existing standards, including `requirements.txt` and `pyproject.toml`, so it is easy to adopt in existing projects.
+**Características clave de uv**:
+- **Velocidad extrema**: `uv` completa la instalación y la resolución de dependencias **entre 10 y 100 veces más rápido** que `pip`, `pip-tools` y Poetry.
+- **Gestión de proyectos**: `uv init`, `uv add`, `uv lock`, `uv sync` y `uv run` gestionan un proyecto declarado en el estándar `pyproject.toml`, con las versiones exactas fijadas en `uv.lock`. `uv build` y `uv publish` lo empaquetan para PyPI.
+- **Entornos y versiones de Python integrados**: `uv` crea y gestiona entornos virtuales, y puede instalar el propio Python (`uv python install 3.13`), así que no hace falta un `pyenv` aparte.
+- **Compatibilidad**: funciona con los estándares existentes, incluidos `requirements.txt` y `pyproject.toml`, así que es fácil adoptarlo en proyectos ya existentes.
 
-**Impact**: `uv` has quickly become a common choice for new Python projects, and it is the tool recommended in these modules.
+**Impacto**: `uv` se ha convertido rápidamente en una opción habitual para proyectos nuevos de Python, y es la herramienta recomendada en estos módulos.
 
 
 ***
 
-## Comparison Table
+## Tabla comparativa
 
-| Feature                 | `pip` + `venv`                               | `conda`                                     | `Poetry`                                       | `uv`                                                 |
+| Característica          | `pip` + `venv`                               | `conda`                                     | `Poetry`                                       | `uv`                                                 |
 | ----------------------- | -------------------------------------------- | ------------------------------------------- | ---------------------------------------------- | ---------------------------------------------------- |
-| **Environment Mgmt**    | Yes (with `venv`)                            | Yes (integrated)                            | Yes (integrated)                               | Yes (integrated and ultra-fast)                      |
-| **Package Mgmt**        | Python (PyPI)                                | Python, R, C/C++, etc. (Anaconda, Conda-Forge) | Python (PyPI)                                  | Python (PyPI)                                        |
-| **Configuration File**  | `requirements.txt` (flexible versions)       | `environment.yml`                           | `pyproject.toml`                               | `pyproject.toml` + `uv.lock`                         |
-| **Non-Python Deps**     | No (requires system package managers)        | Yes (its key strength)                      | No                                             | No                                                   |
-| **Python Versions**     | No                                           | Yes                                         | Experimental (`poetry python install`, 2.1+)   | Yes (`uv python install`)                            |
-| **Speed**               | Moderate                                     | Moderate (libmamba solver since 2023)       | Moderate-to-Slow                               | **Extremely fast**                                   |
-| **Project Mgmt**        | No                                           | No                                          | Yes (build, publish, scripts)                  | Yes (init, add, lock, sync, run, build, publish)     |
-| **Ideal for...**        | Simple scripts, learning the basics.         | Projects with heavy non-Python dependencies; the alternative in these modules. | Libraries and applications (older projects).   | Any Python project; the default in these modules.    |
+| **Gestión de entornos** | Sí (con `venv`)                              | Sí (integrada)                              | Sí (integrada)                                 | Sí (integrada y ultrarrápida)                        |
+| **Gestión de paquetes** | Python (PyPI)                                | Python, R, C/C++, etc. (Anaconda, Conda-Forge) | Python (PyPI)                               | Python (PyPI)                                        |
+| **Archivo de configuración** | `requirements.txt` (versiones flexibles) | `environment.yml`                         | `pyproject.toml`                               | `pyproject.toml` + `uv.lock`                         |
+| **Dependencias no Python** | No (requiere gestores de paquetes del sistema) | Sí (su punto fuerte)                  | No                                             | No                                                   |
+| **Versiones de Python** | No                                           | Sí                                          | Experimental (`poetry python install`, 2.1+)   | Sí (`uv python install`)                             |
+| **Velocidad**           | Moderada                                     | Moderada (resolvedor libmamba desde 2023)   | De moderada a lenta                            | **Extremadamente rápida**                            |
+| **Gestión de proyectos** | No                                          | No                                          | Sí (build, publish, scripts)                   | Sí (init, add, lock, sync, run, build, publish)      |
+| **Ideal para...**       | Scripts sencillos, aprender lo básico.       | Proyectos con muchas dependencias no Python; la alternativa en estos módulos. | Bibliotecas y aplicaciones (proyectos más antiguos). | Cualquier proyecto de Python; la opción por defecto en estos módulos. |
 
 ***
 
-## Conclusion: Which Tool to Choose?
+## Conclusión: ¿qué herramienta elegir?
 
-The choice depends on the project's complexity and ecosystem:
+La elección depende de la complejidad y del ecosistema del proyecto:
 
-- **For any new Python project**, including machine learning: **`uv`**. It manages the project, its environment, its locked dependencies and even the Python version, and it is what we use in these modules.
+- **Para cualquier proyecto nuevo de Python**, incluido el aprendizaje automático: **`uv`**. Gestiona el proyecto, su entorno, sus dependencias bloqueadas e incluso la versión de Python, y es lo que usamos en estos módulos.
 
-- **To understand the fundamentals**: the combination of **`pip` and `venv`** is still worth knowing, because it is what every other tool automates and what you will find in older projects and tutorials.
+- **Para entender los fundamentos**: la combinación de **`pip` y `venv`** sigue mereciendo la pena conocerla, porque es lo que automatizan todas las demás herramientas y lo que encontrarás en proyectos y tutoriales más antiguos.
 
-- **For projects with heavy non-Python dependencies** (specific CUDA toolkits, compiled scientific libraries, programs such as ffmpeg, other languages): **`Conda`** through `conda-forge` still earns its place. It is also the alternative to uv in these modules: every course repository installs with either. See the [conda tutorial](conda_tutorial.md).
+- **Para proyectos con muchas dependencias que no son de Python** (toolkits de CUDA concretos, bibliotecas científicas compiladas, programas como ffmpeg, otros lenguajes): **`Conda`** a través de `conda-forge` sigue ganándose su sitio. También es la alternativa a uv en estos módulos: todo repositorio del curso se instala con cualquiera de los dos. Consulta el [tutorial de conda](conda_tutorial.md).
 
-- **For existing Poetry projects**: keep **`Poetry`** where it is already in use; there is little reason to start a new project with it.
+- **Para proyectos de Poetry ya existentes**: mantén **`Poetry`** donde ya se usa; hay pocas razones para empezar un proyecto nuevo con él.

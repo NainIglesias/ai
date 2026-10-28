@@ -1,160 +1,160 @@
-# Machine Learning Algorithms: A Historical Introduction
+# Algoritmos de aprendizaje automático: una introducción histórica
 
-## The Evolution of Machine Learning
+## La evolución del aprendizaje automático
 
-Machine learning, as a field, has evolved over several decades, with different algorithms emerging to solve specific types of problems. Understanding the historical context helps us appreciate why certain algorithms were developed and when to use each one.
+El aprendizaje automático, como campo, ha evolucionado a lo largo de varias décadas, con distintos algoritmos que fueron surgiendo para resolver tipos concretos de problemas. Entender el contexto histórico nos ayuda a ver por qué se desarrollaron ciertos algoritmos y cuándo usar cada uno.
 
-Machine learning encompasses three fundamental paradigms:
-- **Supervised Learning**: Learning from labelled examples (input-output pairs)
-- **Unsupervised Learning**: Discovering patterns in unlabelled data
-- **Reinforcement Learning**: Learning through interaction and feedback
+El aprendizaje automático abarca tres paradigmas fundamentales:
+- **Aprendizaje supervisado**: aprender de ejemplos etiquetados (pares entrada-salida)
+- **Aprendizaje no supervisado**: descubrir patrones en datos sin etiquetar
+- **Aprendizaje por refuerzo**: aprender mediante la interacción y el feedback
 
-## Timeline of Key Algorithms
+## Cronología de los algoritmos clave
 
-### Linear Regression (1805)
+### Regresión lineal (1805)
 
-**Purpose:** Predict a continuous value from input features.
+**Propósito:** predecir un valor continuo a partir de características de entrada.
 
-**History:** The method of least squares, which fits it, was published by Legendre in 1805 and by Gauss in 1809.
+**Historia:** el método de mínimos cuadrados, que la ajusta, lo publicaron Legendre en 1805 y Gauss en 1809.
 
-**Why it matters:** It established the foundation of supervised learning, and it is still widely used for its simplicity and interpretability.
+**Por qué importa:** sentó las bases del aprendizaje supervisado, y se sigue usando mucho por su sencillez e interpretabilidad.
 
-### Principal Component Analysis (1901)
+### Análisis de componentes principales (1901)
 
-**Purpose:** Unsupervised dimensionality reduction: summarise many correlated features with a few new ones.
+**Propósito:** reducción de dimensionalidad no supervisada: resumir muchas características correlacionadas con unas pocas nuevas.
 
-**History:** Introduced by Karl Pearson in 1901 and developed by Harold Hotelling in 1933.
+**Historia:** lo introdujo Karl Pearson en 1901 y lo desarrolló Harold Hotelling en 1933.
 
-**Why it matters:** It compresses data, removes redundancy and makes high-dimensional data visible in two or three dimensions.
+**Por qué importa:** comprime los datos, elimina la redundancia y hace visibles en dos o tres dimensiones datos de alta dimensionalidad.
 
-### Logistic Regression (1940s–1950s)
+### Regresión logística (años 40–50)
 
-**Purpose:** Classification, particularly binary classification (yes/no, true/false).
+**Propósito:** clasificación, en especial clasificación binaria (sí/no, verdadero/falso).
 
-**History:** It applies the logistic (sigmoid) function, which Pierre-François Verhulst had used in the 1830s and 1840s to model population growth. Joseph Berkson named the *logit* in 1944, and David Cox developed logistic regression as a regression method in 1958.
+**Historia:** aplica la función logística (sigmoide), que Pierre-François Verhulst había usado en las décadas de 1830 y 1840 para modelar el crecimiento de poblaciones. Joseph Berkson acuñó el término *logit* en 1944, y David Cox desarrolló la regresión logística como método de regresión en 1958.
 
-**Why it matters:** Despite its name, it is a classification algorithm: it turns a linear combination of the features into a probability. A neuron with a sigmoid activation computes exactly this.
+**Por qué importa:** a pesar de su nombre, es un algoritmo de clasificación: convierte una combinación lineal de las características en una probabilidad. Una neurona con activación sigmoide calcula exactamente esto.
 
-### K-Nearest Neighbors (1951–1967)
+### K vecinos más cercanos (1951–1967)
 
-**Purpose:** Both classification and regression through similarity-based learning.
+**Propósito:** tanto clasificación como regresión mediante aprendizaje basado en la similitud.
 
-**History:** Proposed by Evelyn Fix and Joseph Hodges in 1951, and analysed by Thomas Cover and Peter Hart in 1967.
+**Historia:** lo propusieron Evelyn Fix y Joseph Hodges en 1951, y lo analizaron Thomas Cover y Peter Hart en 1967.
 
-**Why it matters:** KNN introduced instance-based learning (lazy learning): no explicit model is built during training, and a prediction looks at the most similar stored examples. It is intuitive, but predicting can be slow on large datasets.
+**Por qué importa:** KNN introdujo el aprendizaje basado en instancias (aprendizaje perezoso): durante el entrenamiento no se construye ningún modelo explícito, y una predicción mira los ejemplos guardados más parecidos. Es intuitivo, pero predecir puede ser lento con datasets grandes.
 
-### K-Means Clustering (1957)
+### *Clustering* K-means (1957)
 
-**Purpose:** Unsupervised learning for grouping similar data points into clusters.
+**Propósito:** aprendizaje no supervisado para agrupar puntos de datos parecidos en *clusters*.
 
-**History:** Stuart Lloyd devised the standard algorithm in 1957 (published only in 1982), and James MacQueen named it *k-means* in 1967.
+**Historia:** Stuart Lloyd ideó el algoritmo estándar en 1957 (publicado solo en 1982), y James MacQueen lo llamó *k-means* en 1967.
 
-**Why it matters:** It was one of the first widely used unsupervised algorithms, and it remains common for customer segmentation, image compression and data exploration.
+**Por qué importa:** fue uno de los primeros algoritmos no supervisados de uso generalizado, y sigue siendo habitual para segmentar clientes, comprimir imágenes y explorar datos.
 
-### The Perceptron (1958)
+### El perceptrón (1958)
 
-**Purpose:** Binary classification with a single artificial neuron that learns its weights from examples.
+**Propósito:** clasificación binaria con una única neurona artificial que aprende sus pesos a partir de ejemplos.
 
-**History:** Frank Rosenblatt, 1958.
+**Historia:** Frank Rosenblatt, 1958.
 
-**Why it matters:** It is the ancestor of every neural network ([Neural networks from the outside](neural_networks.md)).
+**Por qué importa:** es el antepasado de todas las redes neuronales ([Las redes neuronales vistas desde fuera](neural_networks.md)).
 
-### Naive Bayes (1960s)
+### Naive Bayes (años 60)
 
-**Purpose:** Classification by Bayes' theorem, assuming that the features are independent of each other within each class.
+**Propósito:** clasificación mediante el teorema de Bayes, suponiendo que las características son independientes entre sí dentro de cada clase.
 
-**History:** Used for classifying text from the early 1960s; it became the classic spam filter at the end of the 1990s.
+**Historia:** se usó para clasificar texto desde principios de los años 60; se convirtió en el filtro de spam clásico a finales de los 90.
 
-**Why it matters:** It trains in a single pass over the data and works surprisingly well with many features, such as the words of a text, even though its independence assumption is almost never true.
+**Por qué importa:** se entrena en una sola pasada por los datos y funciona sorprendentemente bien con muchas características, como las palabras de un texto, aunque su suposición de independencia casi nunca es cierta.
 
-### Decision Trees (1960s-1990s)
+### Árboles de decisión (años 60–90)
 
-**History:** The concept emerged in the 1960s, but modern algorithms were developed later:
+**Historia:** el concepto surgió en los años 60, pero los algoritmos modernos se desarrollaron después:
 - **CART (Classification and Regression Trees)** (1984)
 - **ID3** (1986)
-- **C4.5** (1993) - an improvement of ID3
+- **C4.5** (1993), una mejora de ID3
 
-**Purpose:** Both classification and regression through hierarchical decision-making.
+**Propósito:** tanto clasificación como regresión mediante una toma de decisiones jerárquica.
 
-**Why it matters:** Decision trees are highly interpretable and can capture non-linear relationships. They became the foundation for powerful ensemble methods like Random Forests and Gradient Boosting.
+**Por qué importa:** los árboles de decisión son muy interpretables y pueden captar relaciones no lineales. Se convirtieron en la base de potentes métodos de *ensemble* como Random Forests y Gradient Boosting.
 
 ### Q-Learning (1989)
 
-**Purpose:** Reinforcement learning for sequential decision-making through trial and error.
+**Propósito:** aprendizaje por refuerzo para la toma de decisiones secuenciales mediante prueba y error.
 
-**History:** Christopher Watkins, 1989.
+**Historia:** Christopher Watkins, 1989.
 
-**Why it matters:** Unlike supervised learning (which learns from labelled examples) or unsupervised learning (which finds patterns), reinforcement learning learns by interacting with an environment and receiving rewards or penalties. This approach has proven crucial for robotics, game playing, and autonomous systems.
+**Por qué importa:** a diferencia del aprendizaje supervisado (que aprende de ejemplos etiquetados) o del no supervisado (que encuentra patrones), el aprendizaje por refuerzo aprende interactuando con un entorno y recibiendo recompensas o penalizaciones. Este enfoque ha resultado crucial para la robótica, los juegos y los sistemas autónomos.
 
-**Key concept:** The algorithm builds a "Q-table" that stores the expected future reward for each action in each state, gradually learning optimal behaviour through experience.
+**Concepto clave:** el algoritmo construye una «tabla Q» que guarda la recompensa futura esperada de cada acción en cada estado, y va aprendiendo el comportamiento óptimo poco a poco con la experiencia.
 
-### Support Vector Machines (1992–1995)
+### Máquinas de vectores de soporte (1992–1995)
 
-**Purpose:** Classification (and, with variants, regression) by finding the boundary that separates the classes with the widest possible margin.
+**Propósito:** clasificación (y, con variantes, regresión) encontrando la frontera que separa las clases con el margen más amplio posible.
 
-**History:** Bernhard Boser, Isabelle Guyon and Vladimir Vapnik added the *kernel trick* in 1992, which lets the boundary be curved; Corinna Cortes and Vapnik allowed some examples on the wrong side, the *soft margin*, in 1995.
+**Historia:** Bernhard Boser, Isabelle Guyon y Vladimir Vapnik añadieron el *kernel trick* en 1992, que permite que la frontera sea curva; Corinna Cortes y Vapnik permitieron algunos ejemplos en el lado equivocado, el *margen blando*, en 1995.
 
-**Why it matters:** For a decade they were among the most accurate classifiers available, and they still work well on small and medium datasets.
+**Por qué importa:** durante una década estuvieron entre los clasificadores más precisos disponibles, y siguen funcionando bien con datasets pequeños y medianos.
 
 ### Boosting (1995–2001)
 
-**Purpose:** Ensemble method that trains many weak models in sequence, each one correcting the errors of the ones before.
+**Propósito:** método de *ensemble* que entrena muchos modelos débiles en secuencia, cada uno corrigiendo los errores de los anteriores.
 
-**History:** Yoav Freund and Robert Schapire's AdaBoost (1995), and Jerome Friedman's gradient boosting (2001), which generalised the idea to any differentiable loss.
+**Historia:** AdaBoost de Yoav Freund y Robert Schapire (1995), y el *gradient boosting* de Jerome Friedman (2001), que generalizó la idea a cualquier función de pérdida diferenciable.
 
-**Why it matters:** Gradient-boosted trees (XGBoost, LightGBM, CatBoost) are today the strongest general-purpose models for tabular data.
+**Por qué importa:** los árboles con *gradient boosting* (XGBoost, LightGBM, CatBoost) son hoy los modelos de propósito general más potentes para datos tabulares.
 
 ### Random Forests (2001)
 
-**Purpose:** Ensemble method for classification and regression that improves upon single decision trees.
+**Propósito:** método de *ensemble* para clasificación y regresión que mejora los árboles de decisión individuales.
 
-**History:** Leo Breiman, 2001.
+**Historia:** Leo Breiman, 2001.
 
-**Why it matters:** A random forest averages many deep trees, each trained on a random sample of the examples and considering a random subset of the features at each split. Each tree overfits in its own way, so their errors partly cancel out: averaging reduces the variance of a single tree. (Combining *weak* learners is the idea of boosting, not of random forests.)
+**Por qué importa:** un *random forest* promedia muchos árboles profundos, cada uno entrenado con una muestra aleatoria de los ejemplos y considerando un subconjunto aleatorio de las características en cada división. Cada árbol se sobreajusta a su manera, así que sus errores se compensan en parte: promediar reduce la varianza de un árbol individual. (Combinar modelos *débiles* es la idea del boosting, no de los random forests.)
 
-## Which Paradigm Each Algorithm Belongs To
+## A qué paradigma pertenece cada algoritmo
 
-| Paradigm | Algorithms above | Tasks |
+| Paradigma | Algoritmos anteriores | Tareas |
 | --- | --- | --- |
-| Supervised | Linear regression | Regression |
-| Supervised | Logistic regression, perceptron, naive Bayes | Classification |
-| Supervised | KNN, decision trees, SVMs, random forests, boosting | Both classification and regression |
-| Unsupervised | K-means | Clustering |
-| Unsupervised | PCA | Dimensionality reduction |
-| Reinforcement | Q-learning | Sequential decisions from rewards |
+| Supervisado | Regresión lineal | Regresión |
+| Supervisado | Regresión logística, perceptrón, naive Bayes | Clasificación |
+| Supervisado | KNN, árboles de decisión, SVMs, random forests, boosting | Tanto clasificación como regresión |
+| No supervisado | K-means | *Clustering* |
+| No supervisado | PCA | Reducción de dimensionalidad |
+| Refuerzo | Q-learning | Decisiones secuenciales a partir de recompensas |
 
-The paradigms themselves, and when to use each, are explained in [Machine learning paradigms](machine_learning_paradigms.md).
+Los paradigmas en sí, y cuándo usar cada uno, se explican en [Paradigmas del aprendizaje automático](machine_learning_paradigms.md).
 
-## The Modern Era
+## La era moderna
 
-Today's machine learning landscape has evolved to include:
-- **Deep Learning (from 2012):** Neural networks with many layers: convolutional networks for images, recurrent networks and LSTMs for sequences
-- **Advanced Ensemble Methods:** XGBoost (2014), LightGBM and CatBoost (2017)
-- **Transfer Learning:** Reusing pre-trained models to solve new problems
-- **Transformers and Large Language Models:** the transformer architecture (2017), BERT and the first GPT (2018), and the chat assistants built on large language models (ChatGPT, 2022; Claude, Gemini and others since)
-- **Deep Reinforcement Learning:** DQN playing Atari games (2013–2015), AlphaGo (2016), AlphaZero (2017), and reinforcement learning from human feedback in chat assistants
+El panorama actual del aprendizaje automático ha evolucionado e incluye:
+- **Aprendizaje profundo (desde 2012):** redes neuronales con muchas capas: redes convolucionales para imágenes, redes recurrentes y LSTMs para secuencias
+- **Métodos de *ensemble* avanzados:** XGBoost (2014), LightGBM y CatBoost (2017)
+- **Aprendizaje por transferencia:** reutilizar modelos preentrenados para resolver problemas nuevos
+- ***Transformers* y grandes modelos de lenguaje:** la arquitectura *transformer* (2017), BERT y el primer GPT (2018), y los asistentes de chat construidos sobre grandes modelos de lenguaje (ChatGPT, 2022; Claude, Gemini y otros desde entonces)
+- **Aprendizaje por refuerzo profundo:** DQN jugando a juegos de Atari (2013–2015), AlphaGo (2016), AlphaZero (2017), y el aprendizaje por refuerzo a partir de feedback humano en los asistentes de chat
 
-However, the classical algorithms we study remain fundamental because:
-- They're often the best choice for small to medium-sized datasets
-- Several of them (linear models, small decision trees) are interpretable and explainable, which matters in regulated industries
-- They serve as building blocks for more complex methods
-- They're computationally efficient and often need less data than deep learning
-- They're essential for understanding modern ML concepts
-- Many state-of-the-art solutions still use these algorithms (e.g., XGBoost is based on decision trees)
+Aun así, los algoritmos clásicos que estudiamos siguen siendo fundamentales porque:
+- A menudo son la mejor opción para datasets pequeños y medianos
+- Varios de ellos (modelos lineales, árboles de decisión pequeños) son interpretables y explicables, lo que importa en sectores regulados
+- Sirven como piezas para construir métodos más complejos
+- Son eficientes computacionalmente y a menudo necesitan menos datos que el aprendizaje profundo
+- Son esenciales para entender los conceptos modernos de aprendizaje automático
+- Muchas soluciones punteras siguen usando estos algoritmos (p. ej., XGBoost se basa en árboles de decisión)
 
-## Choosing the Right Algorithm
+## Elegir el algoritmo adecuado
 
-The choice of algorithm depends on several factors:
+La elección del algoritmo depende de varios factores:
 
-| Factor | Consider |
+| Factor | Ten en cuenta |
 |--------|----------|
-| **Problem Type** | Classification, regression, clustering, or sequential decision-making? |
-| **Data Availability** | Do you have labelled data? Unlabelled? Or can you define rewards? |
-| **Data Size** | Small datasets favour simpler models; large datasets can leverage complex models |
-| **Interpretability** | Do you need to explain predictions? (Use linear models, decision trees) |
-| **Speed** | Training time vs. prediction time trade-offs |
-| **Accuracy Requirements** | Simple models may suffice; complex problems may need ensembles |
-| **Data Properties** | Linear vs. non-linear relationships, presence of outliers, feature interactions |
-| **Sequential Decisions** | If actions affect future states, consider reinforcement learning |
+| **Tipo de problema** | ¿Clasificación, regresión, *clustering* o toma de decisiones secuenciales? |
+| **Datos disponibles** | ¿Tienes datos etiquetados? ¿Sin etiquetar? ¿O puedes definir recompensas? |
+| **Tamaño de los datos** | Los datasets pequeños favorecen modelos más sencillos; los grandes pueden aprovechar modelos complejos |
+| **Interpretabilidad** | ¿Necesitas explicar las predicciones? (Usa modelos lineales, árboles de decisión) |
+| **Velocidad** | Equilibrio entre tiempo de entrenamiento y tiempo de predicción |
+| **Precisión necesaria** | Pueden bastar modelos sencillos; los problemas complejos pueden necesitar *ensembles* |
+| **Propiedades de los datos** | Relaciones lineales o no lineales, presencia de valores atípicos, interacciones entre características |
+| **Decisiones secuenciales** | Si las acciones afectan a estados futuros, plantéate el aprendizaje por refuerzo |
 
-> [Scikit-learn: choosing the right estimator](https://scikit-learn.org/stable/machine_learning_map.html)
+> [Scikit-learn: elegir el estimador adecuado](https://scikit-learn.org/stable/machine_learning_map.html) (en inglés)

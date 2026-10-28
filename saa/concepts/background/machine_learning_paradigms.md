@@ -1,203 +1,203 @@
-# Machine Learning Paradigms
+# Paradigmas del aprendizaje automático
 
-Machine learning enables systems to learn from data, identify patterns, and make decisions with minimal human intervention. Unlike traditional programming, where programs are designed with explicit rules, ML builds models by learning from data.
+El aprendizaje automático permite que los sistemas aprendan de los datos, identifiquen patrones y tomen decisiones con una intervención humana mínima. A diferencia de la programación tradicional, en la que los programas se diseñan con reglas explícitas, el aprendizaje automático construye modelos aprendiendo de los datos.
 
-> [Models to understand a chaotic reality | DotCSV](https://www.youtube.com/watch?v=Sb8XVheowVQ) (in Spanish)
+> [Modelos para entender una realidad caótica | DotCSV](https://www.youtube.com/watch?v=Sb8XVheowVQ) (en español)
 
-A **model** is an abstract, articulated description of a reality. In machine learning, models are what we **train** with data using a learning algorithm. The model learns to adjust itself to a large number of examples and is then used to predict the correct response for new, unseen input data.
+Un **modelo** es una descripción abstracta y articulada de una realidad. En aprendizaje automático, los modelos son lo que **entrenamos** con datos mediante un algoritmo de aprendizaje. El modelo aprende a ajustarse a un gran número de ejemplos y después se usa para predecir la respuesta correcta para datos de entrada nuevos que no ha visto.
 
-The vocabulary used all year:
+El vocabulario que se usa durante todo el curso:
 
-- An **example** (also *instance* or *sample*) is one row of data: one house, one email, one image.
-- Its **features** are the inputs the model sees: the house's area and location, the email's words, the image's pixels.
-- The **target** (or *label*) is the answer to predict: the house's price, *spam* or *not spam*.
-- The **parameters** are the numbers the learning algorithm adjusts during training, such as the weights of a linear model. The **hyperparameters** are the choices made before training, such as how deep a tree may grow.
-- The **training set** is the data the model learns from; the **test set** is data kept apart to measure how well it does on examples it has never seen.
-- **Inference** is using the trained model to predict for new examples.
+- Un **ejemplo** (también *instancia* o *muestra*) es una fila de datos: una casa, un email, una imagen.
+- Sus **características** (*features*) son las entradas que ve el modelo: la superficie y la ubicación de la casa, las palabras del email, los píxeles de la imagen.
+- El **objetivo** (*target*, o *etiqueta*) es la respuesta que hay que predecir: el precio de la casa, *spam* o *no spam*.
+- Los **parámetros** son los números que ajusta el algoritmo de aprendizaje durante el entrenamiento, como los pesos de un modelo lineal. Los **hiperparámetros** son las decisiones que se toman antes del entrenamiento, como cuánto puede crecer en profundidad un árbol.
+- El **conjunto de entrenamiento** son los datos de los que aprende el modelo; el **conjunto de test** son datos que se guardan aparte para medir cómo funciona con ejemplos que nunca ha visto.
+- La **inferencia** es usar el modelo entrenado para predecir sobre ejemplos nuevos.
 
-The way a model learns is defined by its learning paradigm, which is classified based on the type of supervision or feedback it receives during training.
+La forma en que aprende un modelo la define su paradigma de aprendizaje, que se clasifica según el tipo de supervisión o de feedback que recibe durante el entrenamiento.
 
-> [What is Supervised and Unsupervised Learning? | DotCSV](https://www.youtube.com/watch?v=oT3arRRB2Cw) (in Spanish)
+> [¿Qué es el Aprendizaje Supervisado y No Supervisado? | DotCSV](https://www.youtube.com/watch?v=oT3arRRB2Cw) (en español)
 
-The two most common paradigms, crossed with the kind of output their main tasks produce:
+Los dos paradigmas más habituales, cruzados con el tipo de salida que producen sus tareas principales:
 
-| Output | Supervised (examples with their answers) | Unsupervised (examples without answers) |
+| Salida | Supervisado (ejemplos con sus respuestas) | No supervisado (ejemplos sin respuestas) |
 | --- | --- | --- |
-| A category | **Classification**: which class an example belongs to | **Clustering**: which group of similar examples it falls into |
-| A number | **Regression**: the value of a continuous target | **Dimensionality reduction**: new, fewer continuous coordinates for each example |
+| Una categoría | **Clasificación**: a qué clase pertenece un ejemplo | ***Clustering***: en qué grupo de ejemplos parecidos cae |
+| Un número | **Regresión**: el valor de un objetivo continuo | **Reducción de dimensionalidad**: coordenadas continuas nuevas, y menos, para cada ejemplo |
 
-In supervised learning the output is a prediction of a known target. Unsupervised learning has no target: its output is a structure that the method finds in the data.
+En el aprendizaje supervisado la salida es una predicción de un objetivo conocido. El aprendizaje no supervisado no tiene objetivo: su salida es una estructura que el método encuentra en los datos.
 
-Each task below comes with a box that describes a typical application: its data, the answers that come with the data, what is learned, and what it is used for.
+Cada tarea de abajo viene con un recuadro que describe una aplicación típica: sus datos, las respuestas que vienen con los datos, qué se aprende y para qué se usa.
 
-## Supervised Learning
+## Aprendizaje supervisado
 
-In supervised learning, the training dataset is **labelled with the correct answer**. The learning algorithm receives a set of training data and, knowing the correct answer for each example, infers a model that generates that answer. This turns traditional programming around: instead of writing the rules and getting answers, we give the data and the answers, and get the rules.
+En el aprendizaje supervisado, el conjunto de datos de entrenamiento está **etiquetado con la respuesta correcta**. El algoritmo de aprendizaje recibe un conjunto de datos de entrenamiento y, conociendo la respuesta correcta de cada ejemplo, infiere un modelo que genera esa respuesta. Esto da la vuelta a la programación tradicional: en lugar de escribir las reglas y obtener respuestas, damos los datos y las respuestas, y obtenemos las reglas.
 
 ```mermaid
 flowchart LR
-    subgraph traditional ["Traditional programming"]
+    subgraph traditional ["Programación tradicional"]
         direction LR
-        data1["Data"] --> program["A program written by hand"]
-        rules1["Rules"] --> program
-        program --> answers1["Answers"]
+        data1["Datos"] --> program["Un programa escrito a mano"]
+        rules1["Reglas"] --> program
+        program --> answers1["Respuestas"]
     end
-    subgraph learning ["Machine learning"]
+    subgraph learning ["Aprendizaje automático"]
         direction LR
-        data2["Data"] --> algorithm["A learning algorithm"]
-        answers2["Answers"] --> algorithm
-        algorithm --> rules2["Rules: a trained model"]
+        data2["Datos"] --> algorithm["Un algoritmo de aprendizaje"]
+        answers2["Respuestas"] --> algorithm
+        algorithm --> rules2["Reglas: un modelo entrenado"]
     end
 ```
 
-### Classification
+### Clasificación
 
-A typical supervised learning task is **classification**. Consider a spam filter: an algorithm can learn by examining many examples of emails already labelled as "spam" or "not spam." It might infer that certain words are almost always associated with spam, while emails from specific senders are never spam. The more labelled examples the algorithm is trained on, the better it becomes at filtering spam.
-
-> [!NOTE]
-> **Reading handwritten digits**
->
-> - **Data:** images of handwritten digits, each one a grid of pixel values
-> - **Answers given:** the digit, 0 to 9, written in each image
-> - **What it learns:** to map the pixels of a new image to one of the ten digits
-> - **Used for:** reading postcodes on letters and amounts on bank cheques
-
-Types of classification:
-
-- **Binary**: The output has two classes (e.g., spam/not spam, positive/negative).
-- **Multiclass**: The output has more than two classes (e.g., digit recognition, image classification).
-- **Multilabel**: An instance can be assigned multiple labels (e.g., tagging music with genres).
-
-### Regression
-
-In **regression** problems, the goal is to predict a **continuous value**. For example, predicting the price of a house based on its features (number of rooms, garden size, location, etc.). In this case, instead of a class label, each example is labelled with a numerical value (the price of the house).
+Una tarea típica de aprendizaje supervisado es la **clasificación**. Piensa en un filtro de spam: un algoritmo puede aprender examinando muchos ejemplos de emails ya etiquetados como «spam» o «no spam». Puede deducir que ciertas palabras casi siempre van asociadas al spam, mientras que los emails de ciertos remitentes nunca son spam. Cuantos más ejemplos etiquetados se usen para entrenar el algoritmo, mejor filtra el spam.
 
 > [!NOTE]
-> **Valuing a home**
+> **Leer dígitos manuscritos**
 >
-> - **Data:** homes that have been sold, described by their area, rooms, location, age…
-> - **Answers given:** the price each one sold for
-> - **What it learns:** how the price depends on those features, to predict the price of any other home
-> - **Used for:** the automatic valuations of property portals, and the checks a bank makes before granting a mortgage
+> - **Datos:** imágenes de dígitos manuscritos, cada una una cuadrícula de valores de píxeles
+> - **Respuestas dadas:** el dígito, del 0 al 9, escrito en cada imagen
+> - **Qué aprende:** a asignar los píxeles de una imagen nueva a uno de los diez dígitos
+> - **Se usa para:** leer los códigos postales de las cartas y los importes de los cheques bancarios
 
-### Two Ways to Learn from Examples
+Tipos de clasificación:
 
-Classification and regression say *what* a model predicts. This section is about a different question: *how* it uses its examples to predict, whatever the task. Going from particular examples to a general rule is *induction*, the opposite of *deduction*, which applies general rules to a particular case. Every supervised model learns by induction, because it has to answer for cases that aren't among its examples. It can do so in two ways, and the name *inductive learning*, in classic AI terminology, refers only to the first. Each way can do either task:
+- **Binaria**: la salida tiene dos clases (p. ej., spam/no spam, positivo/negativo).
+- **Multiclase**: la salida tiene más de dos clases (p. ej., reconocimiento de dígitos, clasificación de imágenes).
+- **Multietiqueta**: a una instancia se le pueden asignar varias etiquetas (p. ej., etiquetar música con géneros).
 
-| | Classification | Regression |
+### Regresión
+
+En los problemas de **regresión**, el objetivo es predecir un **valor continuo**. Por ejemplo, predecir el precio de una casa a partir de sus características (número de habitaciones, tamaño del jardín, ubicación, etc.). En este caso, en lugar de una etiqueta de clase, cada ejemplo está etiquetado con un valor numérico (el precio de la casa).
+
+> [!NOTE]
+> **Valorar una vivienda**
+>
+> - **Datos:** viviendas que se han vendido, descritas por su superficie, habitaciones, ubicación, antigüedad…
+> - **Respuestas dadas:** el precio por el que se vendió cada una
+> - **Qué aprende:** cómo depende el precio de esas características, para predecir el precio de cualquier otra vivienda
+> - **Se usa para:** las valoraciones automáticas de los portales inmobiliarios, y las comprobaciones que hace un banco antes de conceder una hipoteca
+
+### Dos formas de aprender de los ejemplos
+
+La clasificación y la regresión dicen *qué* predice un modelo. Esta sección trata de otra pregunta: *cómo* usa sus ejemplos para predecir, sea cual sea la tarea. Pasar de ejemplos particulares a una regla general es *inducción*, lo contrario de la *deducción*, que aplica reglas generales a un caso particular. Todo modelo supervisado aprende por inducción, porque tiene que responder para casos que no están entre sus ejemplos. Puede hacerlo de dos formas, y el nombre *aprendizaje inductivo*, en la terminología clásica de la IA, se refiere solo a la primera. Cada forma puede hacer cualquiera de las dos tareas:
+
+| | Clasificación | Regresión |
 | --- | --- | --- |
-| **Inductive learning** | A spam filter learns which words signal spam, and then checks each new email for them | A model learns how much each feature, such as area or location, adds to the price of a house, and then adds them up for a new house |
-| **Case-based reasoning** | A new email gets the label of the most similar emails already labelled | A house is valued from the prices of the most similar houses sold nearby |
+| **Aprendizaje inductivo** | Un filtro de spam aprende qué palabras indican spam, y después busca esas palabras en cada email nuevo | Un modelo aprende cuánto suma cada característica, como la superficie o la ubicación, al precio de una casa, y después las suma para una casa nueva |
+| **Razonamiento basado en casos** | Un email nuevo recibe la etiqueta de los emails ya etiquetados más parecidos | Una casa se valora a partir de los precios de las casas más parecidas vendidas cerca |
 
-**Inductive learning** builds the general rule explicitly, ahead of time, during training, and then answers with the rule alone. A decision-tree algorithm, for example, tries every feature with every threshold, keeps the question that splits the examples into the two groups with the most uniform answers, and asks again inside each group; then it removes the questions that don't improve its predictions for examples held out from training. The rule it ends with could have been programmed by hand, but nobody wrote it: the algorithm chose the questions and the thresholds from the data. That is the machine-learning half of the diagram above: data and answers in, rules out. The spam filter above, a bank's credit-scoring model learned from which past loans were repaid, and a linear model that predicts house prices are induced too, though usually into many weights rather than a few questions. An induced rule fits the examples it came from, but it can still be wrong for the next case, which is why a model is always judged on examples it didn't see during training.
-
-> [!NOTE]
-> **Sorting patients by risk**
->
-> - **Data:** measurements of past patients, taken when they were admitted to hospital: age, blood pressure, heart rate…
-> - **Answers given:** whether each patient survived
-> - **What it learns:** a decision tree, a few questions with thresholds that the algorithm chooses from the data, such as `high_risk = lowest_systolic_pressure <= 91 or (age > 62.5 and sinus_tachycardia)`
-> - **Used for:** sorting new patients by risk, with a rule that doctors can read and check
-
-**Case-based reasoning** keeps the examples instead, as **cases**, and solves a new problem from the most similar past ones, reusing or adapting their solutions. People reason this way all the time: an appraiser values a flat from the prices of similar flats sold nearby, and a lawyer argues from the court decisions in similar past cases. So do many systems: a shop that recommends what similar customers bought, or an assistant that answers a new question from the most similar questions answered before. In AI, it is the alternative to writing the rules of [expert systems](../deep-dives/classical-ai/rules_and_expert_systems.ipynb) by hand: the cases are the knowledge. Its simplest form in machine learning is **k-nearest neighbours**, explained in supervised learning *(coming)*.
-
-A case-based system still generalises: the stored cases, together with the way it measures similarity, give an answer for any new problem. But that rule stays implicit, worked out afresh for each question and only around it, and is never written down.
+El **aprendizaje inductivo** construye la regla general explícitamente, por adelantado, durante el entrenamiento, y después responde solo con la regla. Un algoritmo de árbol de decisión, por ejemplo, prueba cada característica con cada umbral, se queda con la pregunta que divide los ejemplos en los dos grupos con respuestas más uniformes, y vuelve a preguntar dentro de cada grupo; después elimina las preguntas que no mejoran sus predicciones para ejemplos apartados del entrenamiento. La regla con la que termina podría haberse programado a mano, pero nadie la escribió: el algoritmo eligió las preguntas y los umbrales a partir de los datos. Es la mitad de aprendizaje automático del diagrama de arriba: entran datos y respuestas, salen reglas. El filtro de spam de antes, el modelo de *scoring* de crédito de un banco aprendido a partir de qué préstamos pasados se devolvieron, y un modelo lineal que predice precios de casas también se inducen, aunque normalmente en muchos pesos en lugar de en unas pocas preguntas. Una regla inducida se ajusta a los ejemplos de los que salió, pero puede seguir fallando en el siguiente caso, y por eso un modelo siempre se juzga con ejemplos que no vio durante el entrenamiento.
 
 > [!NOTE]
-> **A help desk that remembers**
+> **Clasificar pacientes por riesgo**
 >
-> - **Data:** past support tickets, each one the description of a problem
-> - **Answers given:** the fix that solved each ticket
-> - **What it learns:** nothing ahead of time. For a new ticket, it retrieves the most similar past tickets and reuses, or adapts, their fix; once solved, the new ticket joins the cases
-> - **Used for:** technical support and troubleshooting, where problems repeat but nobody has written down the rules to solve them
+> - **Datos:** mediciones de pacientes anteriores, tomadas al ingresar en el hospital: edad, tensión arterial, frecuencia cardíaca…
+> - **Respuestas dadas:** si cada paciente sobrevivió
+> - **Qué aprende:** un árbol de decisión, unas pocas preguntas con umbrales que el algoritmo elige a partir de los datos, como `high_risk = lowest_systolic_pressure <= 91 or (age > 62.5 and sinus_tachycardia)` (riesgo alto si la tensión sistólica mínima es ≤ 91, o si la edad es > 62,5 y hay taquicardia sinusal)
+> - **Se usa para:** clasificar a los pacientes nuevos por riesgo, con una regla que los médicos pueden leer y comprobar
 
-## Unsupervised Learning
+El **razonamiento basado en casos** guarda en cambio los ejemplos, como **casos**, y resuelve un problema nuevo a partir de los pasados más parecidos, reutilizando o adaptando sus soluciones. Las personas razonamos así constantemente: un tasador valora un piso a partir de los precios de pisos parecidos vendidos cerca, y un abogado argumenta a partir de las sentencias de casos anteriores parecidos. También muchos sistemas: una tienda que recomienda lo que compraron clientes parecidos, o un asistente que responde una pregunta nueva a partir de las preguntas más parecidas respondidas antes. En IA, es la alternativa a escribir a mano las reglas de los [sistemas expertos](../deep-dives/classical-ai/rules_and_expert_systems.ipynb): los casos son el conocimiento. Su forma más sencilla en aprendizaje automático son los **k vecinos más cercanos** (*k-nearest neighbours*), que se explican en aprendizaje supervisado *(próximamente)*.
 
-In unsupervised learning, the training dataset is **not labelled**. The goal is to discover hidden patterns or intrinsic structures in the data.
-
-<img src="img/supervised_vs_unsupervised.png" width="500" alt="Left: unlabelled grey points grouped into five coloured clusters. Right: green and red labelled points separated by a decision boundary">
-
-*Unsupervised learning (a) finds groups in examples without labels; supervised learning (b) learns a boundary between labelled classes. Figure: Morimoto and Ponton, [Virtual reality in biology: could we become virtual naturalists?](https://doi.org/10.1186/s12052-021-00147-x), 2021, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).*
-
-### Clustering
-
-**Clustering** involves grouping data points into clusters based on similarity. An example is customer segmentation, where customers are grouped into similar segments to better tailor products and services. This is used in recommendation systems, marketing, and more.
+Un sistema basado en casos también generaliza: los casos guardados, junto con la forma en que mide la similitud, dan una respuesta para cualquier problema nuevo. Pero esa regla se queda implícita, se calcula de nuevo para cada pregunta y solo a su alrededor, y nunca se escribe.
 
 > [!NOTE]
-> **Grouping news into stories**
+> **Un servicio de soporte que recuerda**
 >
-> - **Data:** thousands of news articles, each one described by the words it uses
-> - **Answers given:** none
-> - **What it learns:** groups of articles that use similar words, which tend to tell the same story
-> - **Used for:** news aggregators, which show each story once, with all the articles about it
+> - **Datos:** tickets de soporte anteriores, cada uno la descripción de un problema
+> - **Respuestas dadas:** la solución que resolvió cada ticket
+> - **Qué aprende:** nada por adelantado. Para un ticket nuevo, recupera los tickets anteriores más parecidos y reutiliza, o adapta, su solución; una vez resuelto, el ticket nuevo se suma a los casos
+> - **Se usa para:** soporte técnico y resolución de incidencias, donde los problemas se repiten pero nadie ha escrito las reglas para resolverlos
 
-### Association Rule Mining
+## Aprendizaje no supervisado
 
-While clustering groups instances (like customers), **association rule mining** discovers relationships between items. For example, identifying that customers who buy bread also tend to buy butter ("market basket analysis").
+En el aprendizaje no supervisado, el conjunto de datos de entrenamiento **no está etiquetado**. El objetivo es descubrir patrones ocultos o estructuras intrínsecas en los datos.
+
+<img src="img/supervised_vs_unsupervised.png" width="500" alt="Izquierda: puntos grises sin etiquetar agrupados en cinco clusters de colores. Derecha: puntos etiquetados verdes y rojos separados por una frontera de decisión">
+
+*El aprendizaje no supervisado (a) encuentra grupos en ejemplos sin etiquetas; el aprendizaje supervisado (b) aprende una frontera entre clases etiquetadas. Figura: Morimoto y Ponton, [Virtual reality in biology: could we become virtual naturalists?](https://doi.org/10.1186/s12052-021-00147-x), 2021, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.es).*
+
+### *Clustering*
+
+El ***clustering*** (agrupamiento) consiste en agrupar los puntos de datos en *clusters* según su similitud. Un ejemplo es la segmentación de clientes, en la que los clientes se agrupan en segmentos parecidos para adaptar mejor productos y servicios. Se usa en sistemas de recomendación, marketing y más.
 
 > [!NOTE]
-> **Shopping baskets**
+> **Agrupar noticias en historias**
 >
-> - **Data:** the items in each basket at a supermarket's tills
-> - **Answers given:** none
-> - **What it learns:** rules such as "baskets with pasta and tomato sauce usually contain grated cheese too", with how often each one holds
-> - **Used for:** placing products on the shelves, designing offers, and suggesting products that are often bought together
+> - **Datos:** miles de noticias, cada una descrita por las palabras que usa
+> - **Respuestas dadas:** ninguna
+> - **Qué aprende:** grupos de noticias que usan palabras parecidas, que suelen contar la misma historia
+> - **Se usa para:** los agregadores de noticias, que muestran cada historia una sola vez, con todas las noticias sobre ella
 
-### Dimensionality Reduction
+### Minería de reglas de asociación
 
-**Dimensionality reduction** aims to reduce the number of variables (features) in a dataset. This is useful when dealing with high-dimensional data where some features may be redundant or irrelevant. It can reduce training time and improve model accuracy. A common technique is **Principal Component Analysis (PCA)**.
+Mientras que el *clustering* agrupa instancias (como clientes), la **minería de reglas de asociación** descubre relaciones entre artículos. Por ejemplo, identificar que los clientes que compran pan también suelen comprar mantequilla («análisis de la cesta de la compra»).
 
 > [!NOTE]
-> **Describing faces with a few numbers**
+> **Cestas de la compra**
 >
-> - **Data:** photos of faces; a photo of 100 × 100 pixels is a list of 10,000 numbers
-> - **Answers given:** none
-> - **What it learns:** with PCA, a small set of *eigenfaces*, ghost-like images that capture how faces differ most; any face is close to a weighted mix of them
-> - **Used for:** describing each face by its few weights instead of thousands of pixels, which makes faces quicker to compare, store and plot
+> - **Datos:** los artículos de cada cesta en las cajas de un supermercado
+> - **Respuestas dadas:** ninguna
+> - **Qué aprende:** reglas como «las cestas con pasta y tomate frito suelen llevar también queso rallado», con la frecuencia con la que se cumple cada una
+> - **Se usa para:** colocar los productos en las estanterías, diseñar ofertas y sugerir productos que a menudo se compran juntos
 
-### Anomaly Detection
+### Reducción de dimensionalidad
 
-This task focuses on identifying unusual data points or patterns that deviate significantly from the norm. It is used in fraud detection, system monitoring, and security to flag data that could indicate errors or attacks.
+La **reducción de dimensionalidad** busca reducir el número de variables (características) de un dataset. Es útil cuando se trabaja con datos de alta dimensionalidad en los que algunas características pueden ser redundantes o irrelevantes. Puede reducir el tiempo de entrenamiento y mejorar la precisión del modelo. Una técnica habitual es el **Análisis de Componentes Principales (PCA)**.
 
 > [!NOTE]
-> **Spotting an unusual card payment**
+> **Describir caras con unos pocos números**
 >
-> - **Data:** a customer's card payments: amount, shop, place and time
-> - **Answers given:** none
-> - **What it learns:** what the customer's usual payments look like; a payment far from them is flagged
-> - **Used for:** holding a suspicious payment until the customer confirms it. Banks combine it with classifiers trained on known frauds: anomaly detection can also flag new kinds of fraud, which no label describes yet
+> - **Datos:** fotos de caras; una foto de 100 × 100 píxeles es una lista de 10.000 números
+> - **Respuestas dadas:** ninguna
+> - **Qué aprende:** con PCA, un pequeño conjunto de *eigenfaces* (caras propias), imágenes fantasmales que captan en qué se diferencian más las caras; cualquier cara se parece mucho a una mezcla ponderada de ellas
+> - **Se usa para:** describir cada cara con sus pocos pesos en lugar de con miles de píxeles, lo que hace que las caras sean más rápidas de comparar, guardar y representar
 
-## Reinforcement Learning
+### Detección de anomalías
 
-In **reinforcement learning**, an **agent** learns by interacting with an **environment**. The agent performs actions, and the environment provides feedback in the form of **rewards** or **penalties**. The agent's goal is to learn a **policy** (a strategy for choosing actions) that maximises its cumulative reward over time.
-
-This paradigm is found in robotics (e.g., teaching a robot to walk) and games (e.g., training an AI to play chess or Go). It is also one step in turning a language model into a chat assistant: **reinforcement learning from human feedback (RLHF)** rewards the answers that people prefer.
+Esta tarea se centra en identificar puntos de datos o patrones inusuales que se desvían mucho de lo normal. Se usa en la detección de fraude, la monitorización de sistemas y la seguridad para señalar datos que podrían indicar errores o ataques.
 
 > [!NOTE]
-> **Learning to play a board game**
+> **Detectar un pago con tarjeta inusual**
 >
-> - **Data:** none in advance: the agent plays, often millions of games against itself
-> - **Answers given:** no right move for any position, only a reward at the end of each game: win or lose
-> - **What it learns:** a policy, which move to make in each position, and how likely each position is to end in a win
-> - **Used for:** games such as chess and Go, where such programs beat the best human players, and robots and other systems that act step by step; [tic-tac-toe with Q-learning](https://github.com/avidaldo/tictactoe-qlearning) does it on a small scale
+> - **Datos:** los pagos con tarjeta de un cliente: importe, comercio, lugar y hora
+> - **Respuestas dadas:** ninguna
+> - **Qué aprende:** cómo son los pagos habituales del cliente; un pago muy alejado de ellos se señala
+> - **Se usa para:** retener un pago sospechoso hasta que el cliente lo confirme. Los bancos lo combinan con clasificadores entrenados con fraudes conocidos: la detección de anomalías también puede señalar tipos nuevos de fraude, que todavía no describe ninguna etiqueta
+
+## Aprendizaje por refuerzo
+
+En el **aprendizaje por refuerzo**, un **agente** aprende interactuando con un **entorno**. El agente realiza acciones, y el entorno le da feedback en forma de **recompensas** o **penalizaciones**. El objetivo del agente es aprender una **política** (una estrategia para elegir acciones) que maximice su recompensa acumulada a lo largo del tiempo.
+
+Este paradigma se encuentra en la robótica (p. ej., enseñar a andar a un robot) y en los juegos (p. ej., entrenar una IA para jugar al ajedrez o al Go). También es uno de los pasos para convertir un modelo de lenguaje en un asistente de chat: el **aprendizaje por refuerzo a partir de feedback humano (RLHF)** recompensa las respuestas que prefieren las personas.
 
 > [!NOTE]
-> **Turning a language model into an assistant**
+> **Aprender a jugar a un juego de tablero**
 >
-> - **Data:** questions, and several answers to each one, written by the language model being tuned
-> - **Answers given:** people rank the answers from best to worst
-> - **What it learns:** first a reward model that predicts which answer people prefer; then the language model is tuned, with reinforcement learning, to earn high rewards
-> - **Used for:** chat assistants: a model already tuned on example conversations learns to give the answers people prefer, more helpful and more honest ([how a language model is made](language_models.md#how-a-language-model-is-made))
-
-## Between Supervised and Unsupervised
-
-- **Semi-supervised learning** uses a few labelled examples together with many unlabelled ones, when labels are expensive: a doctor can label a hundred scans, not a million.
-- **Self-supervised learning** creates the labels from the data itself. A language model is pretrained by hiding the next word of real text and learning to predict it: every sentence on the internet becomes a labelled example, with no person labelling anything. This is how today's large language models learn most of what they know: see [language models from the outside](language_models.md).
+> - **Datos:** ninguno de antemano: el agente juega, a menudo millones de partidas contra sí mismo
+> - **Respuestas dadas:** ninguna jugada correcta para ninguna posición, solo una recompensa al final de cada partida: ganar o perder
+> - **Qué aprende:** una política, qué jugada hacer en cada posición, y qué probabilidad tiene cada posición de acabar en victoria
+> - **Se usa para:** juegos como el ajedrez y el Go, donde estos programas ganan a los mejores jugadores humanos, y robots y otros sistemas que actúan paso a paso; [tres en raya con Q-learning](https://github.com/avidaldo/tictactoe-qlearning) lo hace a pequeña escala
 
 > [!NOTE]
-> **Labelling photos with a model** (semi-supervised)
+> **Convertir un modelo de lenguaje en un asistente**
 >
-> - **Data:** a few thousand labelled photos, and millions without labels
-> - **Answers given:** the class of the labelled photos only
-> - **What it learns:** a first model, trained on the labelled photos, labels the rest with its own predictions, called *pseudo-labels*; a second model then learns from all of them
-> - **Used for:** image and speech recognition, where examples are cheap to collect and expensive to label
+> - **Datos:** preguntas, y varias respuestas a cada una, escritas por el modelo de lenguaje que se está ajustando
+> - **Respuestas dadas:** personas ordenan las respuestas de mejor a peor
+> - **Qué aprende:** primero un modelo de recompensa que predice qué respuesta prefieren las personas; después el modelo de lenguaje se ajusta, con aprendizaje por refuerzo, para obtener recompensas altas
+> - **Se usa para:** asistentes de chat: un modelo ya ajustado con conversaciones de ejemplo aprende a dar las respuestas que prefieren las personas, más útiles y más honestas ([cómo se construye un modelo de lenguaje](language_models.md#cómo-se-construye-un-modelo-de-lenguaje))
+
+## Entre el supervisado y el no supervisado
+
+- El **aprendizaje semisupervisado** usa unos pocos ejemplos etiquetados junto con muchos sin etiquetar, cuando las etiquetas son caras: un médico puede etiquetar cien escáneres, no un millón.
+- El **aprendizaje autosupervisado** crea las etiquetas a partir de los propios datos. Un modelo de lenguaje se preentrena ocultando la siguiente palabra de un texto real y aprendiendo a predecirla: cada frase de internet se convierte en un ejemplo etiquetado, sin que ninguna persona etiquete nada. Así es como los grandes modelos de lenguaje actuales aprenden la mayor parte de lo que saben: consulta [los modelos de lenguaje vistos desde fuera](language_models.md).
+
+> [!NOTE]
+> **Etiquetar fotos con un modelo** (semisupervisado)
+>
+> - **Datos:** unos pocos miles de fotos etiquetadas, y millones sin etiquetar
+> - **Respuestas dadas:** la clase solo de las fotos etiquetadas
+> - **Qué aprende:** un primer modelo, entrenado con las fotos etiquetadas, etiqueta el resto con sus propias predicciones, llamadas *pseudoetiquetas*; después un segundo modelo aprende de todas ellas
+> - **Se usa para:** reconocimiento de imágenes y de voz, donde los ejemplos son baratos de recoger y caros de etiquetar

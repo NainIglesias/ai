@@ -1,16 +1,16 @@
-# Language Models from the Outside
+# Los modelos de lenguaje vistos desde fuera
 
-A **language model** is a [neural network](neural_networks.md) trained to continue text. Chat assistants, the [AI coding assistant](../../../pia/setup/ai_assisted_development.md) in your editor and the language-model applications built in PIA all run on one. Seen from the outside, it does one thing again and again: it predicts the next piece of text. Almost everything a user notices, good and bad, follows from that and from how the model was trained. How it computes its predictions inside, with embeddings, attention and the transformer, is explained in the topic on how language models work *(coming)*.
+Un **modelo de lenguaje** es una [red neuronal](neural_networks.md) entrenada para continuar texto. Los asistentes de chat, el [asistente de programación con IA](../../../pia/setup/ai_assisted_development.md) de tu editor y las aplicaciones con modelos de lenguaje que se construyen en PIA funcionan todos sobre uno. Visto desde fuera, hace una sola cosa una y otra vez: predice el siguiente trozo de texto. Casi todo lo que nota quien lo usa, lo bueno y lo malo, se deduce de eso y de cómo se entrenó el modelo. Cómo calcula sus predicciones por dentro, con *embeddings*, atención y el *transformer*, se explica en el tema sobre cómo funcionan los modelos de lenguaje *(próximamente)*.
 
-<img src="img/ai_hierarchy_llms.png" width="300" alt="Nested circles: artificial intelligence, machine learning, neural networks, deep learning, generative AI, large language models">
+<img src="img/ai_hierarchy_llms.png" width="300" alt="Círculos anidados: inteligencia artificial, aprendizaje automático, redes neuronales, aprendizaje profundo, IA generativa, grandes modelos de lenguaje">
 
-*A common picture of where language models sit. It simplifies: some generative models are not deep networks, and some language models, such as BERT, fill in hidden words instead of continuing text, and generate nothing.*
+*Una imagen habitual de dónde se sitúan los modelos de lenguaje. Simplifica: algunos modelos generativos no son redes profundas, y algunos modelos de lenguaje, como BERT, rellenan palabras ocultas en lugar de continuar texto, y no generan nada.*
 
-## One Token at a Time
+## Un token cada vez
 
 ### Tokens
 
-A language model doesn't read letters or words, but **tokens**: pieces of text from a fixed vocabulary. A program called a *tokenizer* builds that vocabulary before training, from a large sample of text: the pieces that appear most often become tokens. A frequent word is a single token, usually together with the space before it, and a rare word is split into several. Here is the same sentence in three languages, split by a real tokenizer (OpenAI's `o200k_base`, with about 200,000 tokens):
+Un modelo de lenguaje no lee letras ni palabras, sino **tokens**: trozos de texto de un vocabulario fijo. Un programa llamado *tokenizador* construye ese vocabulario antes del entrenamiento, a partir de una muestra grande de texto: los trozos que aparecen más a menudo se convierten en tokens. Una palabra frecuente es un solo token, normalmente junto con el espacio que la precede, y una palabra rara se divide en varios. Aquí tienes la misma frase en tres idiomas, dividida por un tokenizador real (`o200k_base` de OpenAI, con unos 200.000 tokens):
 
 ```text
 Tokenization is unbelievably useful.      Token|ization| is| unbelievably| useful|.          6 tokens
@@ -18,70 +18,72 @@ La tokenización es increíblemente útil.   La| token|ización| es| increíble|
 A tokenización é incriblemente útil.      A| token|ización| é| in|crib|lement|e| útil|.      10 tokens
 ```
 
-English needs the fewest tokens because the text that tokenizers are built from is mostly English. That matters because models are limited, and charged, by tokens: the same content in Spanish or Galician costs more of both.
+El inglés necesita menos tokens porque el texto a partir del que se construyen los tokenizadores es mayoritariamente inglés. Esto importa porque los modelos están limitados, y se cobran, por tokens: el mismo contenido en español o en gallego cuesta más de ambas cosas.
 
-### Predicting the Next Token
+### Predecir el siguiente token
 
-Given a text, the model computes, for every token in its vocabulary, the probability that it comes next. One token is chosen and appended, and the longer text goes back into the model to choose the following one. An answer is that step repeated, token after token, until the model chooses a special token that marks the end, or a length limit is reached. With made-up probabilities:
+Dado un texto, el modelo calcula, para cada token de su vocabulario, la probabilidad de que sea el siguiente. Se elige un token y se añade, y el texto más largo vuelve a entrar en el modelo para elegir el siguiente. Una respuesta es ese paso repetido, token tras token, hasta que el modelo elige un token especial que marca el final o se alcanza un límite de longitud. Con probabilidades inventadas:
 
 ```text
 The cat sat on the       →   mat 0.41   floor 0.18   sofa 0.09   …
 The cat sat on the mat   →   . 0.52   and 0.21   , 0.08   …
 ```
 
-Each token is chosen from the text so far, so an early mistake becomes part of the text the model continues from: a model that starts a wrong answer can carry on with it, and even justify it.
+*(«El gato se sentó en la… alfombra / suelo / sofá».)*
 
-### Sampling and Temperature
+Cada token se elige a partir del texto hasta ese momento, así que un error temprano pasa a formar parte del texto desde el que continúa el modelo: un modelo que empieza una respuesta equivocada puede seguir con ella, e incluso justificarla.
 
-The model doesn't always take the most likely token: it **samples**, picking at random with the predicted probabilities, so that *floor* comes out almost one time in five. That is why the same question can get different answers. A setting called **temperature** controls how much they vary. A low temperature makes the likely tokens even more likely, and the answers more repeatable; a high one flattens the probabilities, and the answers vary more. At temperature 0 the model always takes the most likely token, although a model served by a provider may still not give exactly the same answer every time.
+### Muestreo y temperatura
 
-## How a Language Model Is Made
+El modelo no siempre coge el token más probable: **muestrea**, eligiendo al azar con las probabilidades predichas, de modo que *floor* sale casi una de cada cinco veces. Por eso la misma pregunta puede recibir respuestas distintas. Un parámetro llamado **temperatura** controla cuánto varían. Una temperatura baja hace que los tokens probables lo sean todavía más, y las respuestas más repetibles; una alta aplana las probabilidades, y las respuestas varían más. A temperatura 0 el modelo siempre coge el token más probable, aunque un modelo servido por un proveedor puede seguir sin dar exactamente la misma respuesta cada vez.
 
-A model's **parameters** are the numbers adjusted in training, and a **large language model** (LLM) has billions of them. Small ones, with a few billion, run on a laptop; the largest need the hardware of a data centre. A chat model is trained in three steps:
+## Cómo se construye un modelo de lenguaje
 
-1. **Pretraining**, [self-supervised](machine_learning_paradigms.md#between-supervised-and-unsupervised): the model learns to predict the next token of real text (web pages, books, code), trillions of tokens of it. This step usually costs the most, weeks or months on thousands of GPUs, and it is where the model learns most of what it knows about language and the world. The result is a **base model**, which continues any text in the style of the text it was trained on.
-2. **Instruction tuning**, supervised: the model is trained further on example conversations, each an instruction with a good answer, written by people or generated by other models. It learns the format of a conversation and the role of an assistant.
-3. **Preference tuning**: people, and increasingly other models, compare answers to the same question, and the model is tuned to give the kind of answer that is preferred: more helpful, more honest, and refusing harmful requests. One way is [reinforcement learning from human feedback](machine_learning_paradigms.md#reinforcement-learning) (RLHF); other methods learn from the comparisons directly, without reinforcement learning.
+Los **parámetros** de un modelo son los números que se ajustan en el entrenamiento, y un **gran modelo de lenguaje** (LLM) tiene miles de millones. Los pequeños, con unos pocos miles de millones, funcionan en un portátil; los más grandes necesitan el hardware de un centro de datos. Un modelo de chat se entrena en tres pasos:
+
+1. **Preentrenamiento**, [autosupervisado](machine_learning_paradigms.md#entre-el-supervisado-y-el-no-supervisado): el modelo aprende a predecir el siguiente token de texto real (páginas web, libros, código), billones de tokens. Este paso suele ser el más caro, semanas o meses en miles de GPUs, y es donde el modelo aprende la mayor parte de lo que sabe sobre el lenguaje y el mundo. El resultado es un **modelo base**, que continúa cualquier texto en el estilo del texto con el que se entrenó.
+2. **Ajuste por instrucciones** (*instruction tuning*), supervisado: el modelo se sigue entrenando con conversaciones de ejemplo, cada una una instrucción con una buena respuesta, escritas por personas o generadas por otros modelos. Aprende el formato de una conversación y el papel de un asistente.
+3. **Ajuste por preferencias**: personas, y cada vez más otros modelos, comparan respuestas a la misma pregunta, y el modelo se ajusta para dar el tipo de respuesta que se prefiere: más útil, más honesta, y rechazando las peticiones dañinas. Una forma es el [aprendizaje por refuerzo a partir de feedback humano](machine_learning_paradigms.md#aprendizaje-por-refuerzo) (RLHF); otros métodos aprenden directamente de las comparaciones, sin aprendizaje por refuerzo.
 
 > [!NOTE]
-> **The same text, two models**
+> **El mismo texto, dos modelos**
 >
-> Given *"What is the capital of France?"*, a base model may carry on with *"What is the capital of Germany? What is the capital of Italy?"*, as if it were completing a list of quiz questions: on the web, a question is often followed by more questions. A model tuned on conversations answers *"Paris."*
+> Ante *«¿Cuál es la capital de Francia?»*, un modelo base puede seguir con *«¿Cuál es la capital de Alemania? ¿Cuál es la capital de Italia?»*, como si estuviera completando una lista de preguntas de un concurso: en la web, a una pregunta a menudo le siguen más preguntas. Un modelo ajustado con conversaciones responde *«París.»*
 
-**Reasoning models** add a further step: reinforcement learning on problems whose answers can be checked automatically, such as maths and programming, with a reward for a correct final answer. They learn to write out a long chain of intermediate steps before they answer. This makes them better at such problems, and slower and more expensive, since those steps are tokens too.
+Los **modelos de razonamiento** añaden un paso más: aprendizaje por refuerzo sobre problemas cuyas respuestas se pueden comprobar automáticamente, como las matemáticas y la programación, con una recompensa por una respuesta final correcta. Aprenden a escribir una larga cadena de pasos intermedios antes de responder. Esto los hace mejores en ese tipo de problemas, y más lentos y caros, ya que esos pasos también son tokens.
 
-The model keeps no copy of its training text to look things up: what it learned is spread across its parameters, although it can repeat word for word a passage it saw many times.
+El modelo no guarda una copia de su texto de entrenamiento para consultarla: lo que aprendió está repartido entre sus parámetros, aunque puede repetir palabra por palabra un pasaje que vio muchas veces.
 
-## What Follows from That
+## Lo que se deduce de todo esto
 
-### Fluent Is Not the Same as True
+### Fluido no es lo mismo que verdadero
 
-The model was trained to produce likely text, not true text. When its training text said the same thing many times, the likely answer is usually right. When it didn't, the most likely continuation is still a fluent, confident answer: a reference to a paper that doesn't exist, an article of a law with the wrong number, a function that a library doesn't have. This is called **hallucination**. Training can make it rarer, by teaching models to say when they don't know, but doesn't remove it, and a wrong answer reads exactly like a right one. Check whatever matters, and design applications so that their answers can be checked.
+El modelo se entrenó para producir texto probable, no texto verdadero. Cuando su texto de entrenamiento decía lo mismo muchas veces, la respuesta probable suele ser correcta. Cuando no, la continuación más probable sigue siendo una respuesta fluida y segura: una referencia a un artículo que no existe, un artículo de una ley con el número equivocado, una función que una biblioteca no tiene. Esto se llama **alucinación**. El entrenamiento puede hacerla menos frecuente, enseñando a los modelos a decir cuándo no saben, pero no la elimina, y una respuesta equivocada se lee exactamente igual que una correcta. Comprueba lo que importe, y diseña las aplicaciones para que sus respuestas se puedan comprobar.
 
-### Its Knowledge Stops at a Date
+### Su conocimiento se detiene en una fecha
 
-What a model knows comes from text collected up to a date, its **knowledge cutoff**. Anything later, such as a new version of a library or a law amended last month, doesn't exist for the model unless the text is put in front of it.
+Lo que sabe un modelo viene de texto recopilado hasta una fecha, su **fecha de corte del conocimiento**. Cualquier cosa posterior, como una versión nueva de una biblioteca o una ley modificada el mes pasado, no existe para el modelo a menos que se le ponga delante el texto.
 
-### The Context Is All It Sees
+### El contexto es todo lo que ve
 
-In each call, the model sees only the text it is sent, its **context**: the instructions of the application (the *system prompt*), the conversation so far, and any documents. A conversation reaches it as one text, with markers for each role, and the model continues it from the assistant's turn. The context has a maximum length, the **context window**, counted in tokens and shared by the question and the answer: from a few thousand tokens in early models to hundreds of thousands, or more, today.
+En cada llamada, el modelo solo ve el texto que se le envía, su **contexto**: las instrucciones de la aplicación (el *system prompt*), la conversación hasta ese momento y los documentos que haya. Una conversación le llega como un único texto, con marcas para cada rol, y el modelo la continúa desde el turno del asistente. El contexto tiene una longitud máxima, la **ventana de contexto**, contada en tokens y compartida por la pregunta y la respuesta: desde unos pocos miles de tokens en los primeros modelos hasta cientos de miles, o más, hoy.
 
-The model has no memory between calls. A chat application sends the whole conversation again with every message, and a *memory* feature saves notes and puts them back into the context. A longer context costs more and takes longer, and a detail in the middle of a very long one can be overlooked more easily than one at its start or end.
+El modelo no tiene memoria entre llamadas. Una aplicación de chat vuelve a enviar toda la conversación con cada mensaje, y una función de *memoria* guarda notas y las vuelve a meter en el contexto. Un contexto más largo cuesta más y tarda más, y un detalle en mitad de uno muy largo se puede pasar por alto con más facilidad que uno al principio o al final.
 
-### It Sees Tokens, Not Letters
+### Ve tokens, no letras
 
-Because the model reads tokens, tasks about letters are harder for it than they look. Above, *unbelievably* is a single token: the model doesn't see its letters, so counting them, or spelling the word backwards, has to come from what it learned about that token. Exact arithmetic with long numbers is also error-prone. A program does both reliably, and a model can be given one as a tool.
+Como el modelo lee tokens, las tareas sobre letras le resultan más difíciles de lo que parece. Arriba, *unbelievably* es un solo token: el modelo no ve sus letras, así que contarlas, o deletrear la palabra al revés, tiene que salir de lo que aprendió sobre ese token. La aritmética exacta con números largos también es propensa a errores. Un programa hace ambas cosas de forma fiable, y a un modelo se le puede dar uno como herramienta.
 
-### It Only Writes Text
+### Solo escribe texto
 
-A model can't search the web, run code, read your files or send an email: it only produces text. An application can give it **tools**: the model writes a request in an agreed format, a *tool call*; the application runs it and puts the result into the context; and the model continues. A coding assistant works this way: reading a file or running a command is a tool call that the assistant's program carries out, often after asking you. Agents, and MCP, a standard way to connect models to tools, are explained in the topic on agents and MCP *(coming)*.
+Un modelo no puede buscar en la web, ejecutar código, leer tus archivos ni enviar un email: solo produce texto. Una aplicación puede darle **herramientas**: el modelo escribe una petición en un formato acordado, una *llamada a herramienta* (*tool call*); la aplicación la ejecuta y mete el resultado en el contexto; y el modelo continúa. Un asistente de programación funciona así: leer un archivo o ejecutar un comando es una llamada a herramienta que lleva a cabo el programa del asistente, a menudo después de preguntarte. Los agentes, y MCP, una forma estándar de conectar modelos con herramientas, se explican en el tema sobre agentes y MCP *(próximamente)*.
 
-### Answers Grounded in Documents
+### Respuestas basadas en documentos
 
-To answer about documents that a model never saw, or that changed after its cutoff, an application can find the passages that matter and put them in the context, with an instruction to answer only from them and to cite them. This is **retrieval-augmented generation** (RAG), explained in its own topic *(coming)*. It makes invented answers rarer, but doesn't rule them out: the model can still misread a passage or cite the wrong one, so the citations have to be checked against the source.
+Para responder sobre documentos que un modelo nunca vio, o que cambiaron después de su fecha de corte, una aplicación puede encontrar los pasajes que importan y ponerlos en el contexto, con la instrucción de responder solo a partir de ellos y de citarlos. Esto es la **generación aumentada por recuperación** (RAG), que se explica en su propio tema *(próximamente)*. Hace que las respuestas inventadas sean menos frecuentes, pero no las descarta: el modelo puede seguir leyendo mal un pasaje o citando el que no es, así que hay que comprobar las citas con la fuente.
 
-## Beyond Text
+## Más allá del texto
 
-- **Multimodal models** take images, audio or video as input, turned into a sequence of tokens too, and some also produce them.
-- **Embeddings:** a related kind of model turns a whole text into a list of numbers, a vector, so that texts with similar meanings get vectors close to each other. That is how applications search by meaning, and often how RAG finds its passages. How embeddings are learned is part of the topic on how language models work *(coming)*.
-- **Open-weight and closed models:** some companies publish a model's weights, its learned parameters, so that anyone can download it and run it on their own computer, with a tool such as Ollama, without their data leaving it. Others can only be used through the company's API, paying per token. Open weights are not open source: the training data and code are usually not published, and the licence may restrict how the model is used. Calling both kinds is explained in the topic on building with language models *(coming)*.
+- **Modelos multimodales:** reciben imágenes, audio o vídeo como entrada, convertidos también en una secuencia de tokens, y algunos también los producen.
+- ***Embeddings*:** un tipo de modelo relacionado convierte un texto entero en una lista de números, un vector, de forma que textos con significados parecidos tengan vectores cercanos entre sí. Así es como las aplicaciones buscan por significado, y a menudo como RAG encuentra sus pasajes. Cómo se aprenden los *embeddings* forma parte del tema sobre cómo funcionan los modelos de lenguaje *(próximamente)*.
+- **Modelos de pesos abiertos y cerrados:** algunas empresas publican los pesos de un modelo, sus parámetros aprendidos, para que cualquiera pueda descargarlo y ejecutarlo en su propio ordenador, con una herramienta como Ollama, sin que sus datos salgan de él. Otros solo se pueden usar a través de la API de la empresa, pagando por token. Pesos abiertos no es lo mismo que código abierto: los datos y el código de entrenamiento normalmente no se publican, y la licencia puede restringir cómo se usa el modelo. Cómo llamar a ambos tipos se explica en el tema sobre construir con modelos de lenguaje *(próximamente)*.

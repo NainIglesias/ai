@@ -1,178 +1,178 @@
-# Conda Tutorial: Environment and Package Management
+# Tutorial de conda: gestión de entornos y paquetes
 
-> The alternative to [uv](uv_tutorial.md) in these modules. Every course repository lists its dependencies in `requirements.txt`, which a conda environment installs with pip. Conda is the better choice if you already use it, or if you need programs that aren't Python packages, such as ffmpeg or a CUDA toolkit.
+> La alternativa a [uv](uv_tutorial.md) en estos módulos. Todo repositorio del curso lista sus dependencias en `requirements.txt`, que un entorno de conda instala con pip. Conda es la mejor opción si ya lo usas, o si necesitas programas que no son paquetes de Python, como ffmpeg o un toolkit de CUDA.
 
-Conda is an open-source package and environment management system that runs on Windows, macOS, and Linux. It is widely used in the data science and machine learning communities.
+Conda es un sistema de gestión de paquetes y entornos de código abierto que funciona en Windows, macOS y Linux. Se usa mucho en las comunidades de ciencia de datos y aprendizaje automático.
 
-## 1. Installation
+## 1. Instalación
 
-Install **Miniforge**, the community's minimal installer, rather than the full Anaconda distribution: it installs only conda and Python, and takes packages from the community channel `conda-forge` by default. That channel is free for everyone, while Anaconda's own default channel requires a paid licence in organisations of 200 or more people, which is why many companies and universities have moved to Miniforge.
+Instala **Miniforge**, el instalador mínimo de la comunidad, en lugar de la distribución completa de Anaconda: solo instala conda y Python, y por defecto toma los paquetes del canal comunitario `conda-forge`. Ese canal es gratuito para todo el mundo, mientras que el canal por defecto de Anaconda exige una licencia de pago en organizaciones de 200 personas o más, y por eso muchas empresas y universidades se han pasado a Miniforge.
 
-1.  **Download the installer** for your operating system from the [Miniforge releases](https://github.com/conda-forge/miniforge).
+1.  **Descarga el instalador** para tu sistema operativo desde las [versiones de Miniforge](https://github.com/conda-forge/miniforge).
 
-2.  **Run the installer**: Follow the instructions for your OS. On macOS and Linux, allow it to initialise conda, which makes it available in your terminal; on Windows, use the *Miniforge Prompt* that it adds to the Start menu.
+2.  **Ejecuta el instalador**: sigue las instrucciones de tu sistema operativo. En macOS y Linux, permite que inicialice conda, lo que hace que esté disponible en tu terminal; en Windows, usa el *Miniforge Prompt* que añade al menú Inicio.
 
-3.  **Verify installation**: Open a new terminal and run:
+3.  **Comprueba la instalación**: abre una terminal nueva y ejecuta:
     ```bash
     conda --version
     ```
-    You should see the installed conda version.
+    Deberías ver la versión de conda instalada.
 
-## 2. Installing a Course Repository
+## 2. Instalar un repositorio del curso
 
-Conda provides Python and the environment; pip, inside it, installs the packages of `requirements.txt`:
+Conda proporciona Python y el entorno; pip, dentro de él, instala los paquetes de `requirements.txt`:
 
 ```bash
 conda create --name ai python=3.13
 conda activate ai
-cd <repository>
+cd <repositorio>
 pip install -r requirements.txt
 ```
 
-Conda and pip can share an environment if conda goes first: install what you need with conda, then run pip. Installing with conda after pip can break the packages pip installed, so if you later need another conda package (ffmpeg, say), the safest course is to recreate the environment in that order.
+Conda y pip pueden compartir un entorno si conda va primero: instala con conda lo que necesites y después ejecuta pip. Instalar con conda después de pip puede romper los paquetes que instaló pip, así que si más adelante necesitas otro paquete de conda (ffmpeg, por ejemplo), lo más seguro es recrear el entorno en ese orden.
 
-## 3. Managing Environments
+## 3. Gestionar entornos
 
-A conda environment is a directory that contains a specific collection of conda packages that you have installed.
+Un entorno de conda es un directorio que contiene una colección concreta de paquetes de conda que has instalado.
 
-### Create an Environment
+### Crear un entorno
 
-To create a new environment, use `conda create`. It's good practice to specify the Python version you want to use.
+Para crear un entorno nuevo, usa `conda create`. Es buena práctica indicar la versión de Python que quieres usar.
 
 ```bash
-# Creates an environment named 'myenv' with Python 3.13
+# Crea un entorno llamado 'myenv' con Python 3.13
 conda create --name myenv python=3.13
 ```
 
-You can also install packages at the same time:
+También puedes instalar paquetes a la vez:
 
 ```bash
 conda create --name myenv python=3.13 numpy pandas jupyter
 ```
 
-### Activate and Deactivate an Environment
+### Activar y desactivar un entorno
 
-Before you can use an environment, you need to activate it.
+Antes de poder usar un entorno, tienes que activarlo.
 
 ```bash
-# Activate the environment
+# Activa el entorno
 conda activate myenv
 ```
 
-Your terminal prompt should change to show the name of the active environment.
+El prompt de tu terminal debería cambiar para mostrar el nombre del entorno activo.
 
-To deactivate the current environment and return to the base environment:
+Para desactivar el entorno actual y volver al entorno base:
 
 ```bash
-# Deactivate the environment
+# Desactiva el entorno
 conda deactivate
 ```
 
-### List Environments
+### Listar los entornos
 
-To see a list of all your environments:
+Para ver una lista de todos tus entornos:
 
 ```bash
 conda env list
 ```
 
-The active environment will be marked with an asterisk (*).
+El entorno activo aparecerá marcado con un asterisco (*).
 
-### Remove an Environment
+### Eliminar un entorno
 
-To delete an environment and all the packages installed in it:
+Para borrar un entorno y todos los paquetes instalados en él:
 
 ```bash
-# Make sure the environment is not active
+# Asegúrate de que el entorno no está activo
 conda deactivate
 
-# Remove the environment
+# Elimina el entorno
 conda env remove --name myenv
 ```
 
-## 4. Managing Packages
+## 4. Gestionar paquetes
 
-With your environment activated, you can install, update, and remove packages.
+Con el entorno activado, puedes instalar, actualizar y eliminar paquetes.
 
-### Install Packages
+### Instalar paquetes
 
-Use `conda install` to install packages from the environment's channels (with Miniforge, `conda-forge`).
+Usa `conda install` para instalar paquetes de los canales del entorno (con Miniforge, `conda-forge`).
 
 ```bash
-# Activate your environment first
+# Activa primero tu entorno
 conda activate myenv
 
-# Install packages
+# Instala paquetes
 conda install numpy pandas scikit-learn
 ```
 
-You can also specify package versions:
+También puedes indicar versiones de los paquetes:
 
 ```bash
 conda install "numpy>=2.1"
 ```
 
-### Install from other channels
+### Instalar desde otros canales
 
-A package that isn't in `conda-forge` may be in another channel, which you name with `-c`:
+Un paquete que no está en `conda-forge` puede estar en otro canal, que indicas con `-c`:
 
 ```bash
 conda install -c some-channel some-package
 ```
 
-### List Installed Packages
+### Listar los paquetes instalados
 
-To see all packages installed in the current environment:
+Para ver todos los paquetes instalados en el entorno actual:
 
 ```bash
 conda list
 ```
 
-### Update Packages
+### Actualizar paquetes
 
-To update a specific package:
+Para actualizar un paquete concreto:
 
 ```bash
 conda update numpy
 ```
 
-To update all packages in the environment:
+Para actualizar todos los paquetes del entorno:
 
 ```bash
 conda update --all
 ```
 
-### Remove Packages
+### Eliminar paquetes
 
-To uninstall a package:
+Para desinstalar un paquete:
 
 ```bash
 conda remove scikit-learn
 ```
 
-## 5. Sharing Environments
+## 5. Compartir entornos
 
-You can share your environment with others by exporting its specification to a YAML file.
+Puedes compartir tu entorno con otras personas exportando su especificación a un archivo YAML.
 
-### Export an Environment
+### Exportar un entorno
 
-1.  Activate the environment you want to export.
+1.  Activa el entorno que quieres exportar.
     ```bash
     conda activate myenv
     ```
-2.  Export the environment to a file (commonly named `environment.yml`).
+2.  Exporta el entorno a un archivo (normalmente llamado `environment.yml`).
     ```bash
     conda env export --from-history > environment.yml
     ```
 
-With `--from-history`, the file lists only the packages you asked for, so it also works on other operating systems; without it, it pins the exact build of every package, which often fails on another system. Packages installed with pip are not in it: keep them in `requirements.txt`.
+Con `--from-history`, el archivo lista solo los paquetes que pediste, así que también funciona en otros sistemas operativos; sin esa opción, fija la build exacta de cada paquete, lo que a menudo falla en otro sistema. Los paquetes instalados con pip no aparecen en él: mantenlos en `requirements.txt`.
 
-### Create an Environment from a File
+### Crear un entorno a partir de un archivo
 
-To create an environment from an `environment.yml` file:
+Para crear un entorno a partir de un archivo `environment.yml`:
 
 ```bash
 conda env create -f environment.yml
 ```
 
-This will create a new environment with the same name and packages as specified in the file.
+Esto creará un entorno nuevo con el mismo nombre y los mismos paquetes que indica el archivo.

@@ -1,63 +1,63 @@
-# The Life of a Machine Learning Project
+# La vida de un proyecto de aprendizaje automático
 
-Training a model is a small part of a machine learning project. Most of the work goes into framing the problem, getting the data right and checking that the model really works. The steps form a loop, because what you learn at one step often sends you back to an earlier one:
+Entrenar un modelo es una parte pequeña de un proyecto de aprendizaje automático. La mayor parte del trabajo se va en plantear el problema, conseguir unos datos correctos y comprobar que el modelo de verdad funciona. Los pasos forman un ciclo, porque lo que aprendes en un paso a menudo te devuelve a uno anterior:
 
 ```text
-frame the problem → get and explore the data → prepare the data → train and tune → evaluate → deploy and monitor
+plantear el problema → obtener y explorar los datos → preparar los datos → entrenar y ajustar → evaluar → desplegar y monitorizar
 ```
 
-## The Steps
+## Los pasos
 
-### Frame the Problem
+### Plantear el problema
 
-- **What exactly is predicted,** for whom, and which decision the prediction changes.
-- **How success is measured:** a measure that matters to the people who use the model, such as fewer unpaid loans, and a model metric that follows it, chosen before any model is trained.
-- **A baseline:** the simplest possible answer, such as the mean price of all the houses, or the most frequent class. A model is only worth its cost if it clearly beats it.
-- **Whether machine learning is needed at all:** if a few clear rules solve the problem, write the rules ([rules and expert systems](../deep-dives/classical-ai/rules_and_expert_systems.ipynb)).
+- **Qué se predice exactamente,** para quién, y qué decisión cambia la predicción.
+- **Cómo se mide el éxito:** una medida que importe a quienes usan el modelo, como menos préstamos impagados, y una métrica del modelo que la siga, elegida antes de entrenar ningún modelo.
+- **Una referencia (*baseline*):** la respuesta más sencilla posible, como el precio medio de todas las casas, o la clase más frecuente. Un modelo solo vale lo que cuesta si la supera claramente.
+- **Si hace falta aprendizaje automático:** si unas pocas reglas claras resuelven el problema, escribe las reglas ([reglas y sistemas expertos](../deep-dives/classical-ai/rules_and_expert_systems.ipynb)).
 
-### Get and Explore the Data
+### Obtener y explorar los datos
 
-- Where the data comes from, what each column means and how it was measured, and how much there is.
-- **Exploration** (*exploratory data analysis*, EDA): the distribution of each column, the relations between columns, and the problems: missing values, errors, duplicates, extreme values. The tools are those of [Python data essentials](../../../pia/python-data-essentials/README.md).
-- *Garbage in, garbage out*: no model can find an answer that the data doesn't contain.
+- De dónde vienen los datos, qué significa cada columna y cómo se midió, y cuántos hay.
+- **Exploración** (*análisis exploratorio de datos*, EDA): la distribución de cada columna, las relaciones entre columnas, y los problemas: valores ausentes, errores, duplicados, valores extremos. Las herramientas son las de [Lo esencial de Python para datos](../../../pia/python-data-essentials/README.md).
+- *Garbage in, garbage out* (si entra basura, sale basura): ningún modelo puede encontrar una respuesta que los datos no contienen.
 
-### Prepare the Data
+### Preparar los datos
 
-- **Set the test set aside first,** before deciding anything from the data (see [generalisation](#generalisation-the-central-problem) below).
-- Clean the data, encode categories as numbers, scale, and create the features that help the model (*feature engineering*), deciding each step on the training data only. The data-preparation deep dive *(coming)* goes through each of them.
+- **Aparta primero el conjunto de test,** antes de decidir nada a partir de los datos (consulta la [generalización](#generalización-el-problema-central) más abajo).
+- Limpia los datos, codifica las categorías como números, escala, y crea las características que ayudan al modelo (*feature engineering*), decidiendo cada paso solo con los datos de entrenamiento. La profundización sobre preparación de datos *(próximamente)* recorre cada uno de ellos.
 
-### Train and Tune
+### Entrenar y ajustar
 
-- Choose a few candidate algorithms that suit the task and the data ([choosing the right algorithm](ml_algorithms_history.md#choosing-the-right-algorithm)).
-- Train each one, and tune its hyperparameters on validation data, never on the test set.
+- Elige unos pocos algoritmos candidatos que encajen con la tarea y los datos ([elegir el algoritmo adecuado](ml_algorithms_history.md#elegir-el-algoritmo-adecuado)).
+- Entrena cada uno y ajusta sus hiperparámetros con datos de validación, nunca con el conjunto de test.
 
-### Evaluate
+### Evaluar
 
-- Measure the chosen model on the test set, once, with the metric chosen at the start, and compare it with the baseline.
-- Read the errors: which examples fail, and why. Check that the model works equally well for the different groups of people it affects.
-- If it isn't good enough, go back: more or better data, other features, another model.
+- Mide el modelo elegido en el conjunto de test, una sola vez, con la métrica elegida al principio, y compáralo con la referencia.
+- Lee los errores: qué ejemplos fallan y por qué. Comprueba que el modelo funciona igual de bien para los distintos grupos de personas a los que afecta.
+- Si no es lo bastante bueno, vuelve atrás: más datos o mejores, otras características, otro modelo.
 
-### Deploy and Monitor
+### Desplegar y monitorizar
 
-- **Put the model where it is used:** predictions in batches (every night, for every customer), on demand behind a web API (each time a form is sent), or on a device such as a phone. This is the topic on serving models *(coming)*.
-- **Watch it in use.** The world changes, and a model trained on last year's data slowly gets worse: this is called *drift*. Track its performance, and retrain it on recent data when it drops.
+- **Pon el modelo donde se usa:** predicciones por lotes (cada noche, para cada cliente), bajo demanda detrás de una API web (cada vez que se envía un formulario), o en un dispositivo como un móvil. Este es el tema sobre servir modelos *(próximamente)*.
+- **Vigílalo mientras se usa.** El mundo cambia, y un modelo entrenado con los datos del año pasado empeora poco a poco: esto se llama *deriva* (*drift*). Sigue su rendimiento, y vuelve a entrenarlo con datos recientes cuando baje.
 
-## Generalisation: the Central Problem
+## Generalización: el problema central
 
-The goal is not to fit the training data, but to predict well for examples the model has never seen: to **generalise**. A model can be perfect on its training data by memorising it and still fail on new data, so its score on the training data proves nothing. Three models that predict the price of a house from its area:
+El objetivo no es ajustarse a los datos de entrenamiento, sino predecir bien para ejemplos que el modelo nunca ha visto: **generalizar**. Un modelo puede ser perfecto con sus datos de entrenamiento memorizándolos y aun así fallar con datos nuevos, así que su puntuación con los datos de entrenamiento no demuestra nada. Tres modelos que predicen el precio de una casa a partir de su superficie:
 
-| Model | Error on its training data | Error on new data | Diagnosis |
+| Modelo | Error con sus datos de entrenamiento | Error con datos nuevos | Diagnóstico |
 | --- | --- | --- | --- |
-| A straight line, when the price grows faster than the area | High | High | **Underfitting:** too simple to capture the pattern |
-| A model of the right complexity | Low | Low, a little higher | A good fit |
-| A tree grown until each leaf holds a single house | Almost zero | High | **Overfitting:** it learned the noise of its examples, not only the pattern |
+| Una línea recta, cuando el precio crece más rápido que la superficie | Alto | Alto | **Subajuste** (*underfitting*): demasiado sencillo para captar el patrón |
+| Un modelo de la complejidad adecuada | Bajo | Bajo, algo más alto | Un buen ajuste |
+| Un árbol que crece hasta que cada hoja contiene una sola casa | Casi cero | Alto | **Sobreajuste** (*overfitting*): aprendió el ruido de sus ejemplos, no solo el patrón |
 
-That is why the data is split into three sets:
+Por eso los datos se dividen en tres conjuntos:
 
-- the **training set**, to fit the model's parameters;
-- the **validation set**, to choose between models and hyperparameters; *cross-validation* does the same by taking turns with parts of the training set;
-- the **test set**, kept apart and used once, at the end. A test set that has been used to choose a model no longer measures new data, and gives an optimistic score.
+- el **conjunto de entrenamiento**, para ajustar los parámetros del modelo;
+- el **conjunto de validación**, para elegir entre modelos e hiperparámetros; la *validación cruzada* hace lo mismo turnándose con partes del conjunto de entrenamiento;
+- el **conjunto de test**, guardado aparte y usado una sola vez, al final. Un conjunto de test que se ha usado para elegir un modelo ya no mide datos nuevos, y da una puntuación optimista.
 
-**Data leakage** is the same mistake in disguise: information the model won't have when it predicts gets into its training. Two examples: scaling the data with the mean of all of it, test set included; or predicting whether a loan will be repaid with a feature that is only known afterwards, such as the date it was written off. A score that looks too good to be true usually is.
+La **fuga de datos** (*data leakage*) es el mismo error disfrazado: se cuela en el entrenamiento información que el modelo no tendrá cuando prediga. Dos ejemplos: escalar los datos con la media de todos ellos, incluido el conjunto de test; o predecir si se devolverá un préstamo con una característica que solo se conoce después, como la fecha en que se dio por incobrable. Una puntuación que parece demasiado buena para ser verdad normalmente lo es.
 
-How to measure all this, and how to avoid these mistakes, is the core of supervised learning *(coming)*.
+Cómo medir todo esto, y cómo evitar estos errores, es el núcleo del aprendizaje supervisado *(próximamente)*.

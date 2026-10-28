@@ -1,59 +1,59 @@
-# How You Are Assessed
+# Cómo se te evalúa
 
-SAA and PIA each give their own grade, and both are assessed the same way: **your grade comes from in-person exams**, and accepted contributions to the course repositories can add up to 2 points.
+SAA y PIA dan cada uno su propia nota, y los dos se evalúan de la misma forma: **tu nota sale de exámenes presenciales**, y las contribuciones aceptadas a los repositorios del curso pueden sumar hasta 2 puntos.
 
-## The exams
+## Los exámenes
 
-| Exam | SAA | PIA | What it covers |
+| Examen | SAA | PIA | Qué abarca |
 | --- | --- | --- | --- |
-| February | Tue 2 Feb | Thu 4 Feb | Term 1 (stages 1–7). **It is the rehearsal for May:** compulsory and graded, and it can raise your grade (below) |
-| May | Mon 24 May | Wed 26 May | **The whole year.** It gives your grade |
-| June | Thu 10 Jun | Mon 14 Jun | The same as May, as a second chance: the better result counts |
+| Febrero | mar 2 feb | jue 4 feb | Primer trimestre (etapas 1–7). **Es el ensayo de mayo:** obligatorio y calificado, y puede subir tu nota (ver abajo) |
+| Mayo | lun 24 may | mié 26 may | **Todo el curso.** Da tu nota |
+| Junio | jue 10 jun | lun 14 jun | Lo mismo que mayo, como segunda oportunidad: cuenta el mejor resultado |
 
-The two topics that start term 2 in the week of the February exams (neural networks part 1, and tool calling) are not in the February exam.
+Los dos temas que empiezan el segundo trimestre en la semana de los exámenes de febrero (redes neuronales parte 1, y llamadas a herramientas) no entran en el examen de febrero.
 
-The exams run in person, without network and without any AI tool: not even a local model may be installed in your account. You can use any material on the computer, including the class material. Each exam has two parts with the same weight:
+Los exámenes son presenciales, sin red y sin ninguna herramienta de IA: no se puede tener instalado ni siquiera un modelo local en tu cuenta. Puedes usar cualquier material del ordenador, incluido el material de clase. Cada examen tiene dos partes con el mismo peso:
 
-| Part | What it asks |
+| Parte | Qué se pide |
 | --- | --- |
-| 1. Quiz | Multiple-choice questions on Moodle, on every stage the exam covers, including those without project work: concepts; cases (a described problem: which approach, which split, which metric); numbers (read a confusion matrix, estimate a cost or a reliability); and design choices (which architecture fits a budget, which test would catch a bug, which instruction to an AI agent is better) |
-| 2. The projects | Written answers on repositories you have worked on during the year, installed offline, with a change made for that sitting (a planted bug, a new requirement, another dataset, a different target): predict the effect of a change, then run the code to check it; diagnose a problem; write the instructions you would give an AI agent for a change, and the test that would show it is done; critique the evaluation. You will not be asked to write code from scratch |
+| 1. Cuestionario | Preguntas tipo test en Moodle, sobre todas las etapas que abarca el examen, incluidas las que no tienen trabajo de proyecto: conceptos; casos (un problema descrito: qué enfoque, qué división, qué métrica); números (leer una matriz de confusión, estimar un coste o una fiabilidad); y decisiones de diseño (qué arquitectura encaja con un presupuesto, qué test detectaría un bug, qué instrucción a un agente de IA es mejor) |
+| 2. Los proyectos | Respuestas escritas sobre repositorios en los que has trabajado durante el curso, instalados sin conexión, con un cambio hecho para esa convocatoria (un bug introducido, un requisito nuevo, otro dataset, otra variable objetivo): predecir el efecto de un cambio y luego ejecutar el código para comprobarlo; diagnosticar un problema; escribir las instrucciones que le darías a un agente de IA para un cambio, y el test que demostraría que está hecho; criticar la evaluación. No se te pedirá escribir código desde cero |
 
-## Your grade
+## Tu nota
 
-Each exam, February, May and June, is the mean of its two parts:
+Cada examen, febrero, mayo y junio, es la media de sus dos partes:
 
-$$E = \frac{\text{quiz} + \text{projects}}{2}$$
+$$E = \frac{\text{cuestionario} + \text{proyectos}}{2}$$
 
-Each part must reach 4: with a part below 4, the exam counts at most 4. An exam you don't sit counts 0.
+Cada parte debe llegar a 4: con una parte por debajo de 4, el examen cuenta como máximo un 4. Un examen al que no te presentas cuenta 0.
 
-May gives your grade, and February can raise it, never lower it: May counts on its own or averaged with February, whichever is higher. June works the same way, as a second chance:
+Mayo da tu nota, y febrero puede subirla, nunca bajarla: mayo cuenta por sí solo o promediado con febrero, lo que sea mayor. Junio funciona igual, como segunda oportunidad:
 
-$$G_\text{May} = \max\left(E_\text{May},\ \frac{E_\text{Feb} + E_\text{May}}{2}\right) \qquad G_\text{June} = \max\left(E_\text{June},\ \frac{E_\text{Feb} + E_\text{June}}{2}\right)$$
+$$G_\text{mayo} = \max\left(E_\text{mayo},\ \frac{E_\text{feb} + E_\text{mayo}}{2}\right) \qquad G_\text{junio} = \max\left(E_\text{junio},\ \frac{E_\text{feb} + E_\text{junio}}{2}\right)$$
 
-The average with February counts only when both parts of that exam reach 4; otherwise its $G$ is its $E$, at most 4.
+La media con febrero solo cuenta cuando las dos partes de ese examen llegan a 4; si no, su $G$ es su $E$, como máximo 4.
 
-The better of May and June counts, and you pass with a 5. Once you have passed, accepted contributions add $C$, from 0 to 2 points ([below](#contributions)), never above 10:
+Cuenta la mejor entre mayo y junio, y se aprueba con un 5. Una vez aprobado, las contribuciones aceptadas suman $C$, de 0 a 2 puntos ([ver abajo](#contribuciones)), nunca por encima de 10:
 
-$$\text{grade} = \min\left(10,\ \max(G_\text{May},\ G_\text{June}) + C\right)$$
+$$\text{nota} = \min\left(10,\ \max(G_\text{mayo},\ G_\text{junio}) + C\right)$$
 
-The grade is rounded to the nearest whole number, halves up; a grade below 5 is never rounded up to a pass.
+La nota se redondea al entero más cercano, las mitades hacia arriba; una nota por debajo de 5 nunca se redondea hasta el aprobado.
 
-## The projects
+## Los proyectos
 
-Through the year you work on [projects](working-plan.md#the-projects): public repositories that you fork and build on step by step. Your pull requests are your submissions: they receive feedback, and they are never graded, except as [contributions](#contributions). The exams ask you to work on their code, so the best preparation is to have built them, or at least to have followed them closely.
+A lo largo del curso trabajas en [proyectos](working-plan.md#los-proyectos): repositorios públicos de los que haces fork y que vas desarrollando paso a paso. Tus pull requests son tus entregas: reciben feedback y nunca se califican, salvo como [contribuciones](#contribuciones). Los exámenes te piden trabajar sobre su código, así que la mejor preparación es haberlos construido o, al menos, haberlos seguido de cerca.
 
-The practical part of each exam works on some of these repositories, and possibly on the worked examples. **Which ones, and the version (tag) of each to study, are announced at least two weeks before the exam.** Each version is the repository as it stood a week before the exam or earlier: only what had been published by then is examined, never the complementary material in a repository's `docs/`. The questions are about a change you haven't seen, so reciting the code won't help; understanding it will. Everything runs offline, without a language model.
+La parte práctica de cada examen trabaja sobre algunos de estos repositorios, y posiblemente sobre los ejemplos resueltos. **Cuáles, y la versión (tag) de cada uno que hay que estudiar, se anuncian al menos dos semanas antes del examen.** Cada versión es el repositorio tal como estaba una semana antes del examen o antes: solo se examina lo que se había publicado para entonces, nunca el material complementario de la carpeta `docs/` de un repositorio. Las preguntas tratan sobre un cambio que no has visto, así que recitar el código no te servirá; entenderlo, sí. Todo se ejecuta sin conexión, sin modelo de lenguaje.
 
-**You are expected to use AI tools.** What is assessed is your understanding: AI tools can write most of the code for you, but they can't understand it for you, and that is what the exam checks. Make sure you can explain, test and change the projects' code, and that you could direct an AI agent to change it well.
+**Se espera que uses herramientas de IA.** Lo que se evalúa es tu comprensión: las herramientas de IA pueden escribir la mayor parte del código por ti, pero no pueden entenderlo por ti, y eso es lo que comprueba el examen. Asegúrate de que puedes explicar, probar y modificar el código de los proyectos, y de que sabrías dirigir bien a un agente de IA para modificarlo.
 
-## Contributions
+## Contribuciones
 
-Contributions are voluntary, and you can get a 10 without them. Useful issues (a problem well identified, even without a fix) and pull requests to any course repository, once accepted, can add up to 2 points to the grade of a module whose exam you have passed, never above 10. How they are valued is described in the programación. Register your GitHub username in the aula virtual so that they can be counted. How to take part: [Improving the course materials](../CONTRIBUTING.md).
+Las contribuciones son voluntarias, y puedes sacar un 10 sin ellas. Las issues útiles (un problema bien identificado, aunque no traiga solución) y los pull requests a cualquier repositorio del curso, una vez aceptados, pueden sumar hasta 2 puntos a la nota de un módulo cuyo examen hayas aprobado, nunca por encima de 10. Cómo se valoran se describe en la programación. Registra tu usuario de GitHub en el aula virtual para que se puedan contar. Cómo participar: [Mejorar los materiales del curso](../CONTRIBUTING.md).
 
-## Everything else
+## Todo lo demás
 
-- **Core items** (★ in each topic's README) are the minimum path. The project part of each exam needs only them and the repositories it uses, and about two thirds of the quiz is about them; the rest of the quiz is about the **standard** items: the rest of the path and the worked examples.
-- **Deep dives** are never assessed.
-- **Worked examples** (the repositories that apply each stage to real data) are studied, and the quiz can ask about them. Some topics, such as classification, are practised only there.
-- **Practice tasks** (suggested by the topics and the worked examples) are never graded. They are the best preparation for the exam, and you can ask for feedback on any of them.
+- Los **elementos básicos** (★ en el README de cada tema) son el itinerario mínimo. La parte de proyectos de cada examen solo necesita esos elementos y los repositorios que usa, y unas dos terceras partes del cuestionario tratan sobre ellos; el resto del cuestionario trata sobre los elementos **estándar**: el resto del itinerario y los ejemplos resueltos.
+- Las **profundizaciones** nunca se evalúan.
+- Los **ejemplos resueltos** (los repositorios que aplican cada etapa a datos reales) se estudian, y el cuestionario puede preguntar por ellos. Algunos temas, como la clasificación, solo se practican ahí.
+- Las **tareas de práctica** (propuestas por los temas y los ejemplos resueltos) nunca se califican. Son la mejor preparación para el examen, y puedes pedir feedback sobre cualquiera de ellas.

@@ -1,45 +1,47 @@
-# Artificial Intelligence 2026/27
+# Inteligencia Artificial 2026/27
 
-Materials for two modules of the specialisation course in Artificial Intelligence and Big Data, taught together as one path:
+> 🇪🇸 **Traducción al español** del repositorio original de [avidaldo/ai](https://github.com/avidaldo/ai), hecha por un alumno para ayudar a los compañeros. La versión de referencia es siempre la original en inglés: si algo no cuadra, consúltala.
 
-- **SAA · Machine Learning Systems**: how models learn from data, how they are trained, and how to tell whether they really work.
-- **PIA · AI Programming**: building software with AI: Python and its tooling, language models, retrieval, agents, deployment and automation.
+Materiales de dos módulos del curso de especialización en Inteligencia Artificial y Big Data, impartidos juntos como un único itinerario:
 
-## Start here
+- **SAA · Sistemas de Aprendizaje Automático**: cómo aprenden los modelos a partir de los datos, cómo se entrenan y cómo saber si de verdad funcionan.
+- **PIA · Programación de Inteligencia Artificial**: construir software con IA: Python y sus herramientas, modelos de lenguaje, recuperación de información, agentes, despliegue y automatización.
 
-1. **[Working plan](course/working-plan.md)**: how to work through the year, the three tiers of each topic, the projects you fork and build on, and how to practise.
-2. **[How you are assessed](course/assessment.md)**: the exams, how your grade is calculated, and how contributions count.
-3. **[Improving the materials](CONTRIBUTING.md)**: report errors, ask for clearer explanations, or fix things yourself.
+## Empieza aquí
 
-## Roadmap
+1. **[Plan de trabajo](course/working-plan.md)**: cómo organizarte durante el curso, los tres niveles de cada tema, los proyectos que haces fork y desarrollas, y cómo practicar.
+2. **[Cómo se te evalúa](course/assessment.md)**: los exámenes, cómo se calcula tu nota y cómo cuentan las contribuciones.
+3. **[Mejorar los materiales](CONTRIBUTING.md)**: informa de errores, pide explicaciones más claras o arregla cosas tú mismo.
 
-The year in fifteen stages, in the order we work through them; it adapts as the year goes. Each stage belongs to one module: if you take only one, follow its rows. Two stages build on the other module: building with language models (5, PIA) builds on the note on language models of stage 2 (SAA), and RAG (11, PIA) needs how language models work (10, SAA).
+## Hoja de ruta
 
-Each topic's README gives its path, with the core items marked ★. The worked examples, and the software you build and run, are repositories of their own. Items marked *(coming)* are being written, and are linked when they are ready.
+El curso en quince etapas, en el orden en que las trabajamos; se adapta a medida que avanza el año. Cada etapa pertenece a un módulo: si solo cursas uno, sigue sus filas. Dos etapas se apoyan en el otro módulo: construir con modelos de lenguaje (5, PIA) se apoya en la nota sobre modelos de lenguaje de la etapa 2 (SAA), y RAG (11, PIA) necesita saber cómo funcionan los modelos de lenguaje (10, SAA).
 
-### Term 1
+El README de cada tema indica su itinerario, con los elementos básicos marcados con ★. Los ejemplos resueltos, y el software que construyes y ejecutas, son repositorios propios. Los elementos marcados como *(próximamente)* se están escribiendo y se enlazarán cuando estén listos.
 
-| # | Stage | Module | Topic | Worked examples and deep dives |
+### Primer trimestre
+
+| # | Etapa | Módulo | Tema | Ejemplos resueltos y profundizaciones |
 | ---: | --- | --- | --- | --- |
-| 1 | Getting started | PIA | [Setting up](pia/setup/README.md): Python, uv or conda, Git and GitHub, working with an AI coding assistant | First task: [numpy-mnist](https://github.com/avidaldo/numpy-mnist), forked in week 1. Deep dives: [a specs-driven Copilot workflow in VS Code](https://github.com/avidaldo/tutorial-SSD-customizations-VSCode/blob/main/tutorial.md), [Copilot customizations](https://github.com/avidaldo/vccode-customizations-AI-intro) |
-| 2 | What AI and machine learning are | SAA | [The map of the year](saa/concepts/README.md): what AI and machine learning are, and each family of models seen from the outside | Deep dives: [classical AI, intelligence without learning](saa/concepts/deep-dives/classical-ai/README.md), [probability and Bayes' theorem](saa/concepts/deep-dives/probability/README.md) |
-| 3 | Python for AI | PIA | [Why Python rules AI](pia/setup/why_python.md) although it is slow; program structure, with [tic-tac-toe](https://github.com/avidaldo/python-tic-tac-toe), recommended | Deep dive: [compare-python-c-efficiency](https://github.com/avidaldo/compare-python-c-efficiency), to measure it yourself |
-| 4 | Working with data | PIA | [Python data essentials](pia/python-data-essentials/README.md): NumPy and pandas to load, inspect, reshape and combine data, find the problems in a table, and get data from web APIs | Exercises: [numpy-mnist](https://github.com/avidaldo/numpy-mnist) |
-| 5 | Building with language models | PIA | Calling models locally and through an API, prompts, structured output, testing and measuring a component that uses a model *(coming)*. Builds on the stage-2 note [Language models from the outside](saa/concepts/background/language_models.md) | Worked example: [a chatbot with guardrails](https://github.com/avidaldo/ai-chat-guardrails), on a local or a remote model |
-| 6 | Supervised learning | SAA | Regression and classification, and how to tell whether a model really works *(coming)*. Builds on the stage-2 note [The life of a machine learning project](saa/concepts/background/ml_project_lifecycle.md) | Worked examples: [California housing](https://github.com/avidaldo/california_e2e), [King County house sales](https://github.com/avidaldo/king-county), [thyroid disease](https://github.com/avidaldo/thyroid). Deep dive: data preparation, from exploration to encoding and scaling *(coming)* |
-| 7 | Serving models | PIA | A model behind a web API and a demo, in a container, deployed *(coming)* | Worked examples: [an image classifier served with FastAPI](https://github.com/avidaldo/cifar-10-fastapi), and [the same classifier as a Gradio app](https://huggingface.co/spaces/avidaldo/cifar-10-fastapi-gradio) |
+| 1 | Primeros pasos | PIA | [Preparar el entorno](pia/setup/README.md): Python, uv o conda, Git y GitHub, trabajar con un asistente de programación con IA | Primera tarea: [numpy-mnist](https://github.com/avidaldo/numpy-mnist), del que haces fork en la semana 1. Profundizaciones: [un flujo de trabajo con Copilot guiado por especificaciones en VS Code](https://github.com/avidaldo/tutorial-SSD-customizations-VSCode/blob/main/tutorial.md), [personalizaciones de Copilot](https://github.com/avidaldo/vccode-customizations-AI-intro) |
+| 2 | Qué son la IA y el aprendizaje automático | SAA | [El mapa del curso](saa/concepts/README.md): qué son la IA y el aprendizaje automático, y cada familia de modelos vista desde fuera | Profundizaciones: [IA clásica, inteligencia sin aprendizaje](saa/concepts/deep-dives/classical-ai/README.md), [probabilidad y teorema de Bayes](saa/concepts/deep-dives/probability/README.md) |
+| 3 | Python para IA | PIA | [Por qué Python domina la IA](pia/setup/why_python.md) aunque sea lento; estructura de un programa, con [tres en raya](https://github.com/avidaldo/python-tic-tac-toe), recomendado | Profundización: [compare-python-c-efficiency](https://github.com/avidaldo/compare-python-c-efficiency), para medirlo tú mismo |
+| 4 | Trabajar con datos | PIA | [Lo esencial de Python para datos](pia/python-data-essentials/README.md): NumPy y pandas para cargar, inspeccionar, remodelar y combinar datos, encontrar los problemas de una tabla y obtener datos de APIs web | Ejercicios: [numpy-mnist](https://github.com/avidaldo/numpy-mnist) |
+| 5 | Construir con modelos de lenguaje | PIA | Llamar a modelos en local y a través de una API, prompts, salida estructurada, probar y medir un componente que usa un modelo *(próximamente)*. Se apoya en la nota de la etapa 2 [Los modelos de lenguaje vistos desde fuera](saa/concepts/background/language_models.md) | Ejemplo resuelto: [un chatbot con salvaguardas](https://github.com/avidaldo/ai-chat-guardrails), con un modelo local o remoto |
+| 6 | Aprendizaje supervisado | SAA | Regresión y clasificación, y cómo saber si un modelo de verdad funciona *(próximamente)*. Se apoya en la nota de la etapa 2 [La vida de un proyecto de aprendizaje automático](saa/concepts/background/ml_project_lifecycle.md) | Ejemplos resueltos: [viviendas de California](https://github.com/avidaldo/california_e2e), [ventas de casas en King County](https://github.com/avidaldo/king-county), [enfermedad de tiroides](https://github.com/avidaldo/thyroid). Profundización: preparación de datos, desde la exploración hasta la codificación y el escalado *(próximamente)* |
+| 7 | Servir modelos | PIA | Un modelo detrás de una API web y una demo, en un contenedor, desplegado *(próximamente)* | Ejemplos resueltos: [un clasificador de imágenes servido con FastAPI](https://github.com/avidaldo/cifar-10-fastapi), y [el mismo clasificador como app de Gradio](https://huggingface.co/spaces/avidaldo/cifar-10-fastapi-gradio) |
 
-### Term 2
+### Segundo trimestre
 
-| # | Stage | Module | Topic | Worked examples and deep dives |
+| # | Etapa | Módulo | Tema | Ejemplos resueltos y profundizaciones |
 | ---: | --- | --- | --- | --- |
-| 8 | Neural networks | SAA | How a network learns, networks for tables, convolutional networks, reusing a pretrained network *(coming)*. Builds on the stage-2 note [Neural networks from the outside](saa/concepts/background/neural_networks.md) | |
-| 9 | Agents and MCP | PIA | Tool calling, agents that use tools safely, and MCP, a standard protocol to connect models to tools *(coming)* | |
-| 10 | How language models work | SAA | From words as counts to embeddings, attention and transformers *(coming)*. Builds on the stage-2 note [Language models from the outside](saa/concepts/background/language_models.md) | |
-| 11 | Retrieval-augmented generation (RAG) | PIA | Grounding a model's answers in your own documents, with answers that cite their sources *(coming)* | |
-| 12 | Automation and business | PIA | Making AI systems run on their own, and deciding whether they are worth it *(coming)* | |
-| 13 | Unsupervised learning | SAA | Clustering, dimensionality reduction and anomaly detection *(coming)* | |
-| 14 | Vision and voice with pretrained models | PIA | [Computer vision](https://github.com/avidaldo/computer-vision) with OpenCV, YOLO object detection, CLIP embeddings and a face-authentication app. Voice with pretrained models: speech to text and text to speech *(coming)* | |
-| 15 | Reinforcement learning | SAA | [Learning from rewards](saa/reinforcement-learning/README.md): agents, environments and Q-learning | Worked example: [tic-tac-toe with Q-learning](https://github.com/avidaldo/tictactoe-qlearning), from the simplest version to an agent that never loses |
+| 8 | Redes neuronales | SAA | Cómo aprende una red, redes para tablas, redes convolucionales, reutilizar una red preentrenada *(próximamente)*. Se apoya en la nota de la etapa 2 [Las redes neuronales vistas desde fuera](saa/concepts/background/neural_networks.md) | |
+| 9 | Agentes y MCP | PIA | Llamadas a herramientas (*tool calling*), agentes que usan herramientas de forma segura, y MCP, un protocolo estándar para conectar modelos con herramientas *(próximamente)* | |
+| 10 | Cómo funcionan los modelos de lenguaje | SAA | De las palabras como recuentos a los *embeddings*, la atención y los *transformers* *(próximamente)*. Se apoya en la nota de la etapa 2 [Los modelos de lenguaje vistos desde fuera](saa/concepts/background/language_models.md) | |
+| 11 | Generación aumentada por recuperación (RAG) | PIA | Basar las respuestas de un modelo en tus propios documentos, con respuestas que citan sus fuentes *(próximamente)* | |
+| 12 | Automatización y negocio | PIA | Hacer que los sistemas de IA funcionen solos, y decidir si merecen la pena *(próximamente)* | |
+| 13 | Aprendizaje no supervisado | SAA | *Clustering*, reducción de dimensionalidad y detección de anomalías *(próximamente)* | |
+| 14 | Visión y voz con modelos preentrenados | PIA | [Visión por computador](https://github.com/avidaldo/computer-vision) con OpenCV, detección de objetos con YOLO, *embeddings* CLIP y una app de autenticación facial. Voz con modelos preentrenados: de voz a texto y de texto a voz *(próximamente)* | |
+| 15 | Aprendizaje por refuerzo | SAA | [Aprender de las recompensas](saa/reinforcement-learning/README.md): agentes, entornos y Q-learning | Ejemplo resuelto: [tres en raya con Q-learning](https://github.com/avidaldo/tictactoe-qlearning), desde la versión más sencilla hasta un agente que nunca pierde |
 
-The February exam covers term 1, and the May exam the whole year: see [how you are assessed](course/assessment.md).
+El examen de febrero cubre el primer trimestre, y el de mayo, todo el curso: consulta [cómo se te evalúa](course/assessment.md).

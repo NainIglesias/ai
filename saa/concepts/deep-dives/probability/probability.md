@@ -1,45 +1,45 @@
-# Probability
+# Probabilidad
 
-**Probability** measures how certain an event is, as a number between 0 (impossible) and 1 (certain), often written as a percentage. If the probability of an event A is P(A), the probability that it doesn't happen is P(¬A) = 1 − P(A).
+La **probabilidad** mide lo seguro que es un suceso, como un número entre 0 (imposible) y 1 (seguro), a menudo escrito como porcentaje. Si la probabilidad de un suceso A es P(A), la probabilidad de que no ocurra es P(¬A) = 1 − P(A).
 
-## The Frequentist Interpretation
+## La interpretación frecuentista
 
-For a frequentist, the probability of an event is the proportion of times it happens when an experiment is repeated many times. A fair die shows a 6 with probability 1/6 because, over many throws, about one throw in six is a 6. Probability is a property of the repeatable experiment, not of anyone's knowledge.
+Para un frecuentista, la probabilidad de un suceso es la proporción de veces que ocurre cuando un experimento se repite muchas veces. Un dado no trucado saca un 6 con probabilidad 1/6 porque, a lo largo de muchas tiradas, aproximadamente una de cada seis es un 6. La probabilidad es una propiedad del experimento repetible, no del conocimiento de nadie.
 
-Machine learning uses this view whenever it estimates a probability by counting: the share of spam among the emails of a training set, or the error rate of a model on a test set. Classical statistics, with its hypothesis tests and confidence intervals, is built on it.
+El aprendizaje automático usa esta visión siempre que estima una probabilidad contando: la proporción de spam entre los emails de un conjunto de entrenamiento, o la tasa de error de un modelo en un conjunto de test. La estadística clásica, con sus contrastes de hipótesis e intervalos de confianza, se basa en ella.
 
-## The Bayesian Interpretation
+## La interpretación bayesiana
 
-For a Bayesian, a probability is a **degree of belief** about something uncertain, which need not be repeatable: the probability that it will rain tomorrow, or that a given patient has a disease. A belief starts as a **prior** and is updated into a **posterior** as evidence arrives, with [Bayes' theorem](bayes_theorem.md). A forecast of tomorrow's rain, for example, combines how often it rains at this time of year with today's measurements of pressure and humidity.
+Para un bayesiano, una probabilidad es un **grado de creencia** sobre algo incierto, que no tiene por qué ser repetible: la probabilidad de que llueva mañana, o de que un paciente concreto tenga una enfermedad. Una creencia empieza como probabilidad **a priori** y se actualiza a una probabilidad **a posteriori** a medida que llega la evidencia, con el [teorema de Bayes](bayes_theorem.md). Una previsión de lluvia para mañana, por ejemplo, combina lo a menudo que llueve en esta época del año con las mediciones de presión y humedad de hoy.
 
-This view is the basis of the Bayesian networks used in diagnosis ([reasoning under uncertainty](../classical-ai/uncertainty.ipynb)), of spam filters that update their beliefs with every new email, and of methods that report how uncertain a prediction is, not just the prediction.
+Esta visión es la base de las redes bayesianas que se usan en diagnóstico ([razonamiento con incertidumbre](../classical-ai/uncertainty.ipynb)), de los filtros de spam que actualizan sus creencias con cada email nuevo, y de los métodos que informan de lo incierta que es una predicción, no solo de la predicción.
 
-Both views use the same mathematics. They differ in what a probability means.
+Las dos visiones usan las mismas matemáticas. Se diferencian en lo que significa una probabilidad.
 
-## Conditional Probability
+## Probabilidad condicionada
 
-The probability of an event A **given** that an event B has happened is written P(A|B): for example, the probability that a patient has a disease given that a test is positive.
+La probabilidad de un suceso A **dado** que ha ocurrido un suceso B se escribe P(A|B): por ejemplo, la probabilidad de que un paciente tenga una enfermedad dado que una prueba da positivo.
 
-Knowing that B happened shrinks the world of possibilities, the **sample space** Ω, to the outcomes in B. Within it, A happens only where both happen, in A ∩ B:
+Saber que ocurrió B reduce el mundo de posibilidades, el **espacio muestral** Ω, a los resultados que hay en B. Dentro de él, A solo ocurre donde ocurren los dos, en A ∩ B:
 
-![Two overlapping events A and B in the sample space Ω](img/conditional_probability.png)
+![Dos sucesos A y B que se solapan en el espacio muestral Ω](img/conditional_probability.png)
 
-$$ P(A|B) = \frac{P(A \cap B)}{P(B)}, \quad \text{with } P(B) > 0 $$
+$$ P(A|B) = \frac{P(A \cap B)}{P(B)}, \quad \text{con } P(B) > 0 $$
 
-Rearranged, it gives the probability that both events happen:
+Reordenada, da la probabilidad de que ocurran los dos sucesos:
 
 $$ P(A \cap B) = P(A|B) \times P(B) $$
 
-## The Law of Total Probability
+## La ley de la probabilidad total
 
-An event B happens either together with A or together with ¬A, never both. Its probability is therefore the sum of the two cases:
+Un suceso B ocurre o junto con A o junto con ¬A, nunca con los dos. Su probabilidad es por tanto la suma de los dos casos:
 
 $$ P(B) = P(B \cap A) + P(B \cap \neg A) = P(B|A) \times P(A) + P(B|\neg A) \times P(\neg A) $$
 
-The [diagnostic test](diagnostic_test.md) uses it to find how often a test is positive at all.
+La [prueba diagnóstica](diagnostic_test.md) la usa para calcular con qué frecuencia da positivo una prueba en general.
 
-## Sources
+## Fuentes
 
-- [What is probability? (Machine Learning Mastery)](https://machinelearningmastery.com/what-is-probability/)
-- [Conditional probability, University of Washington CSE 312](https://courses.cs.washington.edu/courses/cse312/18wi/312A/lecture7.pdf)
-- [Conditional probability explained visually](https://setosa.io/ev/conditional-probability/)
+- [What is probability? (Machine Learning Mastery)](https://machinelearningmastery.com/what-is-probability/) (en inglés)
+- [Conditional probability, University of Washington CSE 312](https://courses.cs.washington.edu/courses/cse312/18wi/312A/lecture7.pdf) (en inglés)
+- [Probabilidad condicionada explicada visualmente](https://setosa.io/ev/conditional-probability/) (en inglés)

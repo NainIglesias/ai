@@ -1,88 +1,87 @@
-# Essential Tools for AI Programming
+# Herramientas esenciales para programar IA
 
-## Your First Week
+## Tu primera semana
 
-1. Create a [GitHub](https://github.com) account.
-2. Install [Git](https://git-scm.com/downloads), and the [GitHub CLI](https://cli.github.com/) to log in from the terminal with `gh auth login` ([Git and GitHub](git_github.md)).
-3. Install [uv](uv_tutorial.md) or, if you prefer conda, [Miniforge](conda_tutorial.md). Both install Python itself: you don't need to install it separately.
-4. Install an editor: [VS Code](https://code.visualstudio.com/) with its *Python* and *Jupyter* extensions, or PyCharm.
-5. Choose an AI coding assistant ([Working with an AI coding assistant](ai_assisted_development.md)).
-6. Clone this repository, then fork and set up [numpy-mnist](https://github.com/avidaldo/numpy-mnist), up to step 4 of its README.
+1. Crea una cuenta de [GitHub](https://github.com).
+2. Instala [Git](https://git-scm.com/downloads), y la [CLI de GitHub](https://cli.github.com/) para iniciar sesión desde la terminal con `gh auth login` ([Git y GitHub](git_github.md)).
+3. Instala [uv](uv_tutorial.md) o, si prefieres conda, [Miniforge](conda_tutorial.md). Los dos instalan el propio Python: no hace falta instalarlo aparte.
+4. Instala un editor: [VS Code](https://code.visualstudio.com/) con sus extensiones *Python* y *Jupyter*, o PyCharm.
+5. Elige un asistente de programación con IA ([Trabajar con un asistente de programación con IA](ai_assisted_development.md)).
+6. Clona este repositorio, y después haz fork y prepara [numpy-mnist](https://github.com/avidaldo/numpy-mnist), hasta el paso 4 de su README.
 
-The rest of this note explains each tool.
+El resto de esta nota explica cada herramienta.
 
-## Programming Languages
+## Lenguajes de programación
 
 ### Python
 
-Python is the **predominant programming language for machine learning**. It is the language we use throughout both modules. Python is an interpreted, high-level, general-purpose programming language. It is versatile and easy to learn, and has a **vast collection of libraries and frameworks for AI**, machine learning and deep learning ([why](why_python.md)).
+Python es el **lenguaje de programación predominante en el aprendizaje automático**. Es el lenguaje que usamos en los dos módulos. Python es un lenguaje de programación interpretado, de alto nivel y de propósito general. Es versátil y fácil de aprender, y tiene una **enorme colección de bibliotecas y frameworks para IA**, aprendizaje automático y aprendizaje profundo ([por qué](why_python.md)).
 
-Python programming courses:
+Cursos de programación en Python:
 - https://edube.org/study/pe1
 - https://edube.org/study/pe2
 
 
-### Other Relevant Programming Languages in AI
+### Otros lenguajes de programación relevantes en IA
 
-- R: Primarily used in statistics and data analysis.
-- C/C++: Many of the libraries accessed from Python are implemented in C/C++ since they are low-level languages and much faster than Python. C++ remains the reference when performance is critical.
-- CUDA: NVIDIA's extension of C++ for programming GPUs, on which most deep learning runs.
-- Rust: fast and memory-safe, and increasingly the language of Python's tools: uv, the Ruff linter, the Polars dataframe library and Hugging Face's tokenizers are written in it.
-- Julia: High-performance programming language designed for scientific and technical computing.
-- Mojo: Aims to achieve Python's usability with performance similar to C.
-
-
-## Git and Git Forges
-
-Git is a distributed version control system that allows us to keep a record of changes in a project's source code. Git forges are services that allow us to host our Git repositories online, such as GitHub, GitLab, Codeberg and Bitbucket. Both modules work the way most software teams do: on public repositories, through issues and pull requests. You fork a repository, work in your fork, and propose your changes in a pull request, which is also how you submit your work for feedback.
-
-- [Git and GitHub: From Commits to Pull Requests](git_github.md)
-- [Git and GitHub for AI Programming](https://www.youtube.com/watch?v=T1tYBbiWTbc) (video)
+- R: se usa sobre todo en estadística y análisis de datos.
+- C/C++: muchas de las bibliotecas que se usan desde Python están implementadas en C/C++, ya que son lenguajes de bajo nivel y mucho más rápidos que Python. C++ sigue siendo la referencia cuando el rendimiento es crítico.
+- CUDA: la extensión de C++ de NVIDIA para programar GPUs, sobre las que se ejecuta la mayor parte del aprendizaje profundo.
+- Rust: rápido y seguro con la memoria, y cada vez más el lenguaje de las herramientas de Python: uv, el linter Ruff, la biblioteca de dataframes Polars y los tokenizadores de Hugging Face están escritos en él.
+- Julia: lenguaje de programación de alto rendimiento diseñado para la computación científica y técnica.
+- Mojo: pretende conseguir la facilidad de uso de Python con un rendimiento similar al de C.
 
 
-## IDEs (Integrated Development Environment)
+## Git y las forjas de Git
 
-For working with Python for machine learning and deep learning, some of the most popular IDEs are:
+Git es un sistema de control de versiones distribuido que nos permite llevar un registro de los cambios en el código fuente de un proyecto. Las forjas de Git son servicios que nos permiten alojar nuestros repositorios de Git en línea, como GitHub, GitLab, Codeberg y Bitbucket. Los dos módulos funcionan como la mayoría de los equipos de software: sobre repositorios públicos, mediante issues y pull requests. Haces fork de un repositorio, trabajas en tu fork y propones tus cambios en un pull request, que es también la forma de entregar tu trabajo para recibir feedback.
+
+- [Git y GitHub: de los commits a los pull requests](git_github.md)
+- [Git and GitHub for AI Programming](https://www.youtube.com/watch?v=T1tYBbiWTbc) (vídeo)
+
+
+## IDEs (entornos de desarrollo integrados)
+
+Para trabajar con Python en aprendizaje automático y aprendizaje profundo, algunos de los IDEs más populares son:
 
 ### [Visual Studio Code (VS Code)](https://code.visualstudio.com/)
 
-Visual Studio Code is a source code editor developed by Microsoft. It is cross-platform and supports multiple programming languages. It is one of the most popular editors among software developers.
+Visual Studio Code es un editor de código fuente desarrollado por Microsoft. Es multiplataforma y admite múltiples lenguajes de programación. Es uno de los editores más populares entre los desarrolladores de software.
 
 - [VISUAL STUDIO CODE: Beginner's Tutorial](https://www.youtube.com/watch?v=CxF3ykWP1H4)
 
 ### [Cursor](https://www.cursor.com/)
 
-Cursor is a [fork](https://en.wikipedia.org/wiki/Fork_(software_development)) of VS Code focused on using LLMs for programming.
+Cursor es un [fork](https://es.wikipedia.org/wiki/Bifurcaci%C3%B3n_(desarrollo_de_software)) de VS Code centrado en usar LLMs para programar.
 
 ### [PyCharm](https://www.jetbrains.com/pycharm/)
 
-PyCharm is an IDE developed by JetBrains. It is one of the most popular IDEs for Python and is used by many software developers. It also covers notebooks and data exploration: JetBrains stopped selling DataSpell, its data-science IDE, in May 2026, and moved its users to PyCharm.
+PyCharm es un IDE desarrollado por JetBrains. Es uno de los IDEs más populares para Python y lo usan muchos desarrolladores de software. También cubre los notebooks y la exploración de datos: JetBrains dejó de vender DataSpell, su IDE de ciencia de datos, en mayo de 2026, y pasó a sus usuarios a PyCharm.
 
-### AI coding assistants
+### Asistentes de programación con IA
 
-Most of these editors integrate AI coding assistants, such as GitHub Copilot, Claude Code or OpenAI Codex, and some assistants also run on their own in the terminal. You will use one throughout the year: see [Working with an AI Coding Assistant](ai_assisted_development.md).
+La mayoría de estos editores integran asistentes de programación con IA, como GitHub Copilot, Claude Code u OpenAI Codex, y algunos asistentes también funcionan por su cuenta en la terminal. Usarás uno durante todo el curso: consulta [Trabajar con un asistente de programación con IA](ai_assisted_development.md).
 
-## Jupyter Notebooks
+## Notebooks de Jupyter
 
-Jupyter is an application that allows us to create notebooks (documents that combine code, rich text, equations, visualisations, etc.) in the browser. These notebooks are files with the `.ipynb` extension (when using the Python language) that can be exported in different static formats, such as HTML or PDF. The `.ipynb` files are internally JSON.
+Jupyter es una aplicación que nos permite crear notebooks (documentos que combinan código, texto enriquecido, ecuaciones, visualizaciones, etc.) en el navegador. Estos notebooks son archivos con la extensión `.ipynb` (cuando se usa el lenguaje Python) que se pueden exportar a distintos formatos estáticos, como HTML o PDF. Internamente, los archivos `.ipynb` son JSON.
 
-Editors such as VS Code and PyCharm open notebooks directly. A notebook runs on a **kernel**, the Python of an environment: choose your project's environment as the kernel (*Select Kernel* in VS Code). The environment needs the `ipykernel` package, which `jupyter` includes.
+Editores como VS Code y PyCharm abren los notebooks directamente. Un notebook se ejecuta sobre un **kernel**, el Python de un entorno: elige el entorno de tu proyecto como kernel (*Select Kernel* en VS Code). El entorno necesita el paquete `ipykernel`, que viene incluido en `jupyter`.
 
-## Virtual Environments
+## Entornos virtuales
 
-**Virtual environments** allow us to isolate a project's **dependencies** from those of the operating system. This enables us to have different versions of the same **libraries** in different projects without conflicts between them.
+Los **entornos virtuales** nos permiten aislar las **dependencias** de un proyecto de las del sistema operativo. Así podemos tener distintas versiones de las mismas **bibliotecas** en distintos proyectos sin conflictos entre ellas.
 
-Every repository of these modules lists its dependencies in a `requirements.txt` file, which both of these tools install. Choose one:
+Todo repositorio de estos módulos lista sus dependencias en un archivo `requirements.txt`, que instalan estas dos herramientas. Elige una:
 
-- **uv**, recommended: a modern, fast tool that manages Python projects, their virtual environments and their dependencies, and installs Python itself. [uv Tutorial: Python Projects, Environments and Packages](uv_tutorial.md); [UV for Python… (Almost) All Batteries Included](https://www.youtube.com/watch?v=qh98qOND6MI) (video).
-- **conda**, the alternative: a good choice if you already use it, or if you need programs that aren't Python packages, such as ffmpeg. [Conda Tutorial: Environment and Package Management](conda_tutorial.md).
+- **uv**, recomendada: una herramienta moderna y rápida que gestiona proyectos de Python, sus entornos virtuales y sus dependencias, e instala el propio Python. [Tutorial de uv: proyectos, entornos y paquetes de Python](uv_tutorial.md); [UV for Python… (Almost) All Batteries Included](https://www.youtube.com/watch?v=qh98qOND6MI) (vídeo).
+- **conda**, la alternativa: una buena opción si ya lo usas, o si necesitas programas que no son paquetes de Python, como ffmpeg. [Tutorial de conda: gestión de entornos y paquetes](conda_tutorial.md).
 
-Everything in these modules runs on Windows, macOS and Linux. On Windows, when a tool or a tutorial expects Linux, [WSL](https://learn.microsoft.com/windows/wsl/install) (Windows Subsystem for Linux) runs a full Linux inside Windows.
+Todo en estos módulos funciona en Windows, macOS y Linux. En Windows, cuando una herramienta o un tutorial espera Linux, [WSL](https://learn.microsoft.com/es-es/windows/wsl/install) (Subsistema de Windows para Linux) ejecuta un Linux completo dentro de Windows.
 
-How these tools relate to pip, venv and Poetry: [Dependency and Virtual Environment Management in Python](py_dependencies.md); [Introduction to pip, conda, and virtual environments](https://www.youtube.com/watch?v=7Rd-Gj8o-6Q) (video).
+Cómo se relacionan estas herramientas con pip, venv y Poetry: [Gestión de dependencias y entornos virtuales en Python](py_dependencies.md); [Introduction to pip, conda, and virtual environments](https://www.youtube.com/watch?v=7Rd-Gj8o-6Q) (vídeo).
 
 
 ## [Google Colab](https://colab.research.google.com/)
 
-Google Colab is a free Google service that allows us to run Jupyter notebooks in the cloud. Colab allows us to execute code in Python, R, and other programming languages, and provides access to hardware resources such as GPUs and TPUs. It is a good fallback when your computer is too slow for a notebook, as can happen with the neural networks of term 2.
-
+Google Colab es un servicio gratuito de Google que nos permite ejecutar notebooks de Jupyter en la nube. Colab nos permite ejecutar código en Python, R y otros lenguajes de programación, y da acceso a recursos de hardware como GPUs y TPUs. Es una buena alternativa cuando tu ordenador es demasiado lento para un notebook, como puede pasar con las redes neuronales del segundo trimestre.

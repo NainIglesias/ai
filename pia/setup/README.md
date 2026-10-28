@@ -1,26 +1,26 @@
-# Setting Up, and Why Python
+# Preparar el entorno, y por qué Python
 
-The tools of the whole year, and why AI is programmed in Python.
+Las herramientas de todo el curso, y por qué la IA se programa en Python.
 
-## Path
+## Itinerario
 
-★ marks the core items: the minimum, if your week is short.
+★ marca los elementos básicos: el mínimo, si tienes poco tiempo esta semana.
 
-| # | Note | Content |
+| # | Nota | Contenido |
 | --- | --- | --- |
-| ★ 1 | [Essential tools for AI programming](setup.md) | Your first week, step by step; Python, editors, AI coding assistants, Jupyter, virtual environments |
-| ★ 2 | [Git and GitHub: from commits to pull requests](git_github.md) | Commits, `.gitignore`, branches, forks, issues, pull requests, keeping a fork up to date, tags |
-| ★ 3 | [uv: Python projects, environments and packages](uv_tutorial.md), or its alternative, [conda](conda_tutorial.md) | Installing a repository's dependencies, running code in its environment, projects of your own |
-| 4 | [Dependency and virtual environment management in Python](py_dependencies.md) | How pip, venv, conda, Poetry and uv relate, and which to choose |
-| ★ 5 | [Working with an AI coding assistant](ai_assisted_development.md) | The loop of asking, reading and running; agents; project instructions in `AGENTS.md`; what never to paste |
-| ★ 6 | [Why Python rules AI](why_python.md) | Python describes, compiled code computes: one matrix multiplication from a Python loop to a GPU |
+| ★ 1 | [Herramientas esenciales para programar IA](setup.md) | Tu primera semana, paso a paso; Python, editores, asistentes de programación con IA, Jupyter, entornos virtuales |
+| ★ 2 | [Git y GitHub: de los commits a los pull requests](git_github.md) | Commits, `.gitignore`, ramas, forks, issues, pull requests, mantener un fork al día, tags |
+| ★ 3 | [uv: proyectos, entornos y paquetes de Python](uv_tutorial.md), o su alternativa, [conda](conda_tutorial.md) | Instalar las dependencias de un repositorio, ejecutar código en su entorno, proyectos propios |
+| 4 | [Gestión de dependencias y entornos virtuales en Python](py_dependencies.md) | Cómo se relacionan pip, venv, conda, Poetry y uv, y cuál elegir |
+| ★ 5 | [Trabajar con un asistente de programación con IA](ai_assisted_development.md) | El ciclo de pedir, leer y ejecutar; agentes; instrucciones del proyecto en `AGENTS.md`; lo que nunca hay que pegar |
+| ★ 6 | [Por qué Python domina la IA](why_python.md) | Python describe, el código compilado calcula: una multiplicación de matrices desde un bucle de Python hasta una GPU |
 
-## Deep dives
+## Profundizaciones
 
-Optional and never assessed. The path never depends on these.
+Opcionales y nunca se evalúan. El itinerario nunca depende de ellas.
 
-| Deep dive | Extends | Content |
+| Profundización | Amplía | Contenido |
 | --- | --- | --- |
-| [A specs-driven Copilot workflow in VS Code](https://github.com/avidaldo/tutorial-SSD-customizations-VSCode/blob/main/tutorial.md) | 5 | Instructions, skills and agents, hooks and MCP, in four parts |
-| [Copilot customizations: a reference repository](https://github.com/avidaldo/vccode-customizations-AI-intro) | 5 | Working examples of each kind of customization |
-| [compare-python-c-efficiency](https://github.com/avidaldo/compare-python-c-efficiency) | 6 | Measure it yourself: the same multiplication in Python, C, NumPy and CUDA |
+| [Un flujo de trabajo con Copilot guiado por especificaciones en VS Code](https://github.com/avidaldo/tutorial-SSD-customizations-VSCode/blob/main/tutorial.md) | 5 | Instrucciones, *skills* y agentes, *hooks* y MCP, en cuatro partes |
+| [Personalizaciones de Copilot: un repositorio de referencia](https://github.com/avidaldo/vccode-customizations-AI-intro) | 5 | Ejemplos funcionales de cada tipo de personalización |
+| [compare-python-c-efficiency](https://github.com/avidaldo/compare-python-c-efficiency) | 6 | Mídelo tú mismo: la misma multiplicación en Python, C, NumPy y CUDA |

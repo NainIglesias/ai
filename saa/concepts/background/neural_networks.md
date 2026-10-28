@@ -1,87 +1,87 @@
-# Neural Networks from the Outside
+# Las redes neuronales vistas desde fuera
 
-A **neural network** is a model built from many simple units, loosely inspired by the neurons of a brain and connected in layers. It is the model behind **deep learning**, and so behind most of the image, speech and language systems of the last fifteen years, [language models](language_models.md) included. How a network learns, step by step, and how to build and train one, are explained in the topic on neural networks *(coming)*.
+Una **red neuronal** es un modelo construido con muchas unidades sencillas, inspiradas vagamente en las neuronas de un cerebro y conectadas en capas. Es el modelo que hay detrás del **aprendizaje profundo**, y por tanto detrás de la mayoría de los sistemas de imagen, voz y lenguaje de los últimos quince años, [modelos de lenguaje](language_models.md) incluidos. Cómo aprende una red, paso a paso, y cómo construir y entrenar una, se explica en el tema sobre redes neuronales *(próximamente)*.
 
-## Historical Milestones
+## Hitos históricos
 
-### Early Foundations (1943–1998)
+### Primeros fundamentos (1943–1998)
 
-- 1943: McCulloch and Pitts propose the first mathematical model of a neuron.
-- 1958: Frank Rosenblatt develops the **perceptron**, a model neuron that learns its weights from examples.
-- 1969: Minsky and Papert publish "Perceptrons," demonstrating the limitations of the simple perceptron, which contributed to a long decline of research on neural networks.
-- 1980: Kunihiko Fukushima's **Neocognitron**, the first convolutional architecture, inspired by the visual cortex.
-- 1986: Rumelhart, Hinton and Williams popularise **backpropagation**, which **allows training multilayer neural networks**. The method itself had earlier roots: Seppo Linnainmaa (1970) and Paul Werbos (1974).
-- 1989: LeCun et al. train a convolutional network with backpropagation to read handwritten zip codes.
-- 1997: Hochreiter & Schmidhuber introduce **LSTMs** (Long Short-Term Memory), fundamental for processing sequences and time series.
-- 1998: LeCun et al. publish **LeNet-5** and the **MNIST** dataset of handwritten digits.
+- 1943: McCulloch y Pitts proponen el primer modelo matemático de una neurona.
+- 1958: Frank Rosenblatt desarrolla el **perceptrón**, una neurona modelo que aprende sus pesos a partir de ejemplos.
+- 1969: Minsky y Papert publican «Perceptrons», que demuestra las limitaciones del perceptrón simple y contribuye a un largo declive de la investigación en redes neuronales.
+- 1980: el **Neocognitrón** de Kunihiko Fukushima, la primera arquitectura convolucional, inspirada en la corteza visual.
+- 1986: Rumelhart, Hinton y Williams popularizan la **retropropagación** (*backpropagation*), que **permite entrenar redes neuronales multicapa**. El método en sí tenía raíces anteriores: Seppo Linnainmaa (1970) y Paul Werbos (1974).
+- 1989: LeCun et al. entrenan una red convolucional con retropropagación para leer códigos postales manuscritos.
+- 1997: Hochreiter y Schmidhuber presentan las **LSTMs** (*Long Short-Term Memory*), fundamentales para procesar secuencias y series temporales.
+- 1998: LeCun et al. publican **LeNet-5** y el dataset **MNIST** de dígitos manuscritos.
 
-### The AI Boom (2012–present)
+### El auge de la IA (de 2012 a hoy)
 
-Its causes, more data, GPUs and better ways to train deep networks, are in [what is artificial intelligence?](what_is_ai.md#a-brief-history-of-ai). The main milestones:
+Sus causas, más datos, GPUs y mejores formas de entrenar redes profundas, están en [¿qué es la inteligencia artificial?](what_is_ai.md#una-breve-historia-de-la-ia). Los hitos principales:
 
-- 2012: **AlexNet** (Krizhevsky, Sutskever, and Hinton) reduces the top-5 error on **ImageNet** to 15.3% (from 26%), demonstrating the power of CNNs and marking the beginning of the boom.
-- 2014: Facebook's **DeepFace** achieves near-human accuracy (97.35%) in facial recognition.
-- 2014: Ian Goodfellow introduces **GANs** (Generative Adversarial Networks), revolutionising content generation.
-- 2015: **ResNet** from Microsoft Research introduces residual connections, allowing the training of networks with over 100 layers.
-- 2016: DeepMind's **AlphaGo** defeats world champion Lee Sedol using deep neural networks trained with supervised and reinforcement learning with advanced Monte Carlo tree search techniques. ([Documentary](https://www.youtube.com/watch?v=WXuK6gekU1Y)).
-- 2017: The **Transformer** architecture appears with the publication of "**Attention is all you need**" by Google Brain, transforming language processing.
-- 2018: Google's **BERT** sets new records in natural language understanding.
-- 2020: OpenAI's **GPT-3** shows that a large enough language model can do a new task from a few examples written in its prompt, without further training.
-- 2021–2022: **Diffusion models** take over image generation: OpenAI's GLIDE (December 2021), DALL-E 2 and Stable Diffusion (2022). The first DALL-E (January 2021) was not a diffusion model, but a transformer that generated images token by token.
-- 2022: OpenAI's **ChatGPT** (GPT-3.5) popularises conversational assistants.
-- 2023: OpenAI's **GPT-4** (March), announced as a **multimodal** model that accepts images as well as text.
-- 2024: OpenAI's **GPT-4o** (May) handles text, images and audio in one model, and **o1** (September) is the first of the *reasoning* models, which generate a long chain of reasoning before answering.
-- 2025: **DeepSeek-R1**, an *open-weights* reasoning model, reports results comparable to o1 at a much lower cost.
+- 2012: **AlexNet** (Krizhevsky, Sutskever y Hinton) reduce el error top-5 en **ImageNet** al 15,3 % (desde el 26 %), demostrando la potencia de las CNNs y marcando el inicio del auge.
+- 2014: **DeepFace** de Facebook alcanza una precisión casi humana (97,35 %) en reconocimiento facial.
+- 2014: Ian Goodfellow presenta las **GANs** (redes generativas adversarias), que revolucionan la generación de contenido.
+- 2015: **ResNet**, de Microsoft Research, introduce las conexiones residuales, que permiten entrenar redes de más de 100 capas.
+- 2016: **AlphaGo** de DeepMind derrota al campeón del mundo Lee Sedol usando redes neuronales profundas entrenadas con aprendizaje supervisado y por refuerzo, junto con técnicas avanzadas de búsqueda en árbol de Monte Carlo ([documental](https://www.youtube.com/watch?v=WXuK6gekU1Y)).
+- 2017: aparece la arquitectura **Transformer** con la publicación de «**Attention is all you need**» de Google Brain, que transforma el procesamiento del lenguaje.
+- 2018: **BERT** de Google bate récords en comprensión del lenguaje natural.
+- 2020: **GPT-3** de OpenAI demuestra que un modelo de lenguaje lo bastante grande puede hacer una tarea nueva a partir de unos pocos ejemplos escritos en su prompt, sin más entrenamiento.
+- 2021–2022: los **modelos de difusión** se imponen en la generación de imágenes: GLIDE de OpenAI (diciembre de 2021), DALL-E 2 y Stable Diffusion (2022). El primer DALL-E (enero de 2021) no era un modelo de difusión, sino un *transformer* que generaba imágenes token a token.
+- 2022: **ChatGPT** de OpenAI (GPT-3.5) populariza los asistentes conversacionales.
+- 2023: **GPT-4** de OpenAI (marzo), anunciado como un modelo **multimodal** que acepta imágenes además de texto.
+- 2024: **GPT-4o** de OpenAI (mayo) maneja texto, imágenes y audio en un mismo modelo, y **o1** (septiembre) es el primero de los modelos de *razonamiento*, que generan una larga cadena de razonamiento antes de responder.
+- 2025: **DeepSeek-R1**, un modelo de razonamiento de *pesos abiertos*, obtiene resultados comparables a o1 con un coste mucho menor.
 
-## What a Network Is
+## Qué es una red
 
-> [What is a Neural Network? Part 1: The Neuron | DotCSV](https://www.youtube.com/watch?v=MRIv2IwFTPg&list=PL-Ogd76BhmcC_E2RjgIIJZd1DQdYHcVf0&index=7) (in Spanish)
+> [¿Qué es una Red Neuronal? Parte 1: La Neurona | DotCSV](https://www.youtube.com/watch?v=MRIv2IwFTPg&list=PL-Ogd76BhmcC_E2RjgIIJZd1DQdYHcVf0&index=7) (en español)
 
-> [3Blue1Brown - But what is a neural network?](https://www.youtube.com/watch?v=aircAruvnKk&list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi)
+> [3Blue1Brown - But what is a neural network?](https://www.youtube.com/watch?v=aircAruvnKk&list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi) (en inglés)
 
-![A perceptron: inputs multiplied by weights, summed with a bias, passed through a non-linear activation to give the output](./img/perceptron.png)
+![Un perceptrón: las entradas se multiplican por los pesos, se suman con un sesgo y pasan por una activación no lineal para dar la salida](./img/perceptron.png)
 
-*Slide from MIT 6.S191, [Introduction to Deep Learning](https://introtodeeplearning.com/), by Alexander Amini.*
+*Diapositiva del MIT 6.S191, [Introduction to Deep Learning](https://introtodeeplearning.com/), de Alexander Amini.*
 
-Each unit, an **artificial neuron**, multiplies each of its inputs by a **weight**, adds the results together with a **bias**, and passes the sum through an **activation function**. The weights and biases are the network's [parameters](machine_learning_paradigms.md): the numbers that training adjusts. The first such unit, the perceptron, could only separate two classes with a straight line (a plane, or a hyperplane, with more inputs). So it fails at a problem as small as XOR: answering 1 when exactly one of two inputs is 1.
+Cada unidad, una **neurona artificial**, multiplica cada una de sus entradas por un **peso**, suma los resultados junto con un **sesgo** (*bias*) y pasa la suma por una **función de activación**. Los pesos y los sesgos son los [parámetros](machine_learning_paradigms.md) de la red: los números que ajusta el entrenamiento. La primera unidad de este tipo, el perceptrón, solo podía separar dos clases con una línea recta (un plano, o un hiperplano, con más entradas). Por eso falla en un problema tan pequeño como el XOR: responder 1 cuando exactamente una de dos entradas es 1.
 
-A **multilayer network** stacks units in layers: an input layer that receives the data, one or more **hidden layers**, and an output layer that gives the prediction, a class or a number. Each hidden layer combines the patterns found by the layer before into more complex ones, and that is what lets a network learn curved boundaries and complex relations. It only works because the activation functions are not linear: without them, any number of layers would add up to a single linear model.
+Una **red multicapa** apila unidades en capas: una capa de entrada que recibe los datos, una o más **capas ocultas**, y una capa de salida que da la predicción, una clase o un número. Cada capa oculta combina los patrones encontrados por la capa anterior en otros más complejos, y eso es lo que permite a una red aprender fronteras curvas y relaciones complejas. Solo funciona porque las funciones de activación no son lineales: sin ellas, cualquier número de capas se reduciría a un único modelo lineal.
 
 ![MLP](./img/mlp.gif)
 
-## How It Learns
+## Cómo aprende
 
-> [3Blue1Brown - Gradient descent, how neural networks learn](https://www.youtube.com/watch?v=IHZwWFHWa-w&list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi&index=2)
+> [3Blue1Brown - Gradient descent, how neural networks learn](https://www.youtube.com/watch?v=IHZwWFHWa-w&list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi&index=2) (en inglés)
 
-> [What is Gradient Descent? Artificial Intelligence Algorithm | DotCSV](https://www.youtube.com/watch?v=A6FiCDoz8_4) (in Spanish)
+> [¿Qué es el Descenso del Gradiente? Algoritmo de Inteligencia Artificial | DotCSV](https://www.youtube.com/watch?v=A6FiCDoz8_4) (en español)
 
-Training starts from random weights. The network predicts for a small batch of training examples, a **loss function** measures how far the predictions are from the targets, and every weight is moved a small step in the direction that reduces the loss: that is **gradient descent**. **Backpropagation** is the algorithm that computes that direction for every weight at once, working back from the output layer to the input. Repeated over many batches, and many passes over the data, these small steps fit the network to its examples.
+El entrenamiento empieza con pesos aleatorios. La red predice para un pequeño lote de ejemplos de entrenamiento, una **función de pérdida** mide lo lejos que están las predicciones de los objetivos, y cada peso se mueve un pequeño paso en la dirección que reduce la pérdida: eso es el **descenso del gradiente**. La **retropropagación** es el algoritmo que calcula esa dirección para todos los pesos a la vez, trabajando hacia atrás desde la capa de salida hasta la de entrada. Repetidos durante muchos lotes, y muchas pasadas por los datos, estos pequeños pasos ajustan la red a sus ejemplos.
 
-Gradient descent is explained step by step in supervised learning *(coming)*, because simpler models are trained with it too, and backpropagation in the topic on neural networks *(coming)*.
+El descenso del gradiente se explica paso a paso en aprendizaje supervisado *(próximamente)*, porque los modelos más sencillos también se entrenan con él, y la retropropagación en el tema sobre redes neuronales *(próximamente)*.
 
-## Deep Learning
+## Aprendizaje profundo
 
-*Deep learning* refers to neural networks with many hidden layers (hence "deep"). Their layers learn representations of the data at several levels of abstraction: in an image, edges first, then textures and shapes, then parts of objects.
+El *aprendizaje profundo* (*deep learning*) se refiere a las redes neuronales con muchas capas ocultas (de ahí lo de «profundo»). Sus capas aprenden representaciones de los datos a varios niveles de abstracción: en una imagen, primero bordes, después texturas y formas, después partes de objetos.
 
-![Deep Learning](./img/deep_learning.jpg)
+![Aprendizaje profundo](./img/deep_learning.jpg)
 
-What depth buys:
+Lo que aporta la profundidad:
 
-1. **Features learned from raw data.** In other machine learning, people design the features by hand (*feature engineering*); a deep network learns them from the pixels, the sound or the text.
-2. **Complex relations in unstructured data,** such as images, text and sound, where hand-made features fall short.
-3. **Transfer learning.** What a network learned on one task can be reused for another, so a powerful model can be built from little data.
+1. **Características aprendidas a partir de datos en bruto.** En el resto del aprendizaje automático, las personas diseñan las características a mano (*feature engineering*); una red profunda las aprende a partir de los píxeles, el sonido o el texto.
+2. **Relaciones complejas en datos no estructurados,** como imágenes, texto y sonido, donde las características hechas a mano se quedan cortas.
+3. **Aprendizaje por transferencia.** Lo que una red aprendió en una tarea se puede reutilizar para otra, así que se puede construir un modelo potente con pocos datos.
 
-It is not always worth it. On a table of features, such as the houses of [valuing a home](machine_learning_paradigms.md#regression), gradient-boosted trees are a strong default: often as accurate as a network, and faster to train and to tune ([Grinsztajn et al., 2022](https://arxiv.org/abs/2207.08815)). Networks make the difference where the features have to be learned.
+No siempre merece la pena. Con una tabla de características, como las casas de [valorar una vivienda](machine_learning_paradigms.md#regresión), los árboles con *gradient boosting* son una opción por defecto sólida: a menudo igual de precisos que una red, y más rápidos de entrenar y de ajustar ([Grinsztajn et al., 2022](https://arxiv.org/abs/2207.08815)). Las redes marcan la diferencia cuando las características tienen que aprenderse.
 
-## Families of Networks
+## Familias de redes
 
-| Family | The data it fits | What it does |
+| Familia | Los datos a los que se ajusta | Qué hace |
 | --- | --- | --- |
-| **Multilayer networks** (MLP) | Tables of features; also a building block inside every other family | The layers described above |
-| **Convolutional networks** (CNN) | Images, and other data on a grid | Detect local patterns (edges, textures, shapes) anywhere in the image, and combine them |
-| **Recurrent networks** (RNN, LSTM, GRU) | Sequences: time series, text | Read the sequence in order, with a memory of what came before; for text, largely replaced by transformers |
-| **Transformers** | Text, and now images and audio | *Attention* weighs every part of the input against every other; almost all of today's [language models](language_models.md) are transformers |
-| **Autoencoders** | Any | Compress the data into a few numbers and rebuild it; for dimensionality reduction and anomaly detection |
-| **Generative image models** (GANs, diffusion models) | Images, audio | Generate new data like the training data. GANs pit a generator against a discriminator; diffusion models, which learn to remove noise step by step, power most of today's image generators |
+| **Redes multicapa** (MLP) | Tablas de características; también una pieza dentro de todas las demás familias | Las capas descritas arriba |
+| **Redes convolucionales** (CNN) | Imágenes, y otros datos en forma de cuadrícula | Detectan patrones locales (bordes, texturas, formas) en cualquier parte de la imagen, y los combinan |
+| **Redes recurrentes** (RNN, LSTM, GRU) | Secuencias: series temporales, texto | Leen la secuencia en orden, con memoria de lo anterior; para texto, en gran parte sustituidas por los *transformers* |
+| ***Transformers*** | Texto, y ahora imágenes y audio | La *atención* compara cada parte de la entrada con todas las demás; casi todos los [modelos de lenguaje](language_models.md) actuales son *transformers* |
+| ***Autoencoders*** | Cualquiera | Comprimen los datos en unos pocos números y los reconstruyen; para reducción de dimensionalidad y detección de anomalías |
+| **Modelos generativos de imágenes** (GANs, modelos de difusión) | Imágenes, audio | Generan datos nuevos parecidos a los de entrenamiento. Las GANs enfrentan un generador con un discriminador; los modelos de difusión, que aprenden a quitar ruido paso a paso, están detrás de la mayoría de los generadores de imágenes actuales |
 
-Multilayer and convolutional networks, and reusing a pretrained network, are the topic on neural networks *(coming)*; transformers are the topic on how language models work *(coming)*.
+Las redes multicapa y convolucionales, y reutilizar una red preentrenada, son el tema sobre redes neuronales *(próximamente)*; los *transformers* son el tema sobre cómo funcionan los modelos de lenguaje *(próximamente)*.

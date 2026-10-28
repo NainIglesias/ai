@@ -1,34 +1,34 @@
-# Reinforcement Learning: Q-learning
+# Aprendizaje por refuerzo: Q-learning
 
-Learning from rewards instead of labels: an agent acts in an environment, receives rewards, and learns which action is worth taking in each situation.
+Aprender de recompensas en lugar de etiquetas: un agente actúa en un entorno, recibe recompensas y aprende qué acción merece la pena tomar en cada situación.
 
-## Path
+## Itinerario
 
-★ marks the core items: the minimum, if your week is short.
+★ marca los elementos básicos: el mínimo, si tienes poco tiempo esta semana.
 
-| # | Notebook | Content |
+| # | Notebook | Contenido |
 | --- | --- | --- |
-| ★ 1 | [Reinforcement learning and Q-learning](qlearning.ipynb) | Agent, environment, reward and policy; an intuitive view of Q-learning, trained from scratch on a small grid world |
-| 2 | [The Bellman equation](bellman_equation.ipynb) | Where Q-learning's update rule comes from, computed by hand step by step and then in code |
-| 3 | [Q-learning on FrozenLake](frozen_lake.ipynb) | Training and evaluating a Q-learning agent in a [Gymnasium](https://gymnasium.farama.org/) environment |
+| ★ 1 | [Aprendizaje por refuerzo y Q-learning](qlearning.ipynb) | Agente, entorno, recompensa y política; una visión intuitiva del Q-learning, entrenado desde cero en un pequeño mundo de cuadrícula |
+| 2 | [La ecuación de Bellman](bellman_equation.ipynb) | De dónde sale la regla de actualización del Q-learning, calculada a mano paso a paso y después en código |
+| 3 | [Q-learning en FrozenLake](frozen_lake.ipynb) | Entrenar y evaluar un agente de Q-learning en un entorno de [Gymnasium](https://gymnasium.farama.org/) |
 
-The same idea, learning from a reward, is one step in turning a language model into a chat assistant (RLHF): see *How a Language Model Is Made* in the stage-2 note [Language models from the outside](../concepts/background/language_models.md#how-a-language-model-is-made).
+La misma idea, aprender de una recompensa, es uno de los pasos para convertir un modelo de lenguaje en un asistente de chat (RLHF): consulta *Cómo se construye un modelo de lenguaje* en la nota de la etapa 2 [Los modelos de lenguaje vistos desde fuera](../concepts/background/language_models.md#cómo-se-construye-un-modelo-de-lenguaje).
 
-## Worked example
+## Ejemplo resuelto
 
-[Tic-tac-toe with Q-learning](https://github.com/avidaldo/tictactoe-qlearning) is a repository of its own: it improves an agent step by step, from the simplest version to one that never loses against a perfect player. Its README suggests further experiments, and its notebooks have exercises: board symmetries, a curriculum, a tournament.
+[Tres en raya con Q-learning](https://github.com/avidaldo/tictactoe-qlearning) es un repositorio propio: mejora un agente paso a paso, desde la versión más sencilla hasta una que nunca pierde contra un jugador perfecto. Su README propone más experimentos, y sus notebooks tienen ejercicios: simetrías del tablero, un currículo, un torneo.
 
-## Practice
+## Práctica
 
-**Make the lake slippery.** In [Q-learning on FrozenLake](frozen_lake.ipynb), create the environment with `is_slippery=True`: each move now goes in the intended direction only one time in three, and slips to one side or the other otherwise.
+**Haz que el lago resbale.** En [Q-learning en FrozenLake](frozen_lake.ipynb), crea el entorno con `is_slippery=True`: ahora cada movimiento va en la dirección prevista solo una de cada tres veces, y el resto resbala hacia un lado o hacia el otro.
 
-1. Evaluate over 1,000 episodes instead of 100, and train three or four times, re-creating the Q-table before each run (otherwise training continues from the last table). How often does the agent reach the goal, and how much does that change from one run to the next?
-2. No policy reaches the goal every time on this lake: the best possible one does it about 74% of the time within the 99-step limit. Change the learning rate, gamma and the number of episodes, first one at a time and then together, until every run gets close to 74%. Which changes matter, and why do they matter here when they didn't on the deterministic lake?
-3. Look at the action your best agent chooses at the start state. Why that one?
+1. Evalúa con 1.000 episodios en lugar de 100, y entrena tres o cuatro veces, volviendo a crear la tabla Q antes de cada ejecución (si no, el entrenamiento continúa desde la última tabla). ¿Con qué frecuencia llega el agente a la meta, y cuánto cambia eso de una ejecución a otra?
+2. Ninguna política llega a la meta siempre en este lago: la mejor posible lo consigue alrededor del 74 % de las veces dentro del límite de 99 pasos. Cambia la tasa de aprendizaje, gamma y el número de episodios, primero de uno en uno y después a la vez, hasta que todas las ejecuciones se acerquen al 74 %. ¿Qué cambios importan, y por qué importan aquí cuando no importaban en el lago determinista?
+3. Mira la acción que elige tu mejor agente en el estado inicial. ¿Por qué esa?
 
-A [solution](practice/slippery_lake_solution.ipynb), to read once you have tried.
+Una [solución](practice/slippery_lake_solution.ipynb), para leer cuando lo hayas intentado.
 
-## References
+## Referencias
 
-- Notebook 3 is adapted from Unit 2 of the [Hugging Face Deep RL Course](https://huggingface.co/learn/deep-rl-course/unit2/introduction) (Apache 2.0 licence), which goes on to deep Q-learning and policy-gradient methods.
-- Richard S. Sutton and Andrew G. Barto, [*Reinforcement Learning: An Introduction*](http://incompleteideas.net/book/the-book-2nd.html), 2nd edition (2018), free online: the standard textbook. Chapter 6 introduces Q-learning.
+- El notebook 3 está adaptado de la Unidad 2 del [Hugging Face Deep RL Course](https://huggingface.co/learn/deep-rl-course/unit2/introduction) (licencia Apache 2.0), que sigue con el *deep Q-learning* y los métodos de gradiente de política.
+- Richard S. Sutton y Andrew G. Barto, [*Reinforcement Learning: An Introduction*](http://incompleteideas.net/book/the-book-2nd.html), 2.ª edición (2018), gratis en línea: el libro de texto de referencia. El capítulo 6 presenta el Q-learning.

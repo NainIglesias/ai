@@ -1,39 +1,39 @@
-# Classical AI: Intelligence Without Learning
+# IA clásica: inteligencia sin aprendizaje
 
-A deep dive of [What is artificial intelligence?](../../background/what_is_ai.md): optional, and never assessed.
+Una profundización de [¿Qué es la inteligencia artificial?](../../background/what_is_ai.md): opcional, y nunca se evalúa.
 
-Machine learning is one way to make a program intelligent: show it examples with their answers, and let it find the rules. For its first decades, AI meant the opposite way: write the knowledge down, and make the program reason with it. That is **symbolic** or **classical AI**, sometimes called *good old-fashioned AI* (GOFAI), together with its probabilistic successor, reasoning under uncertainty. It isn't *classical machine learning*, a name often given to the learning methods that aren't neural networks, such as decision trees: those learn from data.
+El aprendizaje automático es una forma de hacer inteligente un programa: enséñale ejemplos con sus respuestas, y deja que encuentre las reglas. Durante sus primeras décadas, IA significaba el camino contrario: escribir el conocimiento, y hacer que el programa razone con él. Eso es la **IA simbólica** o **IA clásica**, a veces llamada *good old-fashioned AI* (GOFAI), junto con su sucesora probabilística, el razonamiento con incertidumbre. No es el *aprendizaje automático clásico*, nombre que se suele dar a los métodos de aprendizaje que no son redes neuronales, como los árboles de decisión: esos aprenden de los datos.
 
-Nothing in these notebooks is trained on data, until the last one shows where learning comes in; case-based reasoning, in notebook 4, comes closest, by accumulating cases. Each builds a small example in plain Python, one idea per cell, with nothing to install beyond Python itself.
+Nada en estos notebooks se entrena con datos, hasta que el último muestra dónde entra el aprendizaje; el razonamiento basado en casos, en el notebook 4, es lo que más se acerca, acumulando casos. Cada uno construye un pequeño ejemplo en Python puro, una idea por celda, sin nada que instalar aparte del propio Python.
 
-## Path
+## Itinerario
 
-| # | Notebook | Content |
+| # | Notebook | Contenido |
 | --- | --- | --- |
-| 1 | [Search](search.ipynb) | Breadth-first, depth-first, uniform-cost and A\* search on road maps; admissible heuristics; searching against an opponent |
-| 2 | [Local search and optimisation](local_search.ipynb) | Hill climbing, random restarts, simulated annealing and a genetic algorithm on the eight-queens problem; the link with gradient descent |
-| 3 | [Constraint satisfaction](constraint_satisfaction.ipynb) | Backtracking with the minimum-remaining-values heuristic, on a map and a Sudoku |
-| 4 | [Rules and expert systems](rules_and_expert_systems.ipynb) | Forward and backward chaining; MYCIN and XCON; why expert systems faded, and where rules live today; case-based reasoning, solving from past cases instead of rules |
-| 5 | [Knowledge representation](knowledge_representation.ipynb) | Semantic networks with inheritance and exceptions; frames, and their descendants, classes |
-| 6 | [Logic](logic.ipynb) | Propositional logic and entailment by model checking, with answers that can be *unknown*; first-order rules in Prolog, and the same rules as a recursive SQL query |
-| 7 | [Planning](planning.ipynb) | STRIPS: states and actions described by facts; the blocks world and the Sussman anomaly; planning at scale |
-| 8 | [Reasoning under uncertainty](uncertainty.ipynb) | A Bayesian network by hand, inference by enumeration, explaining away; and the same tables learned from data |
+| 1 | [Búsqueda](search.ipynb) | Búsqueda en anchura, en profundidad, de coste uniforme y A\* en mapas de carreteras; heurísticas admisibles; buscar contra un oponente |
+| 2 | [Búsqueda local y optimización](local_search.ipynb) | Ascensión de colinas, reinicios aleatorios, recocido simulado y un algoritmo genético en el problema de las ocho reinas; la relación con el descenso del gradiente |
+| 3 | [Satisfacción de restricciones](constraint_satisfaction.ipynb) | *Backtracking* con la heurística de mínimos valores restantes, en un mapa y un Sudoku |
+| 4 | [Reglas y sistemas expertos](rules_and_expert_systems.ipynb) | Encadenamiento hacia delante y hacia atrás; MYCIN y XCON; por qué se apagaron los sistemas expertos, y dónde viven hoy las reglas; razonamiento basado en casos, resolver a partir de casos pasados en lugar de reglas |
+| 5 | [Representación del conocimiento](knowledge_representation.ipynb) | Redes semánticas con herencia y excepciones; marcos (*frames*), y sus descendientes, las clases |
+| 6 | [Lógica](logic.ipynb) | Lógica proposicional e implicación mediante comprobación de modelos, con respuestas que pueden ser *desconocido*; reglas de primer orden en Prolog, y las mismas reglas como consulta SQL recursiva |
+| 7 | [Planificación](planning.ipynb) | STRIPS: estados y acciones descritos con hechos; el mundo de los bloques y la anomalía de Sussman; planificación a gran escala |
+| 8 | [Razonamiento con incertidumbre](uncertainty.ipynb) | Una red bayesiana a mano, inferencia por enumeración, *explaining away*; y las mismas tablas aprendidas a partir de datos |
 
-**Games** are search against an opponent: notebook 1 explains minimax, and [Python tic-tac-toe](https://github.com/avidaldo/python-tic-tac-toe/tree/master/02_minimax) implements it, with a player that never loses.
+Los **juegos** son búsqueda contra un oponente: el notebook 1 explica minimax, y [Python tic-tac-toe](https://github.com/avidaldo/python-tic-tac-toe/tree/master/02_minimax) lo implementa, con un jugador que nunca pierde.
 
-## Bayes' theorem, here and elsewhere
+## El teorema de Bayes, aquí y en otros sitios
 
-Bayesian reasoning appears in three places, each with its own role: the **theorem** itself, with its derivation and a diagnostic test, in the deep dive [Probability and Bayes' theorem](../probability/README.md); **Bayesian networks written by hand**, in notebook 8; and the **naive Bayes classifier**, whose probabilities are counted from labelled data, in a deep dive of supervised learning *(coming)*. It is not on one side of the line between classical AI and machine learning: what decides the side is where the probabilities come from, an expert or the data.
+El razonamiento bayesiano aparece en tres sitios, cada uno con su papel: el propio **teorema**, con su derivación y una prueba diagnóstica, en la profundización [Probabilidad y teorema de Bayes](../probability/README.md); las **redes bayesianas escritas a mano**, en el notebook 8; y el **clasificador naive Bayes**, cuyas probabilidades se cuentan a partir de datos etiquetados, en una profundización de aprendizaje supervisado *(próximamente)*. No está a un lado de la línea entre IA clásica y aprendizaje automático: lo que decide el lado es de dónde vienen las probabilidades, de un experto o de los datos.
 
-## Not covered here
+## Lo que no se trata aquí
 
-- **Fuzzy logic** (Lotfi Zadeh, 1965): truth as a degree between 0 and 1 instead of true or false, used in control systems such as washing machines and train brakes.
-- **Symbolic language processing:** grammars and pattern-matching programs such as ELIZA (Joseph Weizenbaum, 1966), the first chatbot.
-- **Image processing without learning:** filters, edges and thresholds, in the first part of [computer vision](https://github.com/avidaldo/computer-vision).
-- **Decisions over time:** utilities and Markov decision processes, the foundation of reinforcement learning (stage 15).
+- **Lógica difusa** (Lotfi Zadeh, 1965): la verdad como un grado entre 0 y 1 en lugar de verdadero o falso, usada en sistemas de control como lavadoras y frenos de trenes.
+- **Procesamiento simbólico del lenguaje:** gramáticas y programas de reconocimiento de patrones como ELIZA (Joseph Weizenbaum, 1966), el primer chatbot.
+- **Procesamiento de imágenes sin aprendizaje:** filtros, bordes y umbrales, en la primera parte de [visión por computador](https://github.com/avidaldo/computer-vision).
+- **Decisiones a lo largo del tiempo:** utilidades y procesos de decisión de Markov, la base del aprendizaje por refuerzo (etapa 15).
 
-## Is any of it still used?
+## ¿Se sigue usando algo de esto?
 
-More than the name *classical* suggests, but unevenly. Search and optimisation are everywhere: route planners run descendants of Dijkstra's algorithm and A\*, and timetables, delivery routes and production schedules come from constraint solvers and local search. Rules survive in business rule engines and in the guardrails around language models, but expert systems built by hand are rare: where data exists, machine learning does better and is cheaper to build. Logic lives on in type checkers, formal verification and recursive SQL queries, while Prolog itself is a niche language. Bayesian networks are still used in diagnosis and risk assessment, increasingly with probabilities learned from data. And the most capable systems mix both worlds: AlphaGo searched with learned evaluations, and agents built on language models plan, call tools and check their results with code.
+Más de lo que sugiere el nombre *clásica*, pero de forma desigual. La búsqueda y la optimización están en todas partes: los planificadores de rutas ejecutan descendientes del algoritmo de Dijkstra y de A\*, y los horarios, las rutas de reparto y la planificación de la producción salen de resolvedores de restricciones y de búsqueda local. Las reglas sobreviven en los motores de reglas de negocio y en las salvaguardas alrededor de los modelos de lenguaje, pero los sistemas expertos construidos a mano son raros: donde hay datos, el aprendizaje automático lo hace mejor y es más barato de construir. La lógica sigue viva en los comprobadores de tipos, la verificación formal y las consultas SQL recursivas, mientras que Prolog en sí es un lenguaje de nicho. Las redes bayesianas se siguen usando en diagnóstico y evaluación de riesgos, cada vez más con probabilidades aprendidas de los datos. Y los sistemas más capaces mezclan los dos mundos: AlphaGo buscaba con evaluaciones aprendidas, y los agentes construidos sobre modelos de lenguaje planifican, llaman a herramientas y comprueban sus resultados con código.
 
-Historically, symbolic AI dominated from the Dartmouth workshop of 1956 until the late 1980s, when expert systems proved costly to build and brittle in use; machine learning then took over the problems whose rules can't be written down, such as vision, speech and language.
+Históricamente, la IA simbólica dominó desde el taller de Dartmouth de 1956 hasta finales de los 80, cuando los sistemas expertos resultaron caros de construir y frágiles en el uso; el aprendizaje automático se quedó entonces con los problemas cuyas reglas no se pueden escribir, como la visión, la voz y el lenguaje.

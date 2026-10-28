@@ -1,25 +1,25 @@
-# What AI and Machine Learning Are
+# Qué son la IA y el aprendizaje automático
 
-The map of the whole SAA year, in notes to read: what AI and machine learning are, and each family of models seen from the outside. Each later stage goes inside one part of the map: the column *Detailed in* says which, and the [roadmap](../../README.md#roadmap) gives the stages.
+El mapa de todo el curso de SAA, en notas para leer: qué son la IA y el aprendizaje automático, y cada familia de modelos vista desde fuera. Cada etapa posterior entra en una parte del mapa: la columna *Se detalla en* dice cuál, y la [hoja de ruta](../../README.md#hoja-de-ruta) da las etapas.
 
-## Path
+## Itinerario
 
-★ marks the core items: the minimum, if your week is short.
+★ marca los elementos básicos: el mínimo, si tienes poco tiempo esta semana.
 
-| # | Note | Content | Detailed in |
+| # | Nota | Contenido | Se detalla en |
 | --- | --- | --- | --- |
-| ★ 1 | [What is artificial intelligence?](background/what_is_ai.md) | Definitions, the Turing test, a brief history, machine learning and deep learning, narrow and general AI | |
-| ★ 2 | [Machine learning paradigms](background/machine_learning_paradigms.md) | Supervised, unsupervised and reinforcement learning, and their main tasks; inductive learning and case-based reasoning | Stages 6, 13 and 15 |
-| 3 | [The life of a machine learning project](background/ml_project_lifecycle.md) | From framing the problem to a model in use and watched; generalisation, overfitting and underfitting, the three sets of data, and data leakage | Stage 6; deployment in stage 7 (PIA) |
-| 4 | [Machine learning algorithms: a historical introduction](background/ml_algorithms_history.md) | The classic algorithms in the order they appeared, and how to choose one | Stages 6 and 13 |
-| 5 | [Neural networks from the outside](background/neural_networks.md) | Milestones, what a network is and how it learns, deep learning and when it is worth it, and the families of networks | Stage 8 |
-| 6 | [Language models from the outside](background/language_models.md) | What a language model does and how it is made, and what follows for anyone who uses one: tokens, sampling, hallucinations, the knowledge cutoff, the context window, tools and answers grounded in documents | Stage 10; stage 5 (PIA) builds on it |
+| ★ 1 | [¿Qué es la inteligencia artificial?](background/what_is_ai.md) | Definiciones, el test de Turing, una breve historia, aprendizaje automático y aprendizaje profundo, IA estrecha y general | |
+| ★ 2 | [Paradigmas del aprendizaje automático](background/machine_learning_paradigms.md) | Aprendizaje supervisado, no supervisado y por refuerzo, y sus tareas principales; aprendizaje inductivo y razonamiento basado en casos | Etapas 6, 13 y 15 |
+| 3 | [La vida de un proyecto de aprendizaje automático](background/ml_project_lifecycle.md) | Desde plantear el problema hasta un modelo en uso y vigilado; generalización, sobreajuste y subajuste, los tres conjuntos de datos, y la fuga de datos | Etapa 6; despliegue en la etapa 7 (PIA) |
+| 4 | [Algoritmos de aprendizaje automático: una introducción histórica](background/ml_algorithms_history.md) | Los algoritmos clásicos en el orden en que aparecieron, y cómo elegir uno | Etapas 6 y 13 |
+| 5 | [Las redes neuronales vistas desde fuera](background/neural_networks.md) | Hitos, qué es una red y cómo aprende, el aprendizaje profundo y cuándo merece la pena, y las familias de redes | Etapa 8 |
+| 6 | [Los modelos de lenguaje vistos desde fuera](background/language_models.md) | Qué hace un modelo de lenguaje y cómo se construye, y lo que se deduce para quien lo usa: tokens, muestreo, alucinaciones, la fecha de corte del conocimiento, la ventana de contexto, herramientas y respuestas basadas en documentos | Etapa 10; la etapa 5 (PIA) se apoya en ella |
 
-## Deep dives
+## Profundizaciones
 
-Optional and never assessed. The path never depends on these.
+Opcionales y nunca se evalúan. El itinerario nunca depende de ellas.
 
-| Deep dive | Extends | Content |
+| Profundización | Amplía | Contenido |
 | --- | --- | --- |
-| [Classical AI: intelligence without learning](deep-dives/classical-ai/README.md) | 1 | The AI that doesn't learn from data, in eight notebooks: search and games, local search, constraints, rules and expert systems, knowledge representation, logic, planning, and reasoning under uncertainty |
-| [Probability and Bayes' theorem](deep-dives/probability/README.md) | 2 | The probability that machine learning stands on: conditional probability, Bayes' theorem, and a diagnostic test worked step by step |
+| [IA clásica: inteligencia sin aprendizaje](deep-dives/classical-ai/README.md) | 1 | La IA que no aprende de los datos, en ocho notebooks: búsqueda y juegos, búsqueda local, restricciones, reglas y sistemas expertos, representación del conocimiento, lógica, planificación y razonamiento con incertidumbre |
+| [Probabilidad y teorema de Bayes](deep-dives/probability/README.md) | 2 | La probabilidad en la que se apoya el aprendizaje automático: probabilidad condicionada, teorema de Bayes y una prueba diagnóstica resuelta paso a paso |

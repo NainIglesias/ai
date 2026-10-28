@@ -1,15 +1,15 @@
-# Probability and Bayes' Theorem
+# Probabilidad y teorema de Bayes
 
-A deep dive of [Machine learning paradigms](../../background/machine_learning_paradigms.md): optional, and never assessed.
+Una profundización de [Paradigmas del aprendizaje automático](../../background/machine_learning_paradigms.md): opcional, y nunca se evalúa.
 
-The probability that machine learning and reasoning under uncertainty stand on: what a probability means, conditional probability, and Bayes' theorem, worked through a cancer screening test.
+La probabilidad en la que se apoyan el aprendizaje automático y el razonamiento con incertidumbre: qué significa una probabilidad, la probabilidad condicionada y el teorema de Bayes, aplicado a una prueba de cribado de cáncer.
 
-## Path
+## Itinerario
 
-| # | Note | Content |
+| # | Nota | Contenido |
 | --- | --- | --- |
-| 1 | [Probability](probability.md) | The frequentist and Bayesian interpretations; conditional probability; the law of total probability |
-| 2 | [Bayes' theorem](bayes_theorem.md) | Prior, likelihood, evidence and posterior; where the theorem comes from; its two uses in AI |
-| 3 | [A diagnostic test](diagnostic_test.md) | Bayes' theorem step by step: what a positive screening test says about a rare cancer, the base rate fallacy, and how much the prevalence matters |
+| 1 | [Probabilidad](probability.md) | Las interpretaciones frecuentista y bayesiana; la probabilidad condicionada; la ley de la probabilidad total |
+| 2 | [Teorema de Bayes](bayes_theorem.md) | Probabilidad a priori, verosimilitud, evidencia y probabilidad a posteriori; de dónde sale el teorema; sus dos usos en IA |
+| 3 | [Una prueba diagnóstica](diagnostic_test.md) | El teorema de Bayes paso a paso: qué dice un positivo en una prueba de cribado sobre un cáncer poco frecuente, la falacia de la tasa base, y cuánto importa la prevalencia |
 
-Bayes' theorem in AI: Bayesian networks written by hand in classical AI's [reasoning under uncertainty](../classical-ai/uncertainty.ipynb), and the naive Bayes classifier, learned from data, in supervised learning *(coming)*.
+El teorema de Bayes en IA: redes bayesianas escritas a mano en el [razonamiento con incertidumbre](../classical-ai/uncertainty.ipynb) de la IA clásica, y el clasificador naive Bayes, aprendido a partir de datos, en aprendizaje supervisado *(próximamente)*.

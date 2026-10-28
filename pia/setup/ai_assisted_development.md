@@ -1,36 +1,36 @@
-# Working with an AI Coding Assistant
+# Trabajar con un asistente de programación con IA
 
-Much of today's code is written with an AI assistant: GitHub Copilot, Claude Code, OpenAI Codex, Cursor, Gemini CLI and others, inside the editor or in the terminal. The tools change every few months; the way to work with them changes much less. Choose one, and learn to direct it.
+Buena parte del código actual se escribe con un asistente de IA: GitHub Copilot, Claude Code, OpenAI Codex, Cursor, Gemini CLI y otros, dentro del editor o en la terminal. Las herramientas cambian cada pocos meses; la forma de trabajar con ellas cambia mucho menos. Elige una y aprende a dirigirla.
 
-## The Loop
+## El ciclo
 
-1. **Ask for one small step,** with the context it needs: the files involved, the error message, what you expect to happen.
-2. **Read the change** (the diff) before you accept it.
-3. **Run the code and the tests.**
-4. **Commit only what you can explain.** The code is yours once it is in your repository, whoever wrote it.
+1. **Pide un paso pequeño,** con el contexto que necesita: los archivos implicados, el mensaje de error, lo que esperas que ocurra.
+2. **Lee el cambio** (el diff) antes de aceptarlo.
+3. **Ejecuta el código y los tests.**
+4. **Haz commit solo de lo que puedas explicar.** El código es tuyo en cuanto está en tu repositorio, lo haya escrito quien lo haya escrito.
 
-Assistants are fast and confident, and they are also wrong in plausible ways: an import that doesn't exist, a test that checks nothing, a fix that hides the error instead of solving it. Reading and running is how you catch them.
+Los asistentes son rápidos y seguros de sí mismos, y también se equivocan de formas verosímiles: un import que no existe, un test que no comprueba nada, un arreglo que oculta el error en lugar de resolverlo. Leer y ejecutar es la forma de pillarlos.
 
-In *agent* mode, an assistant also runs commands and edits several files on its own. Read each command before you approve it, and never let it delete files, push, or touch anything outside the project without asking you.
+En modo *agente*, un asistente además ejecuta comandos y edita varios archivos por su cuenta. Lee cada comando antes de aprobarlo, y nunca le dejes borrar archivos, hacer push ni tocar nada fuera del proyecto sin preguntarte.
 
-## Getting an Assistant
+## Conseguir un asistente
 
-Verified students get GitHub Copilot for free through GitHub Education, with the *Copilot Student* plan ([how](https://docs.github.com/en/copilot/how-tos/copilot-on-github/set-up-copilot/enable-copilot/set-up-for-students)). Most other assistants have a free tier, and some can use a model running on your own computer.
+El alumnado verificado tiene GitHub Copilot gratis a través de GitHub Education, con el plan *Copilot Student* ([cómo](https://docs.github.com/en/copilot/how-tos/copilot-on-github/set-up-copilot/enable-copilot/set-up-for-students)). La mayoría de los demás asistentes tienen un plan gratuito, y algunos pueden usar un modelo que se ejecuta en tu propio ordenador.
 
-## Project Instructions: `AGENTS.md`
+## Instrucciones del proyecto: `AGENTS.md`
 
-Most assistants read a Markdown file at the root of the repository with the project's instructions, and `AGENTS.md` is the name most of them share; some also read a file of their own (`CLAUDE.md`, `.github/copilot-instructions.md`). Keep it short and factual: how to install, run and test the project, its conventions, and what the assistant must not touch. An assistant that knows how to run the tests can check its own work.
+La mayoría de los asistentes leen un archivo Markdown en la raíz del repositorio con las instrucciones del proyecto, y `AGENTS.md` es el nombre que comparten casi todos; algunos leen además un archivo propio (`CLAUDE.md`, `.github/copilot-instructions.md`). Mantenlo corto y factual: cómo instalar, ejecutar y probar el proyecto, sus convenciones y lo que el asistente no debe tocar. Un asistente que sabe ejecutar los tests puede comprobar su propio trabajo.
 
-## What Never to Paste
+## Lo que nunca hay que pegar
 
-- Secrets: API keys, passwords, tokens. Keep them in a `.env` file that git ignores.
-- Personal data, yours or anyone else's.
+- Secretos: claves de API, contraseñas, tokens. Guárdalos en un archivo `.env` que git ignore.
+- Datos personales, tuyos o de cualquier otra persona.
 
-Free tiers and prices change often: check what your plan includes before you depend on it. The exams are taken without any AI tool, so make sure you understand every change you accept ([how you are assessed](../../course/assessment.md)).
+Los planes gratuitos y los precios cambian a menudo: comprueba qué incluye tu plan antes de depender de él. Los exámenes se hacen sin ninguna herramienta de IA, así que asegúrate de entender cada cambio que aceptas ([cómo se te evalúa](../../course/assessment.md)).
 
-## Deep Dives
+## Profundizaciones
 
-Two worked examples for GitHub Copilot in VS Code. The ideas transfer to any assistant; the file locations and some features are Copilot's.
+Dos ejemplos resueltos para GitHub Copilot en VS Code. Las ideas se aplican a cualquier asistente; las rutas de los archivos y algunas funciones son propias de Copilot.
 
-- [Building a specs-driven Copilot workflow in VS Code](https://github.com/avidaldo/tutorial-SSD-customizations-VSCode/blob/main/tutorial.md): a four-part tutorial (instructions, skills and agents, hooks, MCP)
-- [Copilot customizations: a reference repository](https://github.com/avidaldo/vccode-customizations-AI-intro)
+- [Construir un flujo de trabajo con Copilot guiado por especificaciones en VS Code](https://github.com/avidaldo/tutorial-SSD-customizations-VSCode/blob/main/tutorial.md): un tutorial en cuatro partes (instrucciones, *skills* y agentes, *hooks*, MCP)
+- [Personalizaciones de Copilot: un repositorio de referencia](https://github.com/avidaldo/vccode-customizations-AI-intro)

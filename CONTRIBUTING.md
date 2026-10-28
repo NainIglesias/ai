@@ -1,60 +1,60 @@
-# Improving the Course Materials
+# Mejorar los materiales del curso
 
-The materials of both modules live in public repositories, and you can help make them better: **point out an error, ask for a clearer explanation or another example, suggest a resource, or fix something yourself**. Reporting problems and proposing changes through **issues** and **pull requests** is also how most software teams work, so it is practice for your job.
+Los materiales de los dos módulos están en repositorios públicos, y puedes ayudar a mejorarlos: **señalar un error, pedir una explicación más clara u otro ejemplo, sugerir un recurso o arreglar algo tú mismo**. Informar de problemas y proponer cambios mediante **issues** y **pull requests** es también como trabajan la mayoría de los equipos de software, así que es práctica para tu trabajo.
 
-**Contributions are voluntary, and you can get a 10 without them.** Once accepted, they can raise the grade of a module whose exam you have passed: how much, in [How you are assessed](course/assessment.md#contributions).
+**Las contribuciones son voluntarias, y puedes sacar un 10 sin ellas.** Una vez aceptadas, pueden subir la nota de un módulo cuyo examen hayas aprobado: cuánto, en [Cómo se te evalúa](course/assessment.md#contribuciones).
 
-## Why contribute
+## Por qué contribuir
 
-- **A shared reference.** These materials are public and stay online. Every fix and every clearer example helps your classmates now, the students of the next years, and you, when you come back to them at work.
-- **How open source works.** Reporting a problem precisely, proposing a focused change and answering a review is the daily routine of open-source projects and of most software teams. Here you practise it on material you know, with a reviewer who wants your change to be merged.
-- **Your public profile.** Merged pull requests in other people's repositories show on your GitHub profile. They show an employer how you work with others, which a line in a CV can't.
+- **Una referencia compartida.** Estos materiales son públicos y siguen en línea. Cada corrección y cada ejemplo más claro ayuda a tus compañeros ahora, al alumnado de los próximos años y a ti, cuando vuelvas a ellos en el trabajo.
+- **Cómo funciona el código abierto.** Informar de un problema con precisión, proponer un cambio acotado y responder a una revisión es la rutina diaria de los proyectos de código abierto y de la mayoría de los equipos de software. Aquí lo practicas sobre material que conoces, con un revisor que quiere que tu cambio se fusione.
+- **Tu perfil público.** Los pull requests fusionados en repositorios de otras personas aparecen en tu perfil de GitHub. Muestran a quien te contrate cómo trabajas con otros, algo que una línea en un CV no puede mostrar.
 
-## Where
+## Dónde
 
-Any repository linked from this one: **the project repositories**, where issues will be proposed for the next step and pull requests are welcome; the notes and worked examples of each stage; and the roadmap itself. Contributions to SAA and PIA materials are equally welcome, and count for the module whose material they improve.
+Cualquier repositorio enlazado desde este: **los repositorios de los proyectos**, donde se propondrán issues para el siguiente paso y los pull requests son bienvenidos; las notas y los ejemplos resueltos de cada etapa; y la propia hoja de ruta. Las contribuciones a los materiales de SAA y de PIA son igual de bienvenidas, y cuentan para el módulo cuyo material mejoran.
 
-## Issues: report a problem or ask for an improvement
+## Issues: informar de un problema o pedir una mejora
 
-If issues, forks and pull requests are new to you, read [Git and GitHub](pia/setup/git_github.md) first: this page says only how they are used here.
+Si las issues, los forks y los pull requests son nuevos para ti, lee primero [Git y GitHub](pia/setup/git_github.md): esta página solo explica cómo se usan aquí.
 
-Open an issue in the repository concerned when you:
+Abre una issue en el repositorio correspondiente cuando:
 
-- find an error, a broken link, or code that no longer runs;
-- would like a clearer explanation, or another example, of something in the materials;
-- know a resource (an article, a video, a dataset, a tool) that would help, and can say why.
+- encuentres un error, un enlace roto o código que ya no funciona;
+- te gustaría una explicación más clara, u otro ejemplo, de algo de los materiales;
+- conozcas un recurso (un artículo, un vídeo, un dataset, una herramienta) que ayudaría, y puedas decir por qué.
 
-A good issue:
+Una buena issue:
 
-- has a title that says what is wrong or what you propose;
-- points to the exact place: file, section, notebook cell or line;
-- for an error, says what you did, what you expected and what happened, with the error message and your versions of Python and of the packages involved;
-- for a suggestion, says what you would change and why it would help someone learning the topic.
+- tiene un título que dice qué está mal o qué propones;
+- señala el sitio exacto: archivo, sección, celda del notebook o línea;
+- para un error, dice qué hiciste, qué esperabas y qué pasó, con el mensaje de error y tus versiones de Python y de los paquetes implicados;
+- para una sugerencia, dice qué cambiarías y por qué ayudaría a alguien que está aprendiendo el tema.
 
-Before opening one, check that nobody has reported the same thing; if someone has, add what you know to that issue.
+Antes de abrir una, comprueba que nadie ha informado de lo mismo; si alguien lo ha hecho, añade lo que sepas a esa issue.
 
-## Pull requests: make the change yourself
+## Pull requests: haz el cambio tú mismo
 
-1. Fork the repository and create a branch for your change ([how](pia/setup/git_github.md#contributing-with-a-pull-request)).
-2. Keep the change focused: one fix, one clarification or one new example. A small pull request is easier to review and more likely to be merged.
-3. Check it before you submit it: notebooks run from top to bottom, links work, and the rest of the code still runs.
-4. Open the pull request with a description of what you changed and why, and link the issue it solves, if there is one.
-5. Answer the review. Pull requests often need a second round of changes before they are merged.
+1. Haz fork del repositorio y crea una rama para tu cambio ([cómo](pia/setup/git_github.md#contribuir-con-un-pull-request)).
+2. Mantén el cambio acotado: una corrección, una aclaración o un ejemplo nuevo. Un pull request pequeño es más fácil de revisar y tiene más posibilidades de fusionarse.
+3. Compruébalo antes de enviarlo: los notebooks se ejecutan de principio a fin, los enlaces funcionan y el resto del código sigue funcionando.
+4. Abre el pull request con una descripción de qué cambiaste y por qué, y enlaza la issue que resuelve, si la hay.
+5. Responde a la revisión. Los pull requests a menudo necesitan una segunda ronda de cambios antes de fusionarse.
 
-## Practice issues: improvements waiting for someone
+## Issues de práctica: mejoras esperando a alguien
 
-Now and then the teacher opens an issue labelled `practice`: an improvement that has been spotted, described, and left for a student to make. The most useful contributions still start with you, with something you found wrong, unclear or missing while you studied; practice issues are there when you want a task to start from.
+De vez en cuando el profesor abre una issue con la etiqueta `practice`: una mejora que se ha detectado, descrito y dejado para que la haga un alumno. Las contribuciones más útiles siguen empezando por ti, por algo que encontraste mal, poco claro o que faltaba mientras estudiabas; las issues de práctica están ahí para cuando quieras una tarea de la que partir.
 
-- Comment on the issue to take it before you start, so that two people don't do the same work.
-- One person per issue. If it is taken, choose another one, or review the pull request that solves it: a careful review is a contribution too.
-- If you stop working on an issue, say so in a comment, so that someone else can take it.
+- Comenta en la issue para quedártela antes de empezar, para que no hagan el mismo trabajo dos personas.
+- Una persona por issue. Si está cogida, elige otra o revisa el pull request que la resuelve: una revisión cuidadosa también es una contribución.
+- Si dejas de trabajar en una issue, dilo en un comentario para que otra persona pueda cogerla.
 
-Feedback on your own practice work, which is not meant to be merged, is asked for differently: see [Asking for feedback](course/working-plan.md#asking-for-feedback).
+El feedback sobre tu propio trabajo de práctica, que no está pensado para fusionarse, se pide de otra forma: consulta [Pedir feedback](course/working-plan.md#pedir-feedback).
 
-## AI tools
+## Herramientas de IA
 
-You should use AI assistants, as in the projects. Explain the change in your own words, check what the tool produced, and answer the review yourself: the discussion is part of your contribution.
+Deberías usar asistentes de IA, como en los proyectos. Explica el cambio con tus propias palabras, revisa lo que produjo la herramienta y responde tú a la revisión: la discusión forma parte de tu contribución.
 
-## Your account and your privacy
+## Tu cuenta y tu privacidad
 
-Issues and pull requests are public. You can use a GitHub account that does not show your real name, if you prefer; using your real name, though, shows your work to future employers, and it is the usual practice in open source. Either way, **your contributions are counted only if you [register that account in the virtual classroom (*aula virtual*)](https://fpadistancia.edu.xunta.gal/mod/feedback/view.php?id=2318916)**.
+Las issues y los pull requests son públicos. Puedes usar una cuenta de GitHub que no muestre tu nombre real, si lo prefieres; usar tu nombre real, eso sí, muestra tu trabajo a futuros empleadores, y es la práctica habitual en el código abierto. En cualquier caso, **tus contribuciones solo se cuentan si [registras esa cuenta en el aula virtual](https://fpadistancia.edu.xunta.gal/mod/feedback/view.php?id=2318916)**.

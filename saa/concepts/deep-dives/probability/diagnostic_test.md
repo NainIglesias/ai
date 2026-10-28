@@ -1,85 +1,85 @@
-# Bayes' Theorem Applied to a Diagnostic Test
+# El teorema de Bayes aplicado a una prueba diagnóstica
 
-In a population group, 0.02% of people have a certain cancer. A screening test for it is not always right: in people who have the cancer it gives a positive result 85% of the time, and in people who don't, a negative result 95% of the time. Someone tests positive. How probable is it that they have the cancer?
+En un grupo de población, el 0,02 % de las personas tiene cierto cáncer. Una prueba de cribado para detectarlo no siempre acierta: en las personas que tienen el cáncer da positivo el 85 % de las veces, y en las que no lo tienen, negativo el 95 % de las veces. Una persona da positivo. ¿Qué probabilidad hay de que tenga el cáncer?
 
-## The Events
+## Los sucesos
 
-- C: the person has cancer; ¬C: the person doesn't.
-- T: the test is positive; ¬T: the test is negative.
+- C: la persona tiene cáncer; ¬C: la persona no lo tiene.
+- T: la prueba da positivo; ¬T: la prueba da negativo.
 
-## What We Know
+## Lo que sabemos
 
-The probability of having the cancer, before any test, is the disease's **prevalence** in the population, also called the **base rate**:
+La probabilidad de tener el cáncer, antes de cualquier prueba, es la **prevalencia** de la enfermedad en la población, también llamada **tasa base**:
 
-$$ P(C) = 0.0002 \qquad P(\neg C) = 1 - 0.0002 = 0.9998 $$
+$$ P(C) = 0{,}0002 \qquad P(\neg C) = 1 - 0{,}0002 = 0{,}9998 $$
 
-A test can fail in two ways, and each has a rate that describes how well the test avoids it:
+Una prueba puede fallar de dos formas, y cada una tiene una tasa que describe lo bien que la prueba la evita:
 
-- A **false negative**: the test is negative although the person has the disease. The test's **sensitivity**, or true positive rate, is the proportion of sick people it detects:
+- Un **falso negativo**: la prueba da negativo aunque la persona tiene la enfermedad. La **sensibilidad** de la prueba, o tasa de verdaderos positivos, es la proporción de personas enfermas que detecta:
 
-$$ \text{Sensitivity} = P(T|C) = 0.85 \qquad P(\neg T|C) = 1 - 0.85 = 0.15 $$
+$$ \text{Sensibilidad} = P(T|C) = 0{,}85 \qquad P(\neg T|C) = 1 - 0{,}85 = 0{,}15 $$
 
-- A **false positive**: the test is positive although the person doesn't have the disease. The test's **specificity**, or true negative rate, is the proportion of healthy people it correctly clears, and the **false positive rate** is its complement:
+- Un **falso positivo**: la prueba da positivo aunque la persona no tiene la enfermedad. La **especificidad** de la prueba, o tasa de verdaderos negativos, es la proporción de personas sanas que descarta correctamente, y la **tasa de falsos positivos** es su complementario:
 
-$$ \text{Specificity} = P(\neg T|\neg C) = 0.95 \qquad P(T|\neg C) = 1 - 0.95 = 0.05 $$
+$$ \text{Especificidad} = P(\neg T|\neg C) = 0{,}95 \qquad P(T|\neg C) = 1 - 0{,}95 = 0{,}05 $$
 
-## The Intuitive Answer, and Why It Is Wrong
+## La respuesta intuitiva, y por qué es errónea
 
-The test detects 85% of cancers, so intuition suggests that a positive result means an 85% chance of cancer. That is P(T|C), the probability of a positive test *given* cancer, and the question asks for the reverse, P(C|T), the probability of cancer *given* a positive test. Confusing the two, and so ignoring how rare the disease is, has a name: the **base rate fallacy**.
+La prueba detecta el 85 % de los cánceres, así que la intuición sugiere que un positivo significa un 85 % de probabilidad de cáncer. Eso es P(T|C), la probabilidad de un positivo *dado* el cáncer, y la pregunta pide lo contrario, P(C|T), la probabilidad de cáncer *dado* un positivo. Confundir las dos, y por tanto ignorar lo poco frecuente que es la enfermedad, tiene nombre: la **falacia de la tasa base**.
 
-## The Four Outcomes as a Tree
+## Los cuatro resultados como un árbol
 
-Each person either has the cancer or doesn't, and then tests either positive or negative. The probability of each of the four outcomes is the product of the probabilities along its path:
+Cada persona tiene el cáncer o no, y después da positivo o negativo. La probabilidad de cada uno de los cuatro resultados es el producto de las probabilidades a lo largo de su camino:
 
-![Probability tree: cancer or not, then a positive or negative test, with the probability of each of the four outcomes](img/cancer_test_tree.png)
+![Árbol de probabilidad: cáncer o no, después una prueba positiva o negativa, con la probabilidad de cada uno de los cuatro resultados](img/cancer_test_tree.png)
 
-Two of the paths end in a positive test: a **true positive**, C ∩ T, and a **false positive**, ¬C ∩ T.
+Dos de los caminos terminan en una prueba positiva: un **verdadero positivo**, C ∩ T, y un **falso positivo**, ¬C ∩ T.
 
-## Bayes' Theorem
+## El teorema de Bayes
 
-[Bayes' theorem](bayes_theorem.md) turns the probability we know, P(T|C), into the one we want, P(C|T):
+El [teorema de Bayes](bayes_theorem.md) convierte la probabilidad que conocemos, P(T|C), en la que queremos, P(C|T):
 
-$$ P(C|T) = \frac{P(T|C) \times P(C)}{P(T)} = \frac{0.85 \times 0.0002}{P(T)} $$
+$$ P(C|T) = \frac{P(T|C) \times P(C)}{P(T)} = \frac{0{,}85 \times 0{,}0002}{P(T)} $$
 
-## How Often Is the Test Positive?
+## ¿Con qué frecuencia da positivo la prueba?
 
-The problem doesn't give P(T), the proportion of all tests that come out positive. A positive result is either a true positive or a false positive, and each of these joint probabilities is a conditional probability times the probability of its condition, so by the [law of total probability](probability.md#the-law-of-total-probability):
+El problema no da P(T), la proporción de todas las pruebas que salen positivas. Un positivo es o un verdadero positivo o un falso positivo, y cada una de estas probabilidades conjuntas es una probabilidad condicionada por la probabilidad de su condición, así que por la [ley de la probabilidad total](probability.md#la-ley-de-la-probabilidad-total):
 
 $$ P(T) = P(T \cap C) + P(T \cap \neg C) = P(T|C) \times P(C) + P(T|\neg C) \times P(\neg C) $$
 
-$$ P(T) = 0.85 \times 0.0002 + 0.05 \times 0.9998 = 0.00017 + 0.04999 = 0.05016 $$
+$$ P(T) = 0{,}85 \times 0{,}0002 + 0{,}05 \times 0{,}9998 = 0{,}00017 + 0{,}04999 = 0{,}05016 $$
 
-## The Answer
+## La respuesta
 
-$$ P(C|T) = \frac{P(T|C) \times P(C)}{P(T|C) \times P(C) + P(T|\neg C) \times P(\neg C)} = \frac{0.00017}{0.05016} \approx 0.0034 $$
+$$ P(C|T) = \frac{P(T|C) \times P(C)}{P(T|C) \times P(C) + P(T|\neg C) \times P(\neg C)} = \frac{0{,}00017}{0{,}05016} \approx 0{,}0034 $$
 
-After a positive test, the probability of having the cancer rises from 0.02% to about 0.34%: about seventeen times higher, and still very unlikely.
+Después de un positivo, la probabilidad de tener el cáncer sube del 0,02 % a aproximadamente el 0,34 %: unas diecisiete veces más alta, y aun así muy improbable.
 
-## The Same Calculation in People
+## El mismo cálculo en personas
 
-The reason is easier to see in counts than in probabilities. Out of 100,000 people tested:
+La razón se ve más fácil con recuentos que con probabilidades. De cada 100.000 personas que se hacen la prueba:
 
-| | Test positive | Test negative | Total |
+| | Positivo | Negativo | Total |
 | --- | ---: | ---: | ---: |
-| Have the cancer | 17 | 3 | 20 |
-| Don't have it | 4,999 | 94,981 | 99,980 |
-| Total | 5,016 | 94,984 | 100,000 |
+| Tienen el cáncer | 17 | 3 | 20 |
+| No lo tienen | 4.999 | 94.981 | 99.980 |
+| Total | 5.016 | 94.984 | 100.000 |
 
-Of the 5,016 people who test positive, only 17 have the cancer: 17 / 5,016 ≈ 0.0034. The test is good, but healthy people are so much more numerous that their 5% of false positives far outnumber the true positives.
+De las 5.016 personas que dan positivo, solo 17 tienen el cáncer: 17 / 5.016 ≈ 0,0034. La prueba es buena, pero las personas sanas son tantísimas más que su 5 % de falsos positivos supera con mucho a los verdaderos positivos.
 
-A negative result moves the probability the other way: of the 94,984 people who test negative, 3 have the cancer, so P(C|¬T) = 3 / 94,984 ≈ 0.00003.
+Un negativo mueve la probabilidad en el otro sentido: de las 94.984 personas que dan negativo, 3 tienen el cáncer, así que P(C|¬T) = 3 / 94.984 ≈ 0,00003.
 
-## How Much the Prevalence Matters
+## Cuánto importa la prevalencia
 
-With the same test, a prevalence of 2% instead of 0.02% gives:
+Con la misma prueba, una prevalencia del 2 % en lugar del 0,02 % da:
 
-$$ P(C|T) = \frac{0.85 \times 0.02}{0.85 \times 0.02 + 0.05 \times 0.98} \approx 0.26 $$
+$$ P(C|T) = \frac{0{,}85 \times 0{,}02}{0{,}85 \times 0{,}02 + 0{,}05 \times 0{,}98} \approx 0{,}26 $$
 
-A positive result now means a 26% probability of cancer. Nothing about the test changed, only the group it was used on, and with it the meaning of a positive result. That is why screening programmes target the groups where a disease is more common, and why a model's predictions must be read against how common each class is: the same applies to a spam filter or a fraud detector.
+Un positivo significa ahora un 26 % de probabilidad de cáncer. Nada de la prueba ha cambiado, solo el grupo en el que se usó, y con él el significado de un positivo. Por eso los programas de cribado se dirigen a los grupos en los que una enfermedad es más frecuente, y por eso las predicciones de un modelo hay que leerlas teniendo en cuenta lo frecuente que es cada clase: lo mismo vale para un filtro de spam o un detector de fraude.
 
-## Further Resources
+## Más recursos
 
-- [3Blue1Brown: the medical test paradox, and redesigning Bayes' rule](https://www.youtube.com/watch?v=lG4VkPoG3ko)
-- [Veritasium: the Bayesian trap](https://www.youtube.com/watch?v=R13BD8qKeTg) ([dubbed into Spanish](https://www.youtube.com/watch?v=D7KKlC0LOyw))
-- [Matemáticas con Juan: a similar problem, solved](https://www.youtube.com/watch?v=n11NDXIIcLI) (in Spanish)
-- [Base rate fallacy](https://en.wikipedia.org/wiki/Base_rate_fallacy)
+- [3Blue1Brown: The medical test paradox, and redesigning Bayes' rule](https://www.youtube.com/watch?v=lG4VkPoG3ko) (en inglés)
+- [Veritasium: The Bayesian Trap](https://www.youtube.com/watch?v=R13BD8qKeTg) ([doblado al español](https://www.youtube.com/watch?v=D7KKlC0LOyw))
+- [Matemáticas con Juan: un problema parecido, resuelto](https://www.youtube.com/watch?v=n11NDXIIcLI) (en español)
+- [Falacia de la tasa base](https://es.wikipedia.org/wiki/Falacia_de_la_tasa_base)
