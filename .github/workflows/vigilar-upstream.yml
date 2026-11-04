@@ -1,0 +1,74 @@
+# Una vez por semana mira si el repositorio del profesor (avidaldo/ai) tiene commits
+# posteriores al último traducido (el que cita el README) y, si los hay, abre o
+# actualiza un issue con la lista de ficheros que hay que traducir.
+# Después: abrir Claude Code en el repo y ejecutar /actualizar-traduccion.
+name: Vigilar upstream
+
+on:
+  schedule:
+    - cron: "17 7 * * 1"   # lunes, 07:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  comprobar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: traduccion-es
+          fetch-depth: 0
+
+      - name: Traer upstream
+        run: |
+          git remote add upstream https://github.com/avidaldo/ai
+          git fetch --quiet upstream main
+
+      - name: Calcular cambios pendientes
+        id: pend
+        run: |
+          tools/traduccion/pendiente.sh upstream/main > cambios.txt 2> refs.txt
+          cat refs.txt >> "$GITHUB_OUTPUT"
+          echo "n=$(wc -l < cambios.txt)" >> "$GITHUB_OUTPUT"
+
+      - name: Abrir o actualizar el issue
+        if: steps.pend.outputs.n != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REF: ${{ steps.pend.outputs.REF }}
+          HEAD: ${{ steps.pend.outputs.HEAD }}
+          N: ${{ steps.pend.outputs.n }}
+        run: |
+          titulo="Traducción pendiente: upstream tiene cambios"
+          {
+            echo "El repositorio original ha avanzado desde el último commit traducido."
+            echo
+            echo "- Último traducido: [\`${REF:0:7}\`](https://github.com/avidaldo/ai/commit/$REF)"
+            echo "- Upstream ahora: [\`${HEAD:0:7}\`](https://github.com/avidaldo/ai/commit/$HEAD)"
+            echo "- [Comparar](https://github.com/avidaldo/ai/compare/$REF...$HEAD)"
+            echo
+            echo "**Commits:**"
+            echo '```'
+            git log --oneline "$REF..$HEAD"
+            echo '```'
+            echo "**$N fichero(s) cambiados** (A = nuevo, M = modificado, D = borrado, R = renombrado):"
+            echo '```'
+            cat cambios.txt
+            echo '```'
+            echo "Para actualizar: abre Claude Code en el repositorio y ejecuta \`/actualizar-traduccion\`."
+          } > cuerpo.md
+
+          num=$(gh issue list --state open --search "in:title \"$titulo\"" --json number --jq '.[0].number')
+          if [ -n "$num" ]; then
+            gh issue edit "$num" --body-file cuerpo.md
+            echo "Issue #$num actualizado"
+          else
+            gh issue create --title "$titulo" --body-file cuerpo.md
+          fi
+
+      - name: Al día
+        if: steps.pend.outputs.n == '0'
+        run: echo "La traducción está al día con upstream."
