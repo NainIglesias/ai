@@ -1,13 +1,21 @@
 # Una vez por semana mira si el repositorio del profesor (avidaldo/ai) tiene commits
 # posteriores al último traducido (el que cita el README) y, si los hay, abre o
 # actualiza un issue con la lista de ficheros que hay que traducir.
-# Después: abrir Claude Code en el repo y ejecutar /actualizar-traduccion.
+# Después, el job "traducir" hace el merge en una rama nueva, lanza Claude Code
+# (con la suscripción, secreto CLAUDE_CODE_OAUTH_TOKEN) para traducir los cambios
+# y abre una PR contra traduccion-es que cierra el issue al fusionarse.
+# Si no hay secreto o falla, queda el issue para hacerlo a mano con /actualizar-traduccion.
 name: Vigilar upstream
 
 on:
   schedule:
     - cron: "17 7 * * 1"   # lunes, 07:17 UTC
   workflow_dispatch:
+    inputs:
+      traducir:
+        description: "Lanzar Claude Code para traducir y abrir la PR"
+        type: boolean
+        default: true
 
 permissions:
   contents: read
@@ -16,6 +24,10 @@ permissions:
 jobs:
   comprobar:
     runs-on: ubuntu-latest
+    outputs:
+      n: ${{ steps.pend.outputs.n }}
+      head: ${{ steps.pend.outputs.HEAD }}
+      issue: ${{ steps.issue.outputs.num }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -35,6 +47,7 @@ jobs:
           echo "n=$(wc -l < cambios.txt)" >> "$GITHUB_OUTPUT"
 
       - name: Abrir o actualizar el issue
+        id: issue
         if: steps.pend.outputs.n != '0'
         env:
           GH_TOKEN: ${{ github.token }}
@@ -58,7 +71,7 @@ jobs:
             echo '```'
             cat cambios.txt
             echo '```'
-            echo "Para actualizar: abre Claude Code en el repositorio y ejecuta \`/actualizar-traduccion\`."
+            echo "Claude Code intentará traducirlo y abrir una PR automáticamente. Si no aparece la PR, abre Claude Code en el repositorio y ejecuta \`/actualizar-traduccion\`."
           } > cuerpo.md
 
           num=$(gh api "repos/$GITHUB_REPOSITORY/issues?state=open&per_page=100" \
@@ -67,9 +80,122 @@ jobs:
             gh api -X PATCH "repos/$GITHUB_REPOSITORY/issues/$num" -F body=@cuerpo.md --silent
             echo "Issue #$num actualizado"
           else
-            gh api "repos/$GITHUB_REPOSITORY/issues" -f title="$titulo" -F body=@cuerpo.md --jq .html_url
+            num=$(gh api "repos/$GITHUB_REPOSITORY/issues" -f title="$titulo" -F body=@cuerpo.md --jq .number)
+            echo "Issue #$num creado"
           fi
+          echo "num=$num" >> "$GITHUB_OUTPUT"
 
       - name: Al día
         if: steps.pend.outputs.n == '0'
         run: echo "La traducción está al día con upstream."
+
+  traducir:
+    needs: comprobar
+    if: needs.comprobar.outputs.n != '0' && (github.event_name == 'schedule' || inputs.traducir)
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      HEAD_SHA: ${{ needs.comprobar.outputs.head }}
+      ISSUE: ${{ needs.comprobar.outputs.issue }}
+      BASE: ${{ github.ref_name }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+
+      - name: Preparar la rama y el merge
+        id: rama
+        env:
+          TIENE_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN != '' }}
+        run: |
+          rama="traduccion/${HEAD_SHA:0:7}"
+          echo "rama=$rama" >> "$GITHUB_OUTPUT"
+          if git ls-remote --exit-code --heads origin "$rama" >/dev/null; then
+            echo "La rama $rama ya existe (PR pendiente de revisar): no se repite."
+            echo "existe=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if [ "$TIENE_TOKEN" != "true" ]; then
+            echo "::warning::Falta el secreto CLAUDE_CODE_OAUTH_TOKEN: se queda solo el issue."
+            echo "existe=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898+github-actions[bot]@users.noreply.github.com"
+          git remote add upstream https://github.com/avidaldo/ai
+          git fetch --quiet upstream main
+          git checkout -b "$rama"
+          # Los conflictos los resuelve Claude en el paso siguiente.
+          git merge --no-ff --no-commit "$HEAD_SHA" || true
+          git status --short | head -50
+          mkdir -p "$RUNNER_TEMP/tr"
+
+      - name: Traducir con Claude Code
+        if: steps.rama.outputs.existe != 'true'
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          github_token: ${{ github.token }}
+          prompt: |
+            Actualiza la traducción al español de este repositorio con los cambios nuevos de avidaldo/ai.
+            Lee primero tools/traduccion/GLOSARIO.md y .claude/commands/actualizar-traduccion.md, y sigue ese
+            procedimiento con estas diferencias, porque estás en GitHub Actions sin nadie a quien preguntar:
+
+            - Ya estás en la rama ${{ steps.rama.outputs.rama }} con el merge de upstream ${{ env.HEAD_SHA }}
+              empezado (git merge --no-commit). Puede haber conflictos. Haz el paso 2 desde ahí: resuélvelos
+              y haz commit del merge. No hagas fetch, checkout ni crees ramas.
+            - Haz los pasos 3 y 4 completos. El último commit traducido es el que cita README.md antes de
+              cambiarlo; upstream/main es ${{ env.HEAD_SHA }}.
+            - Del paso 5, haz solo los commits. NO hagas push, no toques main ni cierres issues: el workflow
+              se encarga.
+            - Usa ${{ runner.temp }}/tr como scratchpad para los ficheros .en.txt y .es.txt, nunca el repo.
+            - Usa python3.
+            - Al terminar, escribe en ${{ runner.temp }}/resumen.md, en español y en markdown breve:
+              qué ficheros has traducido, las decisiones de traducción dudosas que un revisor debería
+              mirar y el resultado final de check.py.
+          claude_args: |
+            --max-turns 400
+            --allowedTools "Bash,Read,Write,Edit,MultiEdit,Glob,Grep,TodoWrite"
+
+      - name: Comprobar, subir la rama y abrir la PR
+        if: always() && steps.rama.outputs.existe != 'true' && steps.rama.outcome == 'success'
+        env:
+          RAMA: ${{ steps.rama.outputs.rama }}
+        run: |
+          git add -A
+          git diff --cached --quiet || git commit -q -m "Cambios pendientes de la traducción automática"
+          if [ "$(git rev-list --count "origin/$BASE..HEAD")" = "0" ]; then
+            echo "::error::Claude no ha generado ningún commit."
+            exit 1
+          fi
+
+          borrador=false
+          if python3 tools/traduccion/check.py > check.txt 2>&1; then estado="✅ check.py sin problemas"
+          else estado="⚠️ check.py ha encontrado problemas: revisar antes de fusionar"; borrador=true; fi
+          pend=$(tools/traduccion/pendiente.sh "$HEAD_SHA" 2>/dev/null | wc -l)
+          [ "$pend" = "0" ] || { estado="$estado. ⚠️ El README no apunta a ${HEAD_SHA:0:7}"; borrador=true; }
+
+          git push -q origin "$RAMA"
+          {
+            echo "Traducción automática de [avidaldo/ai](https://github.com/avidaldo/ai) hasta \`${HEAD_SHA:0:7}\`."
+            [ -n "$ISSUE" ] && echo && echo "Closes #$ISSUE"
+            echo
+            echo "**$estado**"
+            echo '```'
+            tail -30 check.txt
+            echo '```'
+            echo
+            cat "$RUNNER_TEMP/resumen.md" 2>/dev/null || echo "_Claude no ha dejado resumen._"
+            echo
+            echo "🤖 Generated with [Claude Code](https://claude.com/claude-code)"
+          } > pr.md
+          gh api "repos/$GITHUB_REPOSITORY/pulls" \
+            -f title="Traducción: actualiza hasta ${HEAD_SHA:0:7}" \
+            -f head="$RAMA" -f base="$BASE" -F draft="$borrador" \
+            -F body=@pr.md --jq .html_url
