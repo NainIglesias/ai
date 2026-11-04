@@ -1,6 +1,6 @@
 # Inteligencia Artificial 2026/27
 
-> 🇪🇸 **Traducción al español** del repositorio original de [avidaldo/ai](https://github.com/avidaldo/ai) hasta el commit 2c756c544bdb288bf3e3edc502d13a54e43e080d, hecha por un alumno para ayudar a los compañeros. La versión de referencia es siempre la original en inglés: si algo no cuadra, consúltala.
+> 🇪🇸 **Traducción al español** del repositorio original de [avidaldo/ai](https://github.com/avidaldo/ai) hasta el commit cc676eb08aae09522f4ef6b4afe830c7885d41ee, hecha por un alumno para ayudar a los compañeros. La versión de referencia es siempre la original en inglés: si algo no cuadra, consúltala.
 
 Materiales de dos módulos del curso de especialización en Inteligencia Artificial y Big Data, impartidos juntos como un único itinerario:
 
