@@ -22,6 +22,22 @@ permissions:
   issues: write
 
 jobs:
+  # Mantiene main del fork igual que main del profesor (como el botón "Sync fork").
+  sincronizar-main:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Sync fork de main
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if r=$(gh api -X POST "repos/$GITHUB_REPOSITORY/merge-upstream" -f branch=main --jq .merge_type 2>&1); then
+            echo "main: $r"   # none = ya estaba al día; fast-forward = actualizado
+          else
+            echo "::warning::No se ha podido sincronizar main: $r"
+          fi
+
   comprobar:
     runs-on: ubuntu-latest
     outputs:
