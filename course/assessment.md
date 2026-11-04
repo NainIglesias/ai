@@ -41,9 +41,7 @@ La nota se redondea al entero más cercano, las mitades hacia arriba; una nota p
 
 ## Los proyectos
 
-A lo largo del curso trabajas en [proyectos](working-plan.md#los-proyectos): repositorios públicos de los que haces fork y que vas desarrollando paso a paso. Tus pull requests son tus entregas: reciben feedback y nunca se califican, salvo como [contribuciones](#contribuciones). Los exámenes te piden trabajar sobre su código, así que la mejor preparación es haberlos construido o, al menos, haberlos seguido de cerca.
-
-La parte práctica de cada examen trabaja sobre algunos de estos repositorios, y posiblemente sobre los ejemplos resueltos. **Cuáles, y la versión (tag) de cada uno que hay que estudiar, se anuncian al menos dos semanas antes del examen.** Cada versión es el repositorio tal como estaba una semana antes del examen o antes: solo se examina lo que se había publicado para entonces, nunca el material complementario de la carpeta `docs/` de un repositorio. Las preguntas tratan sobre un cambio que no has visto, así que recitar el código no te servirá; entenderlo, sí. Todo se ejecuta sin conexión, sin modelo de lenguaje.
+La parte práctica de cada examen trabaja sobre algunos de [los proyectos](../README.md#los-proyectos), y posiblemente sobre los ejemplos resueltos. Te pide trabajar sobre su código, así que la mejor preparación es haberlos construido o, al menos, haberlos seguido de cerca. **Qué repositorios, y la versión (tag) de cada uno que hay que estudiar, se anuncian al menos dos semanas antes del examen.** Cada versión es el repositorio tal como estaba una semana antes del examen o antes: solo se examina lo que se había publicado para entonces, nunca el material complementario de la carpeta `docs/` de un repositorio. Las preguntas tratan sobre un cambio que no has visto, así que recitar el código no te servirá; entenderlo, sí. Todo se ejecuta sin conexión, sin modelo de lenguaje.
 
 **Se espera que uses herramientas de IA.** Lo que se evalúa es tu comprensión: las herramientas de IA pueden escribir la mayor parte del código por ti, pero no pueden entenderlo por ti, y eso es lo que comprueba el examen. Asegúrate de que puedes explicar, probar y modificar el código de los proyectos, y de que sabrías dirigir bien a un agente de IA para modificarlo.
 
@@ -51,7 +49,7 @@ La parte práctica de cada examen trabaja sobre algunos de estos repositorios, y
 
 Las contribuciones son voluntarias, y puedes sacar un 10 sin ellas. Las issues útiles (un problema bien identificado, aunque no traiga solución) y los pull requests a cualquier repositorio del curso, una vez aceptados, pueden sumar hasta 2 puntos a la nota de un módulo cuyo examen hayas aprobado, nunca por encima de 10. Cómo se valoran se describe en la programación. Registra tu usuario de GitHub en el aula virtual para que se puedan contar. Cómo participar: [Mejorar los materiales del curso](../CONTRIBUTING.md).
 
-## Todo lo demás
+## Para qué cuenta cada tipo de material
 
 - Los **elementos básicos** (★ en el README de cada tema) son el itinerario mínimo. La parte de proyectos de cada examen solo necesita esos elementos y los repositorios que usa, y unas dos terceras partes del cuestionario tratan sobre ellos; el resto del cuestionario trata sobre los elementos **estándar**: el resto del itinerario y los ejemplos resueltos.
 - Las **profundizaciones** nunca se evalúan.

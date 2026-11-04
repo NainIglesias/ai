@@ -1,8 +1,6 @@
 # IA clásica: inteligencia sin aprendizaje
 
-Una profundización de [¿Qué es la inteligencia artificial?](../../background/what_is_ai.md): opcional, y nunca se evalúa.
-
-El aprendizaje automático es una forma de hacer inteligente un programa: enséñale ejemplos con sus respuestas, y deja que encuentre las reglas. Durante sus primeras décadas, IA significaba el camino contrario: escribir el conocimiento, y hacer que el programa razone con él. Eso es la **IA simbólica** o **IA clásica**, a veces llamada *good old-fashioned AI* (GOFAI), junto con su sucesora probabilística, el razonamiento con incertidumbre. No es el *aprendizaje automático clásico*, nombre que se suele dar a los métodos de aprendizaje que no son redes neuronales, como los árboles de decisión: esos aprenden de los datos.
+El aprendizaje automático es una forma de hacer [inteligente](../../background/what_is_ai.md) un programa: enséñale ejemplos con sus respuestas, y deja que encuentre las reglas. Durante sus primeras décadas, IA significaba el camino contrario: escribir el conocimiento, y hacer que el programa razone con él. Eso es la **IA simbólica** o **IA clásica**, a veces llamada *good old-fashioned AI* (GOFAI), junto con su sucesora probabilística, el razonamiento con incertidumbre. No es el *aprendizaje automático clásico*, nombre que se suele dar a los métodos de aprendizaje que no son redes neuronales, como los árboles de decisión: esos aprenden de los datos.
 
 Nada en estos notebooks se entrena con datos, hasta que el último muestra dónde entra el aprendizaje; el razonamiento basado en casos, en el notebook 4, es lo que más se acerca, acumulando casos. Cada uno construye un pequeño ejemplo en Python puro, una idea por celda, sin nada que instalar aparte del propio Python.
 
@@ -20,10 +18,6 @@ Nada en estos notebooks se entrena con datos, hasta que el último muestra dónd
 | 8 | [Razonamiento con incertidumbre](uncertainty.ipynb) | Una red bayesiana a mano, inferencia por enumeración, *explaining away*; y las mismas tablas aprendidas a partir de datos |
 
 Los **juegos** son búsqueda contra un oponente: el notebook 1 explica minimax, y [Python tic-tac-toe](https://github.com/avidaldo/python-tic-tac-toe/tree/master/02_minimax) lo implementa, con un jugador que nunca pierde.
-
-## El teorema de Bayes, aquí y en otros sitios
-
-El razonamiento bayesiano aparece en tres sitios, cada uno con su papel: el propio **teorema**, con su derivación y una prueba diagnóstica, en la profundización [Probabilidad y teorema de Bayes](../probability/README.md); las **redes bayesianas escritas a mano**, en el notebook 8; y el **clasificador naive Bayes**, cuyas probabilidades se cuentan a partir de datos etiquetados, en una profundización de aprendizaje supervisado *(próximamente)*. No está a un lado de la línea entre IA clásica y aprendizaje automático: lo que decide el lado es de dónde vienen las probabilidades, de un experto o de los datos.
 
 ## Lo que no se trata aquí
 

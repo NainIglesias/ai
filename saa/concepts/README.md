@@ -1,6 +1,6 @@
 # Qué son la IA y el aprendizaje automático
 
-El mapa de todo el curso de SAA, en notas para leer: qué son la IA y el aprendizaje automático, y cada familia de modelos vista desde fuera. Cada etapa posterior entra en una parte del mapa: la columna *Se detalla en* dice cuál, y la [hoja de ruta](../../README.md#hoja-de-ruta) da las etapas.
+El mapa de todo el curso de SAA, en notas para leer: qué son la IA y el aprendizaje automático, y cada familia de modelos vista desde fuera. Cada etapa posterior entra en una parte del mapa:
 
 ## Itinerario
 

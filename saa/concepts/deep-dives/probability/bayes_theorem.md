@@ -34,7 +34,7 @@ Un ejemplo resuelto con números: [una prueba diagnóstica](diagnostic_test.md).
 El teorema es la base de dos ideas en IA, que se diferencian en de dónde vienen las probabilidades:
 
 - Las **redes bayesianas** razonan con probabilidades que escribe un experto, y las actualizan con el teorema a medida que llega la evidencia: por ejemplo, la probabilidad de un robo cuando salta una alarma. Un ejemplo completo: [razonamiento con incertidumbre](../classical-ai/uncertainty.ipynb).
-- El clasificador **naive Bayes** estima esas probabilidades contando en datos etiquetados, así que es aprendizaje supervisado. Su aplicación clásica es el filtro de spam: la probabilidad de que un email sea spam dadas las palabras que contiene. Es una profundización de aprendizaje supervisado *(próximamente)*.
+- El clasificador **naive Bayes** estima esas probabilidades contando en datos etiquetados, así que es aprendizaje supervisado. Su aplicación clásica es el filtro de spam: la probabilidad de que un email sea spam dadas las palabras que contiene. Es [una profundización de aprendizaje supervisado](../../../supervised-learning/deep-dives/naive-bayes/README.md).
 
 ## Más recursos
 
