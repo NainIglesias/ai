@@ -155,6 +155,9 @@ jobs:
             - Del paso 5, haz solo los commits. NO hagas push, no toques main ni cierres issues: el workflow
               se encarga.
             - Usa ${{ runner.temp }}/tr como scratchpad para los ficheros .en.txt y .es.txt, nunca el repo.
+            - Traduce solo el texto que esté en inglés. Lo que ya esté en español no se reescribe ni se
+              "mejora", aunque el párrafo correspondiente de upstream haya cambiado: en ese caso, modifica
+              solo las frases o cifras que cambiaron, conservando la redacción existente.
             - Usa python3.
             - Al terminar, escribe en ${{ runner.temp }}/resumen.md, en español y en markdown breve:
               qué ficheros has traducido, las decisiones de traducción dudosas que un revisor debería

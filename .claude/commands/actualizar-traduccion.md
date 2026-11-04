@@ -26,7 +26,7 @@ Resuelve los conflictos así: **se conserva nuestra traducción y se aplica en e
 ## 3. Traducir cada fichero añadido o modificado
 
 - **Ficheros nuevos (A)**: tradúcelos enteros.
-- **Ficheros modificados (M)**: traduce solo lo que ha cambiado y deja como está el resto de la traducción.
+- **Ficheros modificados (M)**: traduce solo lo que ha cambiado. No reescribas ni "mejores" lo que ya está en español: si un párrafo traducido cambia en upstream, modifica solo las frases o cifras que cambiaron y conserva la redacción.
 - **Renombrados o borrados (R, D)**: arregla los enlaces que apunten a ellos.
 - **`requirements.txt`, `.gitignore` y la configuración**: la versión de upstream, sin traducir.
 
