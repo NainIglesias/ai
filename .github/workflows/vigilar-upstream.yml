@@ -19,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: traduccion-es
+          ref: ${{ github.ref_name }}   # traduccion-es (rama por defecto) en la ejecución semanal
           fetch-depth: 0
 
       - name: Traer upstream
