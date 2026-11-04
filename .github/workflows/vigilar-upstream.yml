@@ -137,6 +137,7 @@ jobs:
           mkdir -p "$RUNNER_TEMP/tr"
 
       - name: Traducir con Claude Code
+        id: claude
         if: steps.rama.outputs.existe != 'true'
         uses: anthropics/claude-code-action@v1
         with:
@@ -167,7 +168,7 @@ jobs:
             --allowedTools "Bash,Read,Write,Edit,MultiEdit,Glob,Grep,TodoWrite"
 
       - name: Comprobar, subir la rama y abrir la PR
-        if: always() && steps.rama.outputs.existe != 'true' && steps.rama.outcome == 'success'
+        if: steps.claude.outcome == 'success'
         env:
           RAMA: ${{ steps.rama.outputs.rama }}
         run: |
@@ -202,3 +203,8 @@ jobs:
             -f title="Traducción: actualiza hasta ${HEAD_SHA:0:7}" \
             -f head="$RAMA" -f base="$BASE" -F draft="$borrador" \
             -F body=@pr.md --jq .html_url
+
+      - name: Avisar en el issue si Claude no ha podido terminar
+        if: failure() && steps.claude.outcome == 'failure' && env.ISSUE != ''
+        run: |
+          gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE/comments" --silent -f body="⚠️ Claude Code no ha podido terminar la traducción ([ejecución](${{ github.server_url }}/$GITHUB_REPOSITORY/actions/runs/${{ github.run_id }})). Causas habituales: sin cuota en ese momento o token caducado (\`claude setup-token\` y \`gh secret set CLAUDE_CODE_OAUTH_TOKEN\`). No se ha subido nada: se reintentará en la próxima ejecución semanal, o lánzalo a mano desde Actions → Vigilar upstream → Run workflow, o hazlo en local con \`/actualizar-traduccion\`."
