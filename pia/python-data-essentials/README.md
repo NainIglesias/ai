@@ -1,6 +1,6 @@
 # Lo esencial de Python para datos: NumPy y pandas
 
-Las dos bibliotecas en las que se apoya casi cualquier proyecto de IA en Python: NumPy para arrays numéricos y pandas para tablas. Esta carpeta cubre lo que necesitas para cargar, inspeccionar, seleccionar, remodelar y combinar los datos de tus proyectos, para encontrar los problemas que tiene una tabla y para obtener datos de la web. La preparación de datos más a fondo para el aprendizaje automático (explorar un dataset, valores ausentes, valores atípicos, codificación, escalado) es la profundización *Preparación de datos* *(próximamente)*, un notebook por paso: empieza donde termina *Encontrar los problemas de una tabla*, con las decisiones que dependen de los datos.
+Las dos bibliotecas en las que se apoya casi cualquier proyecto de IA en Python: NumPy para arrays numéricos y pandas para tablas. Esta carpeta cubre lo que necesitas para cargar, inspeccionar, seleccionar, remodelar y combinar los datos de tus proyectos, para encontrar los problemas que tiene una tabla y para obtener datos de la web. La preparación de datos más a fondo para el aprendizaje automático es el tema [Preparación de datos](../../saa/data-preparation/README.md), un notebook por paso: empieza donde termina *Encontrar los problemas de una tabla*, con las decisiones que dependen de los datos. Su itinerario (valores ausentes, codificación, escalado) llega con el aprendizaje supervisado; sus profundizaciones (explorar un dataset, valores atípicos, distribuciones asimétricas…) pueden leerse ya.
 
 ## Itinerario
 
