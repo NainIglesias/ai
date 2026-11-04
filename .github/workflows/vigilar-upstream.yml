@@ -1,4 +1,4 @@
-# Una vez por semana mira si el repositorio del profesor (avidaldo/ai) tiene commits
+# Una vez al día mira si el repositorio del profesor (avidaldo/ai) tiene commits
 # posteriores al último traducido (el que cita el README) y, si los hay, abre o
 # actualiza un issue con la lista de ficheros que hay que traducir.
 # Después, el job "traducir" hace el merge en una rama nueva, lanza Claude Code
@@ -9,7 +9,7 @@ name: Vigilar upstream
 
 on:
   schedule:
-    - cron: "17 7 * * 1"   # lunes, 07:17 UTC
+    - cron: "17 7 * * *"   # todos los días, 07:17 UTC (09:17 en España en verano, 08:17 en invierno)
   workflow_dispatch:
     inputs:
       traducir:
@@ -31,7 +31,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.ref_name }}   # traduccion-es (rama por defecto) en la ejecución semanal
+          ref: ${{ github.ref_name }}   # traduccion-es (rama por defecto) en la ejecución diaria
           fetch-depth: 0
 
       - name: Traer upstream
@@ -116,6 +116,13 @@ jobs:
         run: |
           rama="traduccion/${HEAD_SHA:0:7}"
           echo "rama=$rama" >> "$GITHUB_OUTPUT"
+          abierta=$(gh api "repos/$GITHUB_REPOSITORY/pulls?state=open&base=$BASE&per_page=100" \
+            --jq '[.[] | select(.head.ref | startswith("traduccion/"))][0].html_url // empty')
+          if [ -n "$abierta" ]; then
+            echo "Ya hay una PR de traducción sin fusionar ($abierta): se espera a que la revises."
+            echo "existe=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
           if git ls-remote --exit-code --heads origin "$rama" >/dev/null; then
             echo "La rama $rama ya existe (PR pendiente de revisar): no se repite."
             echo "existe=true" >> "$GITHUB_OUTPUT"
@@ -207,4 +214,4 @@ jobs:
       - name: Avisar en el issue si Claude no ha podido terminar
         if: failure() && steps.claude.outcome == 'failure' && env.ISSUE != ''
         run: |
-          gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE/comments" --silent -f body="⚠️ Claude Code no ha podido terminar la traducción ([ejecución](${{ github.server_url }}/$GITHUB_REPOSITORY/actions/runs/${{ github.run_id }})). Causas habituales: sin cuota en ese momento o token caducado (\`claude setup-token\` y \`gh secret set CLAUDE_CODE_OAUTH_TOKEN\`). No se ha subido nada: se reintentará en la próxima ejecución semanal, o lánzalo a mano desde Actions → Vigilar upstream → Run workflow, o hazlo en local con \`/actualizar-traduccion\`."
+          gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE/comments" --silent -f body="⚠️ Claude Code no ha podido terminar la traducción ([ejecución](${{ github.server_url }}/$GITHUB_REPOSITORY/actions/runs/${{ github.run_id }})). Causas habituales: sin cuota en ese momento o token caducado (\`claude setup-token\` y \`gh secret set CLAUDE_CODE_OAUTH_TOKEN\`). No se ha subido nada: se reintentará en la próxima ejecución diaria, o lánzalo a mano desde Actions → Vigilar upstream → Run workflow, o hazlo en local con \`/actualizar-traduccion\`."
