@@ -57,7 +57,7 @@ Una **red multicapa** apila unidades en capas: una capa de entrada que recibe lo
 
 El entrenamiento empieza con pesos aleatorios. La red predice para un pequeño lote de ejemplos de entrenamiento, una **función de pérdida** mide lo lejos que están las predicciones de los objetivos, y cada peso se mueve un pequeño paso en la dirección que reduce la pérdida: eso es el **descenso del gradiente**. La **retropropagación** es el algoritmo que calcula esa dirección para todos los pesos a la vez, trabajando hacia atrás desde la capa de salida hasta la de entrada. Repetidos durante muchos lotes, y muchas pasadas por los datos, estos pequeños pasos ajustan la red a sus ejemplos.
 
-El descenso del gradiente se explica paso a paso en aprendizaje supervisado *(próximamente)*, porque los modelos más sencillos también se entrenan con él, y la retropropagación en el tema sobre redes neuronales *(próximamente)*.
+El descenso del gradiente se explica paso a paso en [aprendizaje supervisado](../../supervised-learning/ml-fundamentals/gradient_descent.ipynb), porque los modelos más sencillos también se entrenan con él, y la retropropagación en el tema sobre redes neuronales *(próximamente)*.
 
 ## Aprendizaje profundo
 

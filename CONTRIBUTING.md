@@ -12,7 +12,7 @@ Los materiales de los dos módulos están en repositorios públicos, y puedes ay
 
 ## Dónde
 
-Cualquier repositorio enlazado desde este: **los repositorios de los proyectos**, donde se propondrán issues para el siguiente paso y los pull requests son bienvenidos; las notas y los ejemplos resueltos de cada etapa; y la propia hoja de ruta. Las contribuciones a los materiales de SAA y de PIA son igual de bienvenidas, y cuentan para el módulo cuyo material mejoran.
+Este repositorio y cualquier repositorio que enlace, los proyectos incluidos. Una contribución cuenta para el módulo cuyo material mejora.
 
 ## Issues: informar de un problema o pedir una mejora
 
@@ -49,7 +49,15 @@ De vez en cuando el profesor abre una issue con la etiqueta `practice`: una mejo
 - Una persona por issue. Si está cogida, elige otra o revisa el pull request que la resuelve: una revisión cuidadosa también es una contribución.
 - Si dejas de trabajar en una issue, dilo en un comentario para que otra persona pueda cogerla.
 
-El feedback sobre tu propio trabajo de práctica, que no está pensado para fusionarse, se pide de otra forma: consulta [Pedir feedback](course/working-plan.md#pedir-feedback).
+## Feedback sobre tu propio trabajo
+
+La práctica que no está pensada para fusionarse también recibe feedback mediante un pull request. Un paso de un proyecto o una tarea como numpy-mnist va, en cambio, al repositorio original, como explican [los proyectos](README.md#los-proyectos).
+
+1. Mantén tu práctica en un repositorio propio, en GitHub o en otra plataforma (GitLab, Codeberg…). Su historial de commits es el registro de tu trabajo.
+2. Haz el trabajo en una rama y abre un pull request a tu propio repositorio (un merge request, en otras plataformas).
+3. Abre una issue en este repositorio que enlace ese pull request y diga sobre qué te gustaría recibir feedback.
+
+El feedback llega cuando el tiempo lo permite, por orden de llegada, como comentarios en tu pull request.
 
 ## Herramientas de IA
 

@@ -1,6 +1,6 @@
 # Lo esencial de Python para datos: NumPy y pandas
 
-Las dos bibliotecas en las que se apoya casi cualquier proyecto de IA en Python: NumPy para arrays numéricos y pandas para tablas. Esta carpeta cubre lo que necesitas para cargar, inspeccionar, seleccionar, remodelar y combinar los datos de tus proyectos, para encontrar los problemas que tiene una tabla y para obtener datos de la web. La preparación de datos más a fondo para el aprendizaje automático es el tema [Preparación de datos](../../saa/data-preparation/README.md), un notebook por paso: empieza donde termina *Encontrar los problemas de una tabla*, con las decisiones que dependen de los datos. Su itinerario (valores ausentes, codificación, escalado) llega con el aprendizaje supervisado; sus profundizaciones (explorar un dataset, valores atípicos, distribuciones asimétricas…) pueden leerse ya.
+Las dos bibliotecas en las que se apoya casi cualquier proyecto de IA en Python: NumPy para arrays numéricos y pandas para tablas. Esta carpeta cubre lo que necesitas para cargar, inspeccionar, seleccionar, remodelar y combinar los datos de tus proyectos, para encontrar los problemas que tiene una tabla y para obtener datos de la web.
 
 ## Itinerario
 
@@ -19,7 +19,7 @@ Las dos bibliotecas en las que se apoya casi cualquier proyecto de IA en Python:
 
 ## Ejercicios
 
-[Las imágenes son arrays: MNIST con NumPy](https://github.com/avidaldo/numpy-mnist) es un repositorio propio: un par de docenas de ejercicios sobre dígitos manuscritos como un array de 60.000×28×28 (cambiar la forma, tipos de datos y desbordamiento, codificación one-hot, normalización sin fuga de datos, bucles frente a vectorización, aumento de datos a mano), con tests que comprueban tus respuestas, integración continua en tu fork y una solución. Si una imagen de 7×7 como matriz te resulta nueva, empieza por el notebook [Matrices y tensores en IA](https://github.com/avidaldo/compare-python-c-efficiency/blob/main/02_matrices_in_ai.ipynb) del repositorio compare-python-c-efficiency.
+[numpy-mnist](https://github.com/avidaldo/numpy-mnist), el repositorio del que hiciste fork en la etapa 1: un par de docenas de ejercicios sobre dígitos manuscritos como un array de 60.000×28×28, con tests que comprueban tus respuestas. Si una imagen de 7×7 como matriz te resulta nueva, empieza por [Matrices y tensores en IA](https://github.com/avidaldo/compare-python-c-efficiency/blob/main/02_matrices_in_ai.ipynb).
 
 ## Profundizaciones
 
@@ -29,6 +29,7 @@ Opcionales y nunca se evalúan. El itinerario nunca depende de ellas.
 | --- | --- | --- |
 | [Listas frente a arrays de NumPy: ejercicios](numpy/deep-dives/lists_nd_arrays_examples.ipynb) | 1 | Funciones pequeñas resueltas con listas normales y con NumPy |
 | [Un DataFrame a partir de distintas estructuras](pandas/deep-dives/df_from_structures.ipynb) | 3 | Construir un mismo DataFrame a partir de listas, diccionarios y arrays |
+| [Profundizaciones de Preparación de datos](../../saa/data-preparation/README.md#profundizaciones) | 6 | Un paso de la preparación de datos para un modelo por notebook: explorar un dataset, correlación, valores atípicos, distribuciones asimétricas… El itinerario de Preparación de datos llega más adelante, con el aprendizaje supervisado |
 
 ## Referencias
 

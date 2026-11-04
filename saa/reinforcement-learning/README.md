@@ -12,8 +12,6 @@ Aprender de recompensas en lugar de etiquetas: un agente actúa en un entorno, r
 | 2 | [La ecuación de Bellman](bellman_equation.ipynb) | De dónde sale la regla de actualización del Q-learning, calculada a mano paso a paso y después en código |
 | 3 | [Q-learning en FrozenLake](frozen_lake.ipynb) | Entrenar y evaluar un agente de Q-learning en un entorno de [Gymnasium](https://gymnasium.farama.org/) |
 
-La misma idea, aprender de una recompensa, es uno de los pasos para convertir un modelo de lenguaje en un asistente de chat (RLHF): consulta *Cómo se construye un modelo de lenguaje* en la nota de la etapa 2 [Los modelos de lenguaje vistos desde fuera](../concepts/background/language_models.md#cómo-se-construye-un-modelo-de-lenguaje).
-
 ## Ejemplo resuelto
 
 [Tres en raya con Q-learning](https://github.com/avidaldo/tictactoe-qlearning) es un repositorio propio: mejora un agente paso a paso, desde la versión más sencilla hasta una que nunca pierde contra un jugador perfecto. Su README propone más experimentos, y sus notebooks tienen ejercicios: simetrías del tablero, un currículo, un torneo.

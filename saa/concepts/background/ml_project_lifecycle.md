@@ -24,7 +24,7 @@ plantear el problema → obtener y explorar los datos → preparar los datos →
 ### Preparar los datos
 
 - **Aparta primero el conjunto de test,** antes de decidir nada a partir de los datos (consulta la [generalización](#generalización-el-problema-central) más abajo).
-- Limpia los datos, codifica las categorías como números, escala, y crea las características que ayudan al modelo (*feature engineering*), decidiendo cada paso solo con los datos de entrenamiento. La profundización sobre preparación de datos *(próximamente)* recorre cada uno de ellos.
+- Limpia los datos, codifica las categorías como números, escala, y crea las características que ayudan al modelo (*feature engineering*), decidiendo cada paso solo con los datos de entrenamiento. [Preparación de datos](../../data-preparation/README.md) recorre cada uno de ellos.
 
 ### Entrenar y ajustar
 
@@ -60,4 +60,4 @@ Por eso los datos se dividen en tres conjuntos:
 
 La **fuga de datos** (*data leakage*) es el mismo error disfrazado: se cuela en el entrenamiento información que el modelo no tendrá cuando prediga. Dos ejemplos: escalar los datos con la media de todos ellos, incluido el conjunto de test; o predecir si se devolverá un préstamo con una característica que solo se conoce después, como la fecha en que se dio por incobrable. Una puntuación que parece demasiado buena para ser verdad normalmente lo es.
 
-Cómo medir todo esto, y cómo evitar estos errores, es el núcleo del aprendizaje supervisado *(próximamente)*.
+Cómo medir todo esto, y cómo evitar estos errores, es el núcleo del [aprendizaje supervisado](../../supervised-learning/README.md).

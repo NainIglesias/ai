@@ -7,7 +7,8 @@
 3. Instala [uv](uv_tutorial.md) o, si prefieres conda, [Miniforge](conda_tutorial.md). Los dos instalan el propio Python: no hace falta instalarlo aparte.
 4. Instala un editor: [VS Code](https://code.visualstudio.com/) con sus extensiones *Python* y *Jupyter*, o PyCharm.
 5. Elige un asistente de programación con IA ([Trabajar con un asistente de programación con IA](ai_assisted_development.md)).
-6. Clona este repositorio, y después haz fork y prepara [numpy-mnist](https://github.com/avidaldo/numpy-mnist), hasta el paso 4 de su README.
+6. Clona este repositorio e instala su `requirements.txt` en un entorno ([cómo](#entornos-virtuales)). Después haz fork y prepara [numpy-mnist](https://github.com/avidaldo/numpy-mnist), hasta el paso 4 de su README.
+7. [Registra tu usuario de GitHub en el aula virtual](https://fpadistancia.edu.xunta.gal/mod/feedback/view.php?id=2318916), para que se pueda encontrar tu trabajo y contar tus contribuciones.
 
 El resto de esta nota explica cada herramienta.
 
