@@ -16,13 +16,15 @@ Todo lo demás se apoya en esa referencia:
 
 | Rama | Contenido |
 | --- | --- |
-| `main` | Copia exacta del `main` del profesor, sin traducir. Solo recibe sus cambios (`git merge --ff-only upstream/main`). |
+| `main` | Copia exacta del `main` del profesor, sin traducir. El workflow la sincroniza cada día (como el botón *Sync fork*). |
 | `traduccion-es` | La traducción. Es la rama por defecto del fork, y aquí viven las herramientas y el workflow. |
 | `traduccion/<sha>` | Rama temporal que crea el workflow para cada actualización. Se convierte en un pull request contra `traduccion-es`. |
 
 ## Qué pasa cada día
 
-El workflow [`.github/workflows/vigilar-upstream.yml`](../../.github/workflows/vigilar-upstream.yml) se ejecuta todos los días a las 07:17 UTC. También se puede lanzar a mano desde Actions → *Vigilar upstream* → *Run workflow*. Tiene dos jobs.
+El workflow [`.github/workflows/vigilar-upstream.yml`](../../.github/workflows/vigilar-upstream.yml) se ejecuta todos los días a las 07:17 UTC. También se puede lanzar a mano desde Actions → *Vigilar upstream* → *Run workflow*. Tiene tres jobs.
+
+**0. `sincronizar-main`**: pone el `main` del fork igual que el del profesor con la API *merge-upstream* de GitHub. Si no puede (por ejemplo, porque alguien ha hecho commits en `main` del fork), deja un aviso y no toca nada.
 
 **1. `comprobar`** (gratis, unos segundos)
 1. Descarga el `main` de avidaldo/ai.
@@ -105,7 +107,7 @@ git merge upstream/main                       # resolver conflictos conservando 
 python3 tools/traduccion/check.py             # debe dar 0 problemas
 ```
 
-Para actualizar `main` (sin traducir):
+Para actualizar `main` a mano (normalmente lo hace el workflow):
 
 ```bash
 git checkout main && git merge --ff-only upstream/main && git push origin main
