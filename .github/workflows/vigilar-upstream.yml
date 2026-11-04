@@ -61,12 +61,13 @@ jobs:
             echo "Para actualizar: abre Claude Code en el repositorio y ejecuta \`/actualizar-traduccion\`."
           } > cuerpo.md
 
-          num=$(gh issue list --state open --search "in:title \"$titulo\"" --json number --jq '.[0].number')
+          num=$(gh api "repos/$GITHUB_REPOSITORY/issues?state=open&per_page=100" \
+            --jq "[.[] | select(.title == \"$titulo\")][0].number // empty")
           if [ -n "$num" ]; then
-            gh issue edit "$num" --body-file cuerpo.md
+            gh api -X PATCH "repos/$GITHUB_REPOSITORY/issues/$num" -F body=@cuerpo.md --silent
             echo "Issue #$num actualizado"
           else
-            gh issue create --title "$titulo" --body-file cuerpo.md
+            gh api "repos/$GITHUB_REPOSITORY/issues" -f title="$titulo" -F body=@cuerpo.md --jq .html_url
           fi
 
       - name: Al día
