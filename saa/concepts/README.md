@@ -9,11 +9,11 @@ El mapa de todo el curso de SAA, en notas para leer: qué son la IA y el aprendi
 | # | Nota | Contenido | Se detalla en |
 | --- | --- | --- | --- |
 | ★ 1 | [¿Qué es la inteligencia artificial?](background/what_is_ai.md) | Definiciones, el test de Turing, una breve historia, aprendizaje automático y aprendizaje profundo, IA estrecha y general | |
-| ★ 2 | [Paradigmas del aprendizaje automático](background/machine_learning_paradigms.md) | Aprendizaje supervisado, no supervisado y por refuerzo, y sus tareas principales; aprendizaje inductivo y razonamiento basado en casos | Etapas 6, 13 y 15 |
-| 3 | [La vida de un proyecto de aprendizaje automático](background/ml_project_lifecycle.md) | Desde plantear el problema hasta un modelo en uso y vigilado; generalización, sobreajuste y subajuste, los tres conjuntos de datos, y la fuga de datos | Etapa 6; despliegue en la etapa 7 (PIA) |
-| 4 | [Algoritmos de aprendizaje automático: una introducción histórica](background/ml_algorithms_history.md) | Los algoritmos clásicos en el orden en que aparecieron, y cómo elegir uno | Etapas 6 y 13 |
+| ★ 2 | [Paradigmas del aprendizaje automático](background/machine_learning_paradigms.md) | Aprendizaje supervisado, no supervisado y por refuerzo, y sus tareas principales; aprendizaje inductivo y razonamiento basado en casos | Etapas 5, 13 y 15 |
+| 3 | [La vida de un proyecto de aprendizaje automático](background/ml_project_lifecycle.md) | Desde plantear el problema hasta un modelo en uso y vigilado; generalización, sobreajuste y subajuste, los tres conjuntos de datos, y la fuga de datos | Etapa 5; despliegue en la etapa 7 (PIA) |
+| 4 | [Algoritmos de aprendizaje automático: una introducción histórica](background/ml_algorithms_history.md) | Los algoritmos clásicos en el orden en que aparecieron, y cómo elegir uno | Etapas 5 y 13 |
 | 5 | [Las redes neuronales vistas desde fuera](background/neural_networks.md) | Hitos, qué es una red y cómo aprende, el aprendizaje profundo y cuándo merece la pena, y las familias de redes | Etapa 8 |
-| 6 | [Los modelos de lenguaje vistos desde fuera](background/language_models.md) | Qué hace un modelo de lenguaje y cómo se construye, y lo que se deduce para quien lo usa: tokens, muestreo, alucinaciones, la fecha de corte del conocimiento, la ventana de contexto, herramientas y respuestas basadas en documentos | Etapa 10; la etapa 5 (PIA) se apoya en ella |
+| 6 | [Los modelos de lenguaje vistos desde fuera](background/language_models.md) | Qué hace un modelo de lenguaje y cómo se construye, y lo que se deduce para quien lo usa: tokens, muestreo, alucinaciones, la fecha de corte del conocimiento, la ventana de contexto, herramientas y respuestas basadas en documentos | Etapa 10; la etapa 6 (PIA) se apoya en ella |
 
 ## Profundizaciones
 
