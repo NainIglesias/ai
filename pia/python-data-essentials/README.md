@@ -28,6 +28,8 @@ Opcionales y nunca se evalúan. El itinerario nunca depende de ellas.
 | Notebook | Amplía | Contenido |
 | --- | --- | --- |
 | [Listas frente a arrays de NumPy: ejercicios](numpy/deep-dives/lists_nd_arrays_examples.ipynb) | 1 | Funciones pequeñas resueltas con listas normales y con NumPy |
+| [Indexación avanzada (*fancy indexing*), paso a paso](numpy/deep-dives/fancy_indexing_step_by_step.ipynb) | 1 | Indexar con arrays de índices y *broadcasting* sobre arrays lo bastante pequeños para imprimirlos, hasta tres arrays de índices que recortan una ventana distinta de cada imagen |
+| [Desplazar todas las imágenes sin un bucle](https://github.com/avidaldo/numpy-mnist/blob/main/vectorised_shift.ipynb), en numpy-mnist | Ejercicios | El desplazamiento del ejercicio 22 vectorizado, comprobado contra el bucle y cronometrado por partes |
 | [Un DataFrame a partir de distintas estructuras](pandas/deep-dives/df_from_structures.ipynb) | 3 | Construir un mismo DataFrame a partir de listas, diccionarios y arrays |
 | [Profundizaciones de Preparación de datos](../../saa/data-preparation/README.md#profundizaciones) | 6 | Un paso de la preparación de datos para un modelo por notebook: explorar un dataset, correlación, valores atípicos, distribuciones asimétricas… El itinerario de Preparación de datos llega más adelante, con el aprendizaje supervisado |
 
