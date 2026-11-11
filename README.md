@@ -1,11 +1,13 @@
 # Inteligencia Artificial 2026/27
 
-> 🇪🇸 **Traducción al español** del repositorio original de [avidaldo/ai](https://github.com/avidaldo/ai) hasta el commit a115b4448419295f8012094bd3a7e9c19dcf833b, hecha por un alumno para ayudar a los compañeros. La versión de referencia es siempre la original en inglés: si algo no cuadra, consúltala.
+> 🇪🇸 **Traducción al español** del repositorio original de [avidaldo/ai](https://github.com/avidaldo/ai) hasta el commit 07ed6db89f30825f89648ddfce0b8d8be6cda2bf, hecha por un alumno para ayudar a los compañeros. La versión de referencia es siempre la original en inglés: si algo no cuadra, consúltala.
 
 Materiales de dos módulos del curso de especialización en Inteligencia Artificial y Big Data, impartidos juntos como un único itinerario:
 
 - **SAA · Sistemas de Aprendizaje Automático**: cómo aprenden los modelos a partir de los datos, cómo se entrenan y cómo saber si de verdad funcionan.
 - **PIA · Programación de Inteligencia Artificial**: construir software con IA: Python y sus herramientas, modelos de lenguaje, recuperación de información, agentes, despliegue y automatización.
+
+Una [traducción al español](https://github.com/NainIglesias/ai/tree/traduccion-es) la mantiene [NainIglesias](https://github.com/NainIglesias).
 
 ## Hoja de ruta
 
