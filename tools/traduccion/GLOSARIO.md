@@ -30,6 +30,11 @@ Si el término inglés ayuda a buscar más información, se añade en cursiva en
 | feature | variable |
 | target | objetivo |
 | deep dive | profundización |
+| complementary | complementario |
+| support (nivel complementario) | apoyo |
+| core (★) / standard (nivel) | básico (★) / estándar |
+| Tier / Item (cabeceras de la tabla del itinerario) | Nivel / Elemento |
+| practice / project (nivel) | práctica / proyecto |
 | (coming) | (próximamente) |
 | Path (sección del README) | Itinerario |
 | worked examples | ejemplos resueltos |

@@ -13,7 +13,7 @@ plantear el problema → obtener y explorar los datos → preparar los datos →
 - **Qué se predice exactamente,** para quién, y qué decisión cambia la predicción.
 - **Cómo se mide el éxito:** una medida que importe a quienes usan el modelo, como menos préstamos impagados, y una métrica del modelo que la siga, elegida antes de entrenar ningún modelo.
 - **Una referencia (*baseline*):** la respuesta más sencilla posible, como el precio medio de todas las casas, o la clase más frecuente. Un modelo solo vale lo que cuesta si la supera claramente.
-- **Si hace falta aprendizaje automático:** si unas pocas reglas claras resuelven el problema, escribe las reglas ([reglas y sistemas expertos](../deep-dives/classical-ai/rules_and_expert_systems.ipynb)).
+- **Si hace falta aprendizaje automático:** si unas pocas reglas claras resuelven el problema, escribe las reglas ([reglas y sistemas expertos](../complementary/classical-ai/rules_and_expert_systems.ipynb)).
 
 ### Obtener y explorar los datos
 
