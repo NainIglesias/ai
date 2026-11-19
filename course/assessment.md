@@ -49,9 +49,8 @@ La parte práctica de cada examen trabaja sobre algunos de [los proyectos](../RE
 
 Las contribuciones son voluntarias, y puedes sacar un 10 sin ellas. Las issues útiles (un problema bien identificado, aunque no traiga solución) y los pull requests a cualquier repositorio del curso, una vez aceptados, pueden sumar hasta 2 puntos a la nota de un módulo cuyo examen hayas aprobado, nunca por encima de 10. Cómo se valoran se describe en la programación. Registra tu usuario de GitHub en el aula virtual para que se puedan contar. Cómo participar: [Mejorar los materiales del curso](../CONTRIBUTING.md).
 
-## Para qué cuenta cada tipo de material
+## Qué puede salir en los exámenes
 
-- Los **elementos básicos** (★ en el README de cada tema) son el itinerario mínimo. La parte de proyectos de cada examen solo necesita esos elementos y los repositorios que usa, y unas dos terceras partes del cuestionario tratan sobre ellos; el resto del cuestionario trata sobre los elementos **estándar**: el resto del itinerario y los ejemplos resueltos.
-- Las **profundizaciones** nunca se evalúan.
-- Los **ejemplos resueltos** (los repositorios que aplican cada etapa a datos reales) se estudian, y el cuestionario puede preguntar por ellos. Algunos temas, como la clasificación, solo se practican ahí.
-- Las **tareas de práctica** (propuestas por los temas y los ejemplos resueltos) nunca se califican. Son la mejor preparación para el examen, y puedes pedir feedback sobre cualquiera de ellas.
+- **El itinerario de cada tema**: sus elementos básicos (★) y estándar por igual, los ejemplos resueltos entre ellos, en el cuestionario y en la parte práctica.
+- Los elementos **complementarios**, el apoyo y las profundizaciones, nunca.
+- Las **tareas de práctica** nunca se califican. Son la mejor preparación para los exámenes, y puedes pedir feedback sobre cualquiera de ellas.

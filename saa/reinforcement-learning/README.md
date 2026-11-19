@@ -4,27 +4,13 @@ Aprender de recompensas en lugar de etiquetas: un agente actúa en un entorno, r
 
 ## Itinerario
 
-★ marca los elementos básicos: el mínimo, si tienes poco tiempo esta semana.
-
-| # | Notebook | Contenido |
-| --- | --- | --- |
-| ★ 1 | [Aprendizaje por refuerzo y Q-learning](qlearning.ipynb) | Agente, entorno, recompensa y política; una visión intuitiva del Q-learning, entrenado desde cero en un pequeño mundo de cuadrícula |
-| 2 | [La ecuación de Bellman](bellman_equation.ipynb) | De dónde sale la regla de actualización del Q-learning, calculada a mano paso a paso y después en código |
-| 3 | [Q-learning en FrozenLake](frozen_lake.ipynb) | Entrenar y evaluar un agente de Q-learning en un entorno de [Gymnasium](https://gymnasium.farama.org/) |
-
-## Ejemplo resuelto
-
-[Tres en raya con Q-learning](https://github.com/avidaldo/tictactoe-qlearning) es un repositorio propio: mejora un agente paso a paso, desde la versión más sencilla hasta una que nunca pierde contra un jugador perfecto. Su README propone más experimentos, y sus notebooks tienen ejercicios: simetrías del tablero, un currículo, un torneo.
-
-## Práctica
-
-**Haz que el lago resbale.** En [Q-learning en FrozenLake](frozen_lake.ipynb), crea el entorno con `is_slippery=True`: ahora cada movimiento va en la dirección prevista solo una de cada tres veces, y el resto resbala hacia un lado o hacia el otro.
-
-1. Evalúa con 1.000 episodios en lugar de 100, y entrena tres o cuatro veces, volviendo a crear la tabla Q antes de cada ejecución (si no, el entrenamiento continúa desde la última tabla). ¿Con qué frecuencia llega el agente a la meta, y cuánto cambia eso de una ejecución a otra?
-2. Ninguna política llega a la meta siempre en este lago: la mejor posible lo consigue alrededor del 74 % de las veces dentro del límite de 99 pasos. Cambia la tasa de aprendizaje, gamma y el número de episodios, primero de uno en uno y después a la vez, hasta que todas las ejecuciones se acerquen al 74 %. ¿Qué cambios importan, y por qué importan aquí cuando no importaban en el lago determinista?
-3. Mira la acción que elige tu mejor agente en el estado inicial. ¿Por qué esa?
-
-Una [solución](practice/slippery_lake_solution.ipynb), para leer cuando lo hayas intentado.
+| # | Nivel | Elemento | Contenido |
+| --- | --- | --- | --- |
+| 1 | ★ básico | [Aprendizaje por refuerzo y Q-learning](qlearning.ipynb) | Agente, entorno, recompensa y política; una visión intuitiva del Q-learning, entrenado desde cero en un pequeño mundo de cuadrícula |
+| 2 | estándar | [La ecuación de Bellman](bellman_equation.ipynb) | De dónde sale la regla de actualización del Q-learning, calculada a mano paso a paso y después en código |
+| 3 | estándar | [Q-learning en FrozenLake](frozen_lake.ipynb) | Entrenar y evaluar un agente de Q-learning en un entorno de [Gymnasium](https://gymnasium.farama.org/) |
+| | práctica | **Haz que el lago resbale** | En el notebook 3, crea el entorno con `is_slippery=True`: ahora cada movimiento va en la dirección prevista solo una de cada tres veces, y el resto resbala hacia un lado o hacia el otro.<br>1. Evalúa con 1.000 episodios en lugar de 100, y entrena tres o cuatro veces, volviendo a crear la tabla Q antes de cada ejecución (si no, el entrenamiento continúa desde la última tabla). ¿Con qué frecuencia llega el agente a la meta, y cuánto cambia eso de una ejecución a otra?<br>2. Ninguna política llega a la meta siempre en este lago: la mejor posible lo consigue alrededor del 74 % de las veces dentro del límite de 99 pasos. Cambia la tasa de aprendizaje, gamma y el número de episodios, primero de uno en uno y después a la vez, hasta que todas las ejecuciones se acerquen al 74 %. ¿Qué cambios importan, y por qué importan aquí cuando no importaban en el lago determinista?<br>3. Mira la acción que elige tu mejor agente en el estado inicial. ¿Por qué esa?<br>Una [solución](practice/slippery_lake_solution.ipynb), para leerla cuando lo hayas intentado. |
+| | profundización | [Tres en raya con Q-learning](https://github.com/avidaldo/tictactoe-qlearning), un ejemplo resuelto | Un agente mejorado paso a paso, desde la versión más sencilla hasta una que nunca pierde contra un jugador perfecto. Su README propone más experimentos, y sus notebooks tienen ejercicios: simetrías del tablero, un currículo, un torneo |
 
 ## Referencias
 

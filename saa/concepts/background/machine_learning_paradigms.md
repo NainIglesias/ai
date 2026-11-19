@@ -28,6 +28,8 @@ Los dos paradigmas más habituales, cruzados con el tipo de salida que producen 
 
 En el aprendizaje supervisado la salida es una predicción de un objetivo conocido. El aprendizaje no supervisado no tiene objetivo: su salida es una estructura que el método encuentra en los datos.
 
+El aprendizaje supervisado es el paradigma más usado en la práctica: la mayoría de los modelos construidos a partir de datos predicen una respuesta conocida, como un precio, un diagnóstico o si un pago es un fraude.
+
 Cada tarea de abajo viene con un recuadro que describe una aplicación típica: sus datos, las respuestas que vienen con los datos, qué se aprende y para qué se usa.
 
 ## Aprendizaje supervisado
@@ -99,7 +101,7 @@ El **aprendizaje inductivo** construye la regla general explícitamente, por ade
 > - **Qué aprende:** un árbol de decisión, unas pocas preguntas con umbrales que el algoritmo elige a partir de los datos, como `high_risk = lowest_systolic_pressure <= 91 or (age > 62.5 and sinus_tachycardia)` (riesgo alto si la tensión sistólica mínima es ≤ 91, o si la edad es > 62,5 y hay taquicardia sinusal)
 > - **Se usa para:** clasificar a los pacientes nuevos por riesgo, con una regla que los médicos pueden leer y comprobar
 
-El **razonamiento basado en casos** guarda en cambio los ejemplos, como **casos**, y resuelve un problema nuevo a partir de los pasados más parecidos, reutilizando o adaptando sus soluciones. Las personas razonamos así constantemente: un tasador valora un piso a partir de los precios de pisos parecidos vendidos cerca, y un abogado argumenta a partir de las sentencias de casos anteriores parecidos. También muchos sistemas: una tienda que recomienda lo que compraron clientes parecidos, o un asistente que responde una pregunta nueva a partir de las preguntas más parecidas respondidas antes. En IA, es la alternativa a escribir a mano las reglas de los [sistemas expertos](../deep-dives/classical-ai/rules_and_expert_systems.ipynb): los casos son el conocimiento. Su forma más sencilla en aprendizaje automático son los **k vecinos más cercanos** (*k-nearest neighbours*), que se explican en [aprendizaje supervisado](../../supervised-learning/algorithms/neighbours/knn.ipynb).
+El **razonamiento basado en casos** guarda en cambio los ejemplos, como **casos**, y resuelve un problema nuevo a partir de los pasados más parecidos, reutilizando o adaptando sus soluciones. Las personas razonamos así constantemente: un tasador valora un piso a partir de los precios de pisos parecidos vendidos cerca, y un abogado argumenta a partir de las sentencias de casos anteriores parecidos. También muchos sistemas: una tienda que recomienda lo que compraron clientes parecidos, o un asistente que responde una pregunta nueva a partir de las preguntas más parecidas respondidas antes. En IA, es la alternativa a escribir a mano las reglas de los [sistemas expertos](../complementary/classical-ai/rules_and_expert_systems.ipynb): los casos son el conocimiento. Su forma más sencilla en aprendizaje automático son los **k vecinos más cercanos** (*k-nearest neighbours*), que se explican en [aprendizaje supervisado](../../supervised-learning/algorithms/neighbours/knn.ipynb).
 
 Un sistema basado en casos también generaliza: los casos guardados, junto con la forma en que mide la similitud, dan una respuesta para cualquier problema nuevo. Pero esa regla se queda implícita, se calcula de nuevo para cada pregunta y solo a su alrededor, y nunca se escribe.
 
@@ -192,7 +194,7 @@ Este paradigma se encuentra en la robótica (p. ej., enseñar a andar a un robot
 ## Entre el supervisado y el no supervisado
 
 - El **aprendizaje semisupervisado** usa unos pocos ejemplos etiquetados junto con muchos sin etiquetar, cuando las etiquetas son caras: un médico puede etiquetar cien escáneres, no un millón.
-- El **aprendizaje autosupervisado** crea las etiquetas a partir de los propios datos. Un modelo de lenguaje se preentrena ocultando la siguiente palabra de un texto real y aprendiendo a predecirla: cada frase de internet se convierte en un ejemplo etiquetado, sin que ninguna persona etiquete nada. Así es como los grandes modelos de lenguaje actuales aprenden la mayor parte de lo que saben: consulta [los modelos de lenguaje vistos desde fuera](language_models.md).
+- El **aprendizaje autosupervisado** crea las etiquetas a partir de los propios datos. Un modelo de lenguaje se preentrena ocultando la siguiente palabra de un texto real y aprendiendo a predecirla: cualquier frase se convierte en un ejemplo etiquetado, sin que ninguna persona etiquete nada. Se entrena con la maquinaria del aprendizaje supervisado, cada entrada con un objetivo y el modelo corregido por su error en él, pero también se cuenta como un tipo de aprendizaje no supervisado, porque sus datos vienen sin etiquetas. Así es como los grandes modelos de lenguaje actuales aprenden la mayor parte de lo que saben: consulta [los modelos de lenguaje vistos desde fuera](language_models.md).
 
 > [!NOTE]
 > **Etiquetar fotos con un modelo** (semisupervisado)
